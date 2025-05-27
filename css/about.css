@@ -78,7 +78,7 @@
 /* Story Section */
 .story-section {
   padding: var(--section-spacing) 0;
-  background: var(--white);
+  background: var(--bg-color);
 }
 
 .story-container {
@@ -147,10 +147,10 @@
 }
 
 .team-member {
-  background: var(--white);
+  /* background: var(--white); */
   border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: var(--shadow);
+  /* box-shadow: var(--shadow); */
   transition: transform 0.3s ease;
   padding: var(--card-padding);
 }
@@ -212,7 +212,7 @@
 /* Testimonials Section */
 .testimonials {
   padding: var(--section-spacing) 0;
-  background: var(--white);
+  /* background: var(--white); */
 }
 
 .testimonials-grid {

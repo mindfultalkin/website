@@ -103,7 +103,8 @@
 /* Pain Points Section */
 .pain-points {
   padding: var(--section-spacing) 0;
-  background: var(--white);
+  /* background: var(--white); */
+  background: var(--bg-color);
 }
 
 .points-grid {
@@ -177,27 +178,156 @@
   background: var(--bg-color);
 }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+.services-flex {
+  display: flex;
   gap: var(--grid-gap);
   margin-top: var(--section-spacing-sm);
 }
 
-.service-card {
-  background: var(--white);
-  padding: var(--card-padding);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
+.services-design {
+  flex: 1;
+  position: relative;
+  min-height: 600px;
+}
+
+.design-element {
+  position: relative;
   height: 100%;
 }
 
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(139, 0, 0, 0.15);
+.floating-shape {
+  position: absolute;
+  opacity: 0.9;
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  top: 15%;
+  left: 15%;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  animation: float 8s ease-in-out infinite, rotate 15s linear infinite;
+}
+
+.shape-2 {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(-45deg, var(--accent-color), #06d6a0);
+  top: 45%;
+  right: 20%;
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+  animation: float 7s ease-in-out infinite, rotate 12s linear infinite reverse;
+  animation-delay: 2s;
+}
+
+.shape-3 {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  bottom: 20%;
+  left: 25%;
+  clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+  animation: float 9s ease-in-out infinite, pulse 4s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* Additional decorative elements */
+.design-element::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px dashed var(--primary-color);
+  border-radius: 50%;
+  top: 30%;
+  left: 40%;
+  opacity: 0.2;
+  animation: rotate 20s linear infinite;
+}
+
+.design-element::after {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border: 2px dashed var(--accent-color);
+  border-radius: 50%;
+  top: 60%;
+  left: 30%;
+  opacity: 0.2;
+  animation: rotate 15s linear infinite reverse;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.services-content {
+  flex: 1;
+  padding-left: var(--card-padding);
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.service-item {
+  padding: var(--card-padding);
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateX(10px);
+  box-shadow: var(--shadow);
+}
+
+.service-item h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.service-item p {
+  color: var(--text-light);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .card-icon {
@@ -224,7 +354,8 @@
 /* Benefits Section */
 .benefits {
   padding: var(--section-spacing) 0;
-  background: var(--white);
+  /* background: var(--white); */
+  background: var(--bg-color);
 }
 
 .benefits-grid {

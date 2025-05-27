@@ -54,7 +54,7 @@
 /* Programs Grid */
 .available-programs {
   padding: 80px 5%;
-  background: var(--white);
+  background: var(--bg-color);
 }
 
 .programs-grid {
@@ -170,44 +170,6 @@
   margin: 0 auto 20px;
   font-size: 1.5rem;
   font-weight: 600;
-}
-
-/* Testimonials */
-.testimonials {
-  padding: 80px 5%;
-  background: var(--white);
-}
-
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 60px auto 0;
-}
-
-.testimonial {
-  background: var(--bg-color);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.08);
-}
-
-.testimonial blockquote {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: var(--text-dark);
-  margin-bottom: 20px;
-  position: relative;
-  padding-left: 20px;
-  border-left: 3px solid var(--primary-color);
-}
-
-.testimonial cite {
-  color: var(--text-light);
-  font-style: normal;
-  display: block;
-  margin-top: 15px;
 }
 
 /* CTA Section */
