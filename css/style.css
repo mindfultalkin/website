@@ -298,7 +298,6 @@ footer {
   background-color: var(--background-dark);
   color: #ffffff;
   padding: 60px 5% 30px;
-  margin-top: 80px;
 }
 
 .footer-content {
@@ -994,7 +993,7 @@ footer {
 /* Compact Testimonials Section */
 .testimonials {
   background-color: rgb(255, 252, 244);
-  padding: 3rem 0;
+  /* padding: 3rem 0; */
   /* Reduced from 5rem */
   position: relative;
   overflow: hidden;
@@ -1040,9 +1039,9 @@ footer {
 /* Compact Carousel Styles */
 .testimonials-carousel {
   position: relative;
-  max-width: 900px;
+  width: 100%;
   /* Reduced from 1000px */
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .carousel-container {
@@ -1169,33 +1168,6 @@ footer {
 
 .nav-btn:active {
   transform: translateY(-1px);
-}
-
-.carousel-dots {
-  display: flex;
-  gap: 0.4rem;
-  /* Reduced from 0.5rem */
-}
-
-.dot {
-  width: 10px;
-  /* Reduced from 12px */
-  height: 10px;
-  /* Reduced from 12px */
-  border-radius: 50%;
-  background: #ddd;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot.active {
-  background: linear-gradient(90deg, #f48c04 0%, #0894b4 100%);
-  transform: scale(1.1);
-  /* Reduced from 1.2 */
-}
-
-.dot:hover {
-  background: #0894b4;
 }
 
 /* Responsive Design */
