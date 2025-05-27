@@ -1,4 +1,4 @@
-// Load header and footer dynamically
+// Load header, footer, and testimonials dynamically
 window.addEventListener('DOMContentLoaded', () => {
   fetch('header.html')
     .then(res => res.text())
@@ -7,6 +7,16 @@ window.addEventListener('DOMContentLoaded', () => {
   fetch('footer.html')
     .then(res => res.text())
     .then(data => document.getElementById('footer-container').innerHTML = data);
+    
+  const testimonialsContainer = document.getElementById('testimonials-container');
+  if (testimonialsContainer) {
+    fetch('testimonials.html')
+      .then(res => res.text())
+      .then(data => {
+        testimonialsContainer.innerHTML = data;
+        initializeCarousel();
+      });
+  }
 });
 
 // Testimonials Carousel Functionality
