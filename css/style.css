@@ -107,7 +107,7 @@ nav ul li a:hover::after {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4rem 5%;
+  padding: 4rem 15%;
   overflow: hidden;
   background-color: rgb(255, 252, 244);
 }
@@ -493,7 +493,7 @@ footer {
   display: block;
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, #f48c04 0%, #0894b4 100%);
+  background: #f48c04;
   margin: 15px auto 0;
   border-radius: 2px;
 }
@@ -532,7 +532,7 @@ footer {
   display: block;
   width: 50px;
   height: 3px;
-  background: linear-gradient(90deg, #f48c04 0%, #0894b4 100%);
+  background: #f48c04;
   margin: 10px auto 0;
   border-radius: 2px;
 }
@@ -549,7 +549,7 @@ footer {
 .service-btn {
   display: inline-block;
   padding: 0.8rem 1.8rem;
-  background: linear-gradient(90deg, #f48c04 0%, #0894b4 100%);
+  background: #f48c04;
   color: white;
   border: none;
   border-radius: 50px;
@@ -624,7 +624,7 @@ footer {
   display: block;
   width: 60px;
   height: 4px;
-  background: linear-gradient(90deg, #f48c04 0%, #0894b4 100%);
+  background: #f48c04;
   margin: 15px auto 0;
   border-radius: 2px;
 }
@@ -639,7 +639,7 @@ footer {
 .cta-main-btn {
   display: inline-block;
   padding: 1rem 2.5rem;
-  background: linear-gradient(90deg, #f48c04 0%, #0894b4 100%);
+  background: #f48c04;
   color: white;
   border: none;
   border-radius: 50px;
@@ -798,7 +798,7 @@ footer {
   font-weight: 700;
   letter-spacing: -1px;
   margin: 0;
-  background: linear-gradient(90deg, #f48c04, #0894b4);
+  background: #f48c04;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
