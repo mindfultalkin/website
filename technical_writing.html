@@ -308,16 +308,20 @@
       line-height: 1.6;
     }
 
-    .wave-divider {
-      width: 100%;
-      height: 50px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%2300afb9' opacity='0.3'/%3E%3C/svg%3E") repeat-x;
-      margin: 2rem 0;
-    }
-
     /* Benefits Section */
     .benefits-section {
       padding: 8rem 0;
+    }
+
+    .benefits-header {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    .benefits-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #333;
+      margin-bottom: 1rem;
     }
 
     .benefits-content {
@@ -642,11 +646,10 @@
           <a href="#contact" class="cta-button">Contact Us to Find How</a>
         </div>
         <div class="hero-visual">
-          <div class="hero-illustration">
-            📋 → 😊 Users
-          </div>
+          <img src="assets/technical-writing/hero_img.png" alt="Hero Illustration" style="width: 100%; height: auto;">
         </div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -712,38 +715,39 @@
           <p>Smart, instant answers that scale your support</p>
         </div>
       </div>
-      <div class="wave-divider"></div>
     </div>
   </section>
 
   <!-- Benefits Section -->
   <section class="benefits-section">
     <div class="container">
+      <div class="benefits-header">
+        <h2>Why Great Documentation Matters</h2>
+      </div>
       <div class="benefits-content">
         <div class="benefits-list">
           <div class="benefit-item">
-            <h4>Reduced Support Costs</h4>
-            <p>Cut support tickets by up to 60% with self-service documentation that actually works</p>
+            <h4>Reduce Customer Support Costs</h4>
+            <p>Clear, complete and correct documentation empowers users to find answers themselves. This reduces the
+              load on the customer support team, thereby reducing costs.</p>
           </div>
           <div class="benefit-item">
-            <h4>Easier Onboarding</h4>
-            <p>New users become productive faster with clear, step-by-step guidance</p>
+            <h4>Onboarding Customers Made Easy</h4>
+            <p>Good user documentation eases the user’s initial interaction with your product; it also reduces the
+              learning curve, and thereby a smooth adoption.</p>
           </div>
           <div class="benefit-item">
-            <h4>Faster Product Adoption</h4>
-            <p>Users discover and use more features when information is accessible and actionable</p>
-          </div>
-          <div class="benefit-item">
-            <h4>Higher Customer Satisfaction</h4>
-            <p>Happy users who can help themselves become your biggest advocates</p>
+            <h4>Increase Customer Delight</h4>
+            <p>Clear and accessible information boosts confidence and increases delight, fostering long-term loyalty and
+              trust in your brand.</p>
           </div>
         </div>
         <div class="benefits-visual">
-          <div class="benefits-illustration">
-            📈 Growth Through<br>Great Documentation
-          </div>
+          <img src="assets/technical-writing/great_documentation.png" alt="Benefits Illustration"
+            style="width: 100%; height: auto;">
         </div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -773,9 +777,7 @@
           <a href="#contact" class="cta-button">Reach Us</a>
         </div>
         <div class="final-visual">
-          <div class="final-illustration">
-            🚀 Ready to Transform<br>Your Documentation?
-          </div>
+          <div class="final-illustration"></div>
         </div>
       </div>
     </div>
