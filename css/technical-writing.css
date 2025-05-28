@@ -38,7 +38,6 @@
 /* Hero Section */
 .tech-writing-hero {
   position: relative;
-  min-height: 80vh;
   padding: var(--section-spacing) 0;
   background-color: var(--bg-color);
   overflow: hidden;

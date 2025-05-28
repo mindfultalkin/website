@@ -7,97 +7,10 @@ body {
 }
 
 :root {
-  --primary-color: #2563eb;
+  --primary-color: #f48c04;
   --text-color: #333333;
   --background-light: #ffffff;
   --background-dark: #1a1a1a;
-}
-
-/* Header styles */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  padding: 15px 5%;
-  transition: all 0.3s ease;
-}
-
-.top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.logo {
-  text-decoration: none;
-  display: block;
-}
-
-.logo img {
-  height: 40px;
-  width: auto;
-  transition: transform 0.3s ease;
-}
-
-.logo:hover img {
-  transform: scale(1.05);
-}
-
-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: var(--text-color);
-  font-size: 16px;
-  font-weight: 500;
-  position: relative;
-  padding: 5px 0;
-}
-
-nav ul li a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--primary-color);
-  transition: width 0.3s ease;
-}
-
-nav ul li a:hover::after {
-  width: 100%;
-}
-
-.contact-btn {
-  display: inline-block;
-  padding: 10px 24px;
-  background-color: var(--primary-color);
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border: 2px solid var(--primary-color);
-}
-
-.contact-btn:hover {
-  background-color: transparent;
-  color: var(--primary-color);
 }
 
 /* Modern Hero Section */
@@ -154,7 +67,7 @@ nav ul li a:hover::after {
 }
 
 .hero-content h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 800;
   line-height: 1.1;
   margin: 0;
@@ -165,12 +78,13 @@ nav ul li a:hover::after {
 }
 
 .hero-content .highlight {
-  color: #f48c04;
-  -webkit-text-fill-color: #f48c04;
+  color: var(--primary-color);
+  -webkit-text-fill-color: var(--primary-color);
+  font-size: 3.5rem;
 }
 
 .hero-content p {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 400;
   line-height: 1.6;
   margin: 0;
@@ -183,7 +97,7 @@ nav ul li a:hover::after {
   align-items: center;
   margin-top: 1rem;
   padding: 0.9rem 2rem;
-  background: linear-gradient(90deg, #f48c04);
+  background: linear-gradient(90deg, var(--primary-color));
   color: white;
   border: none;
   border-radius: 50px;
@@ -293,160 +207,6 @@ nav ul li a:hover::after {
   border-radius: 5px;
 }
 
-/* Footer styles */
-footer {
-  background-color: var(--background-dark);
-  color: #ffffff;
-  padding: 60px 5% 30px;
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 40px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.footer-description {
-  max-width: 400px;
-}
-
-.footer-description img {
-  height: 40px;
-  margin-bottom: 20px;
-}
-
-.footer-description p {
-  font-size: 15px;
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-.footer-subscribe {
-  max-width: 350px;
-}
-
-.footer-subscribe h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-
-.footer-subscribe p {
-  font-size: 14px;
-  margin-bottom: 20px;
-  opacity: 0.8;
-}
-
-.subscribe-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.subscribe-form input {
-  width: 100%;
-  padding: 12px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 6px;
-  color: white;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.subscribe-form input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.subscribe-form button {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 14px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.subscribe-form button:hover {
-  background-color: #1d4ed8;
-  transform: translateY(-1px);
-}
-
-.subscribe-form button i {
-  font-size: 12px;
-}
-
-.footer-contact h3 {
-  font-size: 18px;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.footer-contact p {
-  margin: 10px 0;
-  font-size: 15px;
-  opacity: 0.9;
-}
-
-.footer-contact a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-contact a:hover {
-  color: var(--primary-color);
-}
-
-.footer-bottom {
-  max-width: 1400px;
-  margin: 40px auto 0;
-  padding-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-bottom p {
-  font-size: 14px;
-  opacity: 0.7;
-}
-
-.social-icons {
-  display: flex;
-  gap: 20px;
-}
-
-.social-icons a {
-  color: white;
-  text-decoration: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.social-icons a:hover {
-  background-color: var(--primary-color);
-  transform: translateY(-2px);
-}
-
 /* Services Section Styles */
 .services {
   background-color: rgb(255, 252, 244);
@@ -492,7 +252,7 @@ footer {
   display: block;
   width: 80px;
   height: 4px;
-  background: #f48c04;
+  background: var(--primary-color);
   margin: 15px auto 0;
   border-radius: 2px;
 }
@@ -531,7 +291,7 @@ footer {
   display: block;
   width: 50px;
   height: 3px;
-  background: #f48c04;
+  background: var(--primary-color);
   margin: 10px auto 0;
   border-radius: 2px;
 }
@@ -548,7 +308,7 @@ footer {
 .service-btn {
   display: inline-block;
   padding: 0.8rem 1.8rem;
-  background: #f48c04;
+  background: var(--primary-color);
   color: white;
   border: none;
   border-radius: 50px;
@@ -623,7 +383,7 @@ footer {
   display: block;
   width: 60px;
   height: 4px;
-  background: #f48c04;
+  background: var(--primary-color);
   margin: 15px auto 0;
   border-radius: 2px;
 }
@@ -638,7 +398,7 @@ footer {
 .cta-main-btn {
   display: inline-block;
   padding: 1rem 2.5rem;
-  background: #f48c04;
+  background: var(--primary-color);
   color: white;
   border: none;
   border-radius: 50px;
@@ -758,7 +518,7 @@ footer {
 
 .illustration-circle {
   fill: none;
-  stroke: #f48c04;
+  stroke: var(--primary-color);
   stroke-width: 2;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
@@ -774,7 +534,7 @@ footer {
 
 .team-connection {
   fill: none;
-  stroke: #f48c04;
+  stroke: var(--primary-color);
   stroke-width: 2;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
@@ -796,7 +556,7 @@ footer {
   font-weight: 700;
   letter-spacing: -1px;
   margin: 0;
-  background: #f48c04;
+  background: var(--primary-color);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -825,7 +585,7 @@ footer {
 .icon {
   width: 40px;
   height: 40px;
-  fill: #f48c04;
+  fill: var(--primary-color);
 }
 
 .feature-text {
@@ -899,7 +659,7 @@ footer {
   position: absolute;
   width: 10px;
   height: 10px;
-  background: linear-gradient(90deg, #f48c04, #0894b4);
+  background: linear-gradient(90deg, var(--primary-color), #0894b4);
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
@@ -987,252 +747,6 @@ footer {
 
   .feature-text {
     font-size: 1rem;
-  }
-}
-
-/* Compact Testimonials Section */
-.testimonials {
-  background-color: rgb(255, 252, 244);
-  /* padding: 3rem 0; */
-  /* Reduced from 5rem */
-  position: relative;
-  overflow: hidden;
-}
-
-.testimonials .section-header {
-  text-align: center;
-  margin-bottom: 2.5rem;
-  /* Reduced from 4rem */
-}
-
-.testimonials .section-header h2 {
-  font-size: 2rem;
-  /* Reduced from 2.5rem */
-  font-weight: 700;
-  color: black;
-  margin-bottom: 0.5rem;
-  /* Reduced from 1rem */
-  position: relative;
-  display: inline-block;
-}
-
-.testimonials .section-header h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  /* Reduced from 80px */
-  height: 3px;
-  /* Reduced from 4px */
-  background: linear-gradient(90deg, #f48c04 0%, #0894b4 100%);
-  margin: 10px auto 0;
-  /* Reduced from 15px */
-  border-radius: 2px;
-}
-
-.testimonials .section-header p {
-  font-size: 1rem;
-  /* Reduced from 1.2rem */
-  color: #666;
-  margin: 0;
-}
-
-/* Compact Carousel Styles */
-.testimonials-carousel {
-  position: relative;
-  width: 100%;
-  /* Reduced from 1000px */
-  /* margin: 0 auto; */
-}
-
-.carousel-container {
-  overflow: hidden;
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  will-change: transform;
-}
-
-.testimonial-card {
-  min-width: 100%;
-  padding: 2rem 1.8rem;
-  /* Reduced from 3rem 2.5rem */
-  box-sizing: border-box;
-  position: relative;
-}
-
-.testimonial-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  /* Reduced from 5px */
-  background: linear-gradient(90deg, #f48c04 0%, #0894b4 100%);
-}
-
-.testimonial-content {
-  text-align: center;
-  max-width: 700px;
-  /* Reduced from 800px */
-  margin: 0 auto;
-}
-
-.quote-icon {
-  font-size: 3rem;
-  /* Reduced from 4rem */
-  color: #f48c04;
-  font-family: Georgia, serif;
-  line-height: 1;
-  margin-bottom: 0.8rem;
-  /* Reduced from 1rem */
-}
-
-.testimonial-content p {
-  font-size: 1.1rem;
-  /* Reduced from 1.3rem */
-  line-height: 1.6;
-  /* Reduced from 1.7 */
-  color: #333;
-  margin-bottom: 1.5rem;
-  /* Reduced from 2rem */
-  font-style: italic;
-}
-
-.testimonial-author {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.author-info h4 {
-  font-size: 1.1rem;
-  /* Reduced from 1.2rem */
-  font-weight: 700;
-  color: black;
-  margin: 0 0 0.3rem 0;
-  /* Reduced from 0.5rem */
-}
-
-.author-info span {
-  font-size: 0.9rem;
-  /* Reduced from 1rem */
-  color: #0894b4;
-  font-weight: 500;
-}
-
-.rating span {
-  font-size: 1.1rem;
-  /* Reduced from 1.2rem */
-  color: #f48c04;
-}
-
-/* Compact Carousel Navigation */
-.carousel-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  /* Reduced from 2rem */
-  margin-top: 1.5rem;
-  /* Reduced from 2rem */
-}
-
-.nav-btn {
-  width: 42px;
-  /* Reduced from 50px */
-  height: 42px;
-  /* Reduced from 50px */
-  border-radius: 50%;
-  background: linear-gradient(90deg, #f48c04 0%, #0894b4 100%);
-  color: white;
-  border: none;
-  font-size: 1.3rem;
-  /* Reduced from 1.5rem */
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(8, 148, 180, 0.15);
-  /* Reduced shadow */
-}
-
-.nav-btn:hover {
-  transform: translateY(-2px);
-  /* Reduced from -3px */
-  box-shadow: 0 6px 16px rgba(8, 148, 180, 0.25);
-  /* Reduced shadow */
-}
-
-.nav-btn:active {
-  transform: translateY(-1px);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .testimonials {
-    padding: 2.5rem 0;
-    /* Reduced from 4rem */
-  }
-
-  .testimonials .section-header h2 {
-    font-size: 1.8rem;
-    /* Reduced from 2rem */
-  }
-
-  .testimonials .section-header p {
-    font-size: 0.9rem;
-    /* Reduced from 1rem */
-  }
-
-  .testimonial-card {
-    padding: 1.5rem 1.2rem;
-    /* Reduced from 2rem 1.5rem */
-  }
-
-  .testimonial-content p {
-    font-size: 1rem;
-    /* Reduced from 1.1rem */
-  }
-
-  .testimonial-author {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.4rem;
-    /* Reduced from 0.5rem */
-  }
-
-  .nav-btn {
-    width: 36px;
-    /* Reduced from 40px */
-    height: 36px;
-    /* Reduced from 40px */
-    font-size: 1.1rem;
-    /* Reduced from 1.2rem */
-  }
-}
-
-@media (max-width: 480px) {
-  .testimonials {
-    padding: 2rem 0;
-    /* Reduced from 4rem */
-  }
-
-  .testimonial-card {
-    padding: 1.2rem 0.8rem;
-    /* Reduced from 1.5rem 1rem */
-  }
-
-  .quote-icon {
-    font-size: 2.5rem;
-    /* Reduced from 3rem */
-  }
-
-  .testimonial-content p {
-    font-size: 0.95rem;
-    /* Reduced from 1rem */
   }
 }
 

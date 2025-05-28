@@ -1,6 +1,6 @@
 /* Programs Page Styles */
 :root {
-  --primary-color: #8b0000;
+  --primary-color: #f48c04;
   --secondary-color: #6b0000;
   --accent-color: #0894b4;
   --text-dark: #333333;
@@ -146,11 +146,11 @@
 }
 
 .step {
-  background: var(--white);
+  /* background: var(--white); */
   padding: 40px 30px;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.08);
+  /* box-shadow: 0 4px 15px rgba(139, 0, 0, 0.08); */
   transition: transform 0.3s ease;
 }
 
