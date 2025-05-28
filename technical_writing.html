@@ -4,150 +4,779 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Technical Writing Services - Mindfultalk</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/technical-writing.css">
+  <title>Transform Your Product Documentation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: #fffcf4;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      color: #333;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateX(-50px);
+      animation: slideInLeft 1s ease-out 0.5s forwards;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: slideInLeft 1s ease-out 0.8s forwards;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #f48c04;
+      color: white;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideInUp 1s ease-out 1.1s forwards;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(244, 140, 4, 0.3);
+    }
+
+    .cta-button::after {
+      content: '→';
+      margin-left: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .cta-button:hover::after {
+      transform: translateX(5px);
+    }
+
+    .hero-visual {
+      position: relative;
+      opacity: 0;
+      transform: translateX(50px);
+      animation: slideInRight 1s ease-out 0.5s forwards;
+    }
+
+    .hero-illustration {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, #00afb9, #0081a7);
+      border-radius: 50% 20% 50% 20%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .floating-shapes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .shape {
+      position: absolute;
+      background: rgba(0, 175, 185, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .shape:nth-child(1) {
+      width: 100px;
+      height: 100px;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .shape:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      top: 60%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    .shape:nth-child(3) {
+      width: 80px;
+      height: 80px;
+      top: 80%;
+      left: 30%;
+      animation-delay: 4s;
+    }
+
+    /* Problem Section */
+    .problem-section {
+      padding: 8rem 0;
+      position: relative;
+    }
+
+    .problem-content {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .problem-content h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #333;
+      margin-bottom: 2rem;
+    }
+
+    .problem-bubbles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin: 4rem 0;
+    }
+
+    .bubble {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      max-width: 300px;
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: bubbleIn 0.8s ease-out forwards;
+    }
+
+    .bubble:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .bubble:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .bubble:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .bubble::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 2rem;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 15px solid white;
+    }
+
+    .problem-quote {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #f48c04;
+      text-align: center;
+      margin-top: 3rem;
+      opacity: 0;
+      animation: fadeIn 1s ease-out 1s forwards;
+    }
+
+    /* Services Section */
+    .services-section {
+      padding: 8rem 0;
+      background: linear-gradient(135deg, rgba(0, 175, 185, 0.05), rgba(0, 129, 167, 0.05));
+      position: relative;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    .services-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 4rem;
+      margin-top: 4rem;
+    }
+
+    .service-item {
+      text-align: center;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideInUp 0.8s ease-out forwards;
+    }
+
+    .service-item:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .service-item:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .service-item:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .service-item:nth-child(4) {
+      animation-delay: 0.8s;
+    }
+
+    .service-item:nth-child(5) {
+      animation-delay: 1s;
+    }
+
+    .service-item:nth-child(6) {
+      animation-delay: 1.2s;
+    }
+
+    .service-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #f48c04, #ff6b35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: white;
+      font-size: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .service-item:hover .service-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .service-item h3 {
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .service-item p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .wave-divider {
+      width: 100%;
+      height: 50px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%2300afb9' opacity='0.3'/%3E%3C/svg%3E") repeat-x;
+      margin: 2rem 0;
+    }
+
+    /* Benefits Section */
+    .benefits-section {
+      padding: 8rem 0;
+    }
+
+    .benefits-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .benefits-list {
+      space-y: 2rem;
+    }
+
+    .benefit-item {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: slideInLeft 0.8s ease-out forwards;
+      transition: transform 0.3s ease;
+    }
+
+    .benefit-item:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .benefit-item:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .benefit-item:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .benefit-item:nth-child(4) {
+      animation-delay: 0.8s;
+    }
+
+    .benefit-item:hover {
+      transform: translateX(10px);
+    }
+
+    .benefit-item h4 {
+      color: #f48c04;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .benefits-visual {
+      position: relative;
+      opacity: 0;
+      transform: translateX(50px);
+      animation: slideInRight 1s ease-out 0.5s forwards;
+    }
+
+    .benefits-illustration {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, #0081a7, #00afb9);
+      border-radius: 30% 70% 70% 30%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* Mid CTA Section */
+    .mid-cta {
+      padding: 8rem 0;
+      background: linear-gradient(135deg, #00afb9, #0081a7);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .floating-blobs {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .blob {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: blob 8s ease-in-out infinite;
+    }
+
+    .blob:nth-child(1) {
+      width: 200px;
+      height: 200px;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .blob:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      top: 50%;
+      right: 20%;
+      animation-delay: 3s;
+    }
+
+    .blob:nth-child(3) {
+      width: 100px;
+      height: 100px;
+      bottom: 20%;
+      left: 50%;
+      animation-delay: 6s;
+    }
+
+    .mid-cta-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .mid-cta h2 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: white;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeIn 1s ease-out 0.5s forwards;
+    }
+
+    .mid-cta .cta-button {
+      background: #f48c04;
+      font-size: 1.1rem;
+      padding: 1.2rem 2.5rem;
+    }
+
+    /* Final Section */
+    .final-section {
+      padding: 8rem 0;
+    }
+
+    .final-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .final-text h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #333;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: slideInLeft 0.8s ease-out 0.3s forwards;
+    }
+
+    .final-text p {
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: slideInLeft 0.8s ease-out 0.6s forwards;
+    }
+
+    .final-visual {
+      position: relative;
+      opacity: 0;
+      transform: translateX(50px);
+      animation: slideInRight 1s ease-out 0.5s forwards;
+    }
+
+    .final-illustration {
+      width: 100%;
+      height: 350px;
+      background: linear-gradient(45deg, #f48c04, #ff6b35);
+      border-radius: 20% 50% 20% 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.3rem;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+
+      .hero-content,
+      .benefits-content,
+      .final-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .problem-bubbles {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      .hero,
+      .problem-section,
+      .services-section,
+      .benefits-section,
+      .mid-cta,
+      .final-section {
+        padding: 4rem 0;
+      }
+    }
+
+    /* Animations */
+    @keyframes slideInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes bubbleIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(10deg);
+      }
+    }
+
+    @keyframes blob {
+
+      0%,
+      100% {
+        transform: translate(0px, 0px) scale(1);
+      }
+
+      33% {
+        transform: translate(30px, -50px) scale(1.1);
+      }
+
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+    }
+
+    /* Scroll animations trigger */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+
+    .scroll-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 
 <body>
+
   <!-- Header -->
   <div id="header-container"></div>
 
+  <!-- Floating Shapes Background -->
+  <div class="floating-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
   <!-- Hero Section -->
-  <section class="tech-writing-hero">
-    <div class="hero-content">
-      <div class="hero-text" data-aos="fade-right">
-        <h1>Is documentation the weak link in your product adoption?</h1>
-        <p class="hero-description">More often than not, technical product documentation is a trial-and-error adventure of endless redoes.</p>
-        <p class="hero-subtext">Let us help you build and transform your documentation into a strong foundation for your product success.</p>
-        <a href="#contact" class="cta-button" data-aos="fade-up" data-aos-delay="200">Contact Us to Find How</a>
-      </div>
-      <div class="hero-image" data-aos="fade-left" data-aos-delay="300">
-        <img src="assets/tech-writing-bg.jpg" alt="Technical Documentation Process">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Is documentation the weak link in your product adoption?</h1>
+          <p>Poor documentation silently sabotages user experience, drives up support costs, and kills product growth
+            before it even begins.</p>
+          <a href="#contact" class="cta-button">Contact Us to Find How</a>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-illustration">
+            📋 → 😊 Users
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Pain Points Section -->
-  <section class="pain-points">
+  <!-- Problem Section -->
+  <section class="problem-section">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Does this sound familiar?</h2>
-      <div class="points-grid">
-        <div class="point-image" data-aos="fade-right">
-          <img src="assets/tech-writing-bg.jpg" alt="Documentation Challenges">
+      <div class="problem-content">
+        <h2>Does This Sound Familiar?</h2>
+        <div class="problem-bubbles">
+          <div class="bubble">
+            <p><strong>Support tickets flooding in</strong> because users can't figure out basic features</p>
+          </div>
+          <div class="bubble">
+            <p><strong>Product adoption stalling</strong> despite having great functionality</p>
+          </div>
+          <div class="bubble">
+            <p><strong>Teams frustrated</strong> spending time on repetitive user questions</p>
+          </div>
         </div>
-        <div class="point-list" data-aos="fade-left">
-          <ul>
-            <li>Your users uploaded the FAQs to community forums</li>
-            <li>Support queue is at bad news day, high numbers you can't alter</li>
-            <li>Features are used wrong, and you wonder why</li>
-            <li>Growing technical proposals or SOPs take up valuable time</li>
-          </ul>
-          <p class="highlight">You're not alone!</p>
-          <p class="solution">Poor documentation costs time, money, and customer trust.</p>
-          <p class="action">But it doesn't have to be this way.</p>
+        <div class="problem-quote">
+          "Poor documentation costs time, money, and customer trust."
         </div>
       </div>
     </div>
   </section>
 
   <!-- Services Section -->
-  <section class="services">
+  <section class="services-section">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">We can help you</h2>
-      <div class="services-flex">
-        <div class="services-design" data-aos="fade-right">
-          <div class="design-element">
-            <div class="floating-shape shape-1"></div>
-            <div class="floating-shape shape-2"></div>
-            <div class="floating-shape shape-3"></div>
-            <div class="service-illustration"></div>
-          </div>
+      <div class="services-header">
+        <h2>How We Help</h2>
+        <p>We transform your documentation from a roadblock into a growth engine</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-icon">📖</div>
+          <h3>User Manuals</h3>
+          <p>Clear, concise guides that turn confusion into confidence</p>
         </div>
-        <div class="services-content" data-aos="fade-left">
-          <p class="section-description">We strengthen your product adoption by creating clear, structured, and user-focused documentation that boosts onboarding, informs customer satisfaction, and adds to your growth.</p>
-          <div class="services-list">
-            <div class="service-item" data-aos="fade-up">
-              <h3>User Manuals</h3>
-              <p>User-friendly product guides that help users get started quickly and discover hidden capabilities.</p>
-            </div>
-            <div class="service-item" data-aos="fade-up" data-aos-delay="100">
-              <h3>Knowledge Base</h3>
-              <p>A comprehensive repository of information for solutions and up-to-date content.</p>
-            </div>
-            <div class="service-item" data-aos="fade-up" data-aos-delay="200">
-              <h3>API Documentation</h3>
-              <p>Clear, structured documentation with easy-to-use interfaces and comprehensive examples.</p>
-            </div>
-            <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-              <h3>Product Training</h3>
-              <p>Interactive tutorials and guides for successful solution adoption.</p>
-            </div>
-            <div class="service-item" data-aos="fade-up" data-aos-delay="400">
-              <h3>Digital Product Tours</h3>
-              <p>Step-by-step walkthroughs for seamless user onboarding.</p>
-            </div>
-            <div class="service-item" data-aos="fade-up" data-aos-delay="500">
-              <h3>AI-powered Help Center</h3>
-              <p>Smart documentation systems for instant, accurate responses.</p>
-            </div>
-          </div>
+        <div class="service-item">
+          <div class="service-icon">💡</div>
+          <h3>Knowledge Bases</h3>
+          <p>Searchable, organized information hubs that empower self-service</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">⚡</div>
+          <h3>API Documentation</h3>
+          <p>Developer-friendly docs that accelerate integration and adoption</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">🎯</div>
+          <h3>Product Training</h3>
+          <p>Interactive learning experiences that drive feature usage</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">🗺️</div>
+          <h3>Digital Product Tours</h3>
+          <p>Guided walkthroughs that reduce time-to-value</p>
+        </div>
+        <div class="service-item">
+          <div class="service-icon">🤖</div>
+          <h3>AI-powered Help Center</h3>
+          <p>Smart, instant answers that scale your support</p>
         </div>
       </div>
+      <div class="wave-divider"></div>
     </div>
   </section>
 
   <!-- Benefits Section -->
-  <section class="benefits">
+  <section class="benefits-section">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">What great documentation can do for you</h2>
-      <div class="benefits-grid">
-        <div class="benefits-list" data-aos="fade-right">
+      <div class="benefits-content">
+        <div class="benefits-list">
           <div class="benefit-item">
-            <h3>Reduce Customer Support Costs</h3>
-            <p>Clear, complete and correct documentation reduces the load on your support team.</p>
+            <h4>Reduced Support Costs</h4>
+            <p>Cut support tickets by up to 60% with self-service documentation that actually works</p>
           </div>
           <div class="benefit-item">
-            <h3>Onboarding Customers Made Easy</h3>
-            <p>Comprehensive guides ensure smooth customer onboarding.</p>
+            <h4>Easier Onboarding</h4>
+            <p>New users become productive faster with clear, step-by-step guidance</p>
           </div>
           <div class="benefit-item">
-            <h3>Increase Customer Delight</h3>
-            <p>Well-documented features lead to better user experience.</p>
+            <h4>Faster Product Adoption</h4>
+            <p>Users discover and use more features when information is accessible and actionable</p>
+          </div>
+          <div class="benefit-item">
+            <h4>Higher Customer Satisfaction</h4>
+            <p>Happy users who can help themselves become your biggest advocates</p>
           </div>
         </div>
-        <div class="benefits-image" data-aos="fade-left">
-          <img src="assets/tech-writing-bg.jpg" alt="Customer Support">
+        <div class="benefits-visual">
+          <div class="benefits-illustration">
+            📈 Growth Through<br>Great Documentation
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="empower-section">
+  <!-- Mid CTA Section -->
+  <section class="mid-cta">
+    <div class="floating-blobs">
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+    </div>
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Empower your Users, Enhance your Product</h2>
-      <p class="section-description">At mindfultalk.ai, we bring together industry experience, business and technical communication skills to craft documentation that benefits all stakeholders.</p>
-      <div class="cta-buttons" data-aos="fade-up">
-        <a href="#contact" class="cta-button">Contact Us For Documentation Solutions</a>
+      <div class="mid-cta-content">
+        <h2>Empower your users. Enhance your product.</h2>
+        <a href="#contact" class="cta-button">Contact Us for Documentation Solutions</a>
       </div>
     </div>
   </section>
 
-  <!-- Transform Section -->
-  <section class="transform-section">
+  <!-- Final Section -->
+  <section class="final-section">
     <div class="container">
-      <div class="transform-content" data-aos="fade-right">
-        <h2>Transform how you document and deliver</h2>
-        <p>Looking for a better approach to product documentation? Our team of expert technical writers brings industry best practices to help you create high-quality and effective documentation.</p>
-        <p>Contact us today to discuss how our comprehensive documentation plan can elevate your content strategy.</p>
-        <a href="#book" class="cta-button">Book Now</a>
-      </div>
-      <div class="transform-image" data-aos="fade-left">
-        <img src="assets/tech-writing-bg.jpg" alt="Team Collaboration">
+      <div class="final-content">
+        <div class="final-text">
+          <h2>Transform how you document and deliver</h2>
+          <p>Our team of documentation experts doesn't just write—we strategize, design, and optimize for maximum
+            impact. We turn your product knowledge into a competitive advantage that scales with your growth.</p>
+          <a href="#contact" class="cta-button">Reach Us</a>
+        </div>
+        <div class="final-visual">
+          <div class="final-illustration">
+            🚀 Ready to Transform<br>Your Documentation?
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -158,16 +787,67 @@
   <!-- Footer -->
   <div id="footer-container"></div>
 
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="js/script.js"></script>
+
   <script>
-    AOS.init({
-      duration: 800,
-      offset: 100,
-      once: true,
-      easing: 'ease-in-out',
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Scroll-triggered animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for scroll animations
+    document.querySelectorAll('.scroll-animate').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Parallax effect for floating shapes
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const shapes = document.querySelectorAll('.shape');
+
+      shapes.forEach((shape, index) => {
+        const speed = (index + 1) * 0.5;
+        shape.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+    });
+
+    // Add bounce effect to CTA buttons on scroll into view
+    const ctaButtons = document.querySelectorAll('.cta-button');
+    const ctaObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'slideInUp 0.8s ease-out forwards';
+        }
+      });
+    }, { threshold: 0.5 });
+
+    ctaButtons.forEach(button => {
+      ctaObserver.observe(button);
     });
   </script>
-  <script src="js/script.js"></script>
 </body>
 
 </html>
