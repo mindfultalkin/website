@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transformational Communication Programs</title>
+    <title>Designing Impactful Learning Experiences</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -13,71 +15,56 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #fffcf4;
             color: #333;
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-background {
-            position: absolute;
+        /* Animated Background Elements */
+        .bg-animation {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            pointer-events: none;
             z-index: -1;
         }
 
         .floating-shape {
             position: absolute;
             border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
         }
 
         .shape-1 {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, #00afb9, #0081a7);
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #f48c04, #00afb9);
             top: 20%;
-            right: 10%;
+            left: 10%;
             animation-delay: 0s;
-            opacity: 0.1;
         }
 
         .shape-2 {
             width: 150px;
             height: 150px;
-            background: linear-gradient(135deg, #f48c04, #00afb9);
+            background: linear-gradient(45deg, #0081a7, #f48c04);
             top: 60%;
-            left: 5%;
-            animation-delay: 2s;
-            opacity: 0.08;
+            right: 15%;
+            animation-delay: -7s;
         }
 
         .shape-3 {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, #0081a7, #f48c04);
-            top: 10%;
-            left: 20%;
-            animation-delay: 4s;
-            opacity: 0.05;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #00afb9, #0081a7);
+            top: 40%;
+            left: 70%;
+            animation-delay: -14s;
         }
 
         @keyframes float {
@@ -87,717 +74,448 @@
                 transform: translateY(0px) rotate(0deg);
             }
 
+            25% {
+                transform: translateY(-20px) rotate(90deg);
+            }
+
             50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-        }
-
-        .hero-content {
-            z-index: 2;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #0081a7, #f48c04);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: #666;
-            margin-bottom: 3rem;
-            max-width: 600px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: #f48c04;
-            color: white;
-            box-shadow: 0 4px 15px rgba(244, 140, 4, 0.3);
-        }
-
-        .btn-primary:hover {
-            background: #e07b00;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(244, 140, 4, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #0081a7;
-            border: 2px solid #0081a7;
-        }
-
-        .btn-secondary:hover {
-            background: #0081a7;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(10px) rotate(180deg);
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            75% {
+                transform: translateY(-15px) rotate(270deg);
             }
         }
 
         /* Section Styling */
         .section {
-            padding: 5rem 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
             position: relative;
         }
 
-        .section-content {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .section-content.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Introduction Section */
-        .intro {
-            background: linear-gradient(135deg, rgba(0, 175, 185, 0.05), rgba(0, 129, 167, 0.05));
-            border-radius: 50px;
-            margin: 2rem 0;
-        }
-
-        .intro-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .intro h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            color: #0081a7;
-            margin-bottom: 1.5rem;
-        }
-
-        .intro p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .illustration {
+        .container {
             width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #00afb9, #0081a7);
-            border-radius: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .illustration::before {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.7;
-            }
-
-            50% {
-                transform: scale(1.2);
-                opacity: 0.3;
-            }
-        }
-
-        /* Programs Section */
-        .programs {
-            padding: 6rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .programs::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -50%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(45deg,
-                    transparent 0%,
-                    rgba(0, 175, 185, 0.03) 25%,
-                    rgba(244, 140, 4, 0.02) 50%,
-                    rgba(0, 129, 167, 0.03) 75%,
-                    transparent 100%);
-            animation: gradientShift 20s ease-in-out infinite;
-        }
-
-        @keyframes gradientShift {
-
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-
-            50% {
-                transform: translateX(10%);
-            }
-        }
-
-        .programs h2 {
-            text-align: center;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 4rem;
-            color: #0081a7;
-            position: relative;
-            z-index: 2;
-        }
-
-        .programs-flow {
-            display: flex;
-            flex-direction: column;
             gap: 4rem;
-            position: relative;
-            z-index: 2;
         }
 
-        .program-item {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            padding: 2rem 0;
-            position: relative;
-            transition: all 0.6s ease;
-        }
-
-        .program-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .program-item::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 3px;
-            height: 60px;
-            background: linear-gradient(to bottom, #f48c04, #00afb9);
-            transform: translateX(-50%);
-            opacity: 0.3;
-        }
-
-        .program-item:hover {
-            transform: scale(1.02);
-        }
-
-        .program-content {
+        .content {
             flex: 1;
-            max-width: 500px;
+            opacity: 1;
+            transform: translateX(0);
         }
 
-        .program-visual {
-            flex: 0 0 150px;
-            height: 150px;
-            position: relative;
+        .art {
+            flex: 1;
             display: flex;
-            align-items: center;
             justify-content: center;
-        }
-
-        .program-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #f48c04, #00afb9);
-            border-radius: 50%;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            animation: float 4s ease-in-out infinite;
-            box-shadow: 0 10px 30px rgba(244, 140, 4, 0.2);
-            position: relative;
-            z-index: 3;
+            opacity: 1;
+            transform: translateX(0);
         }
 
-        .program-icon::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 2px solid rgba(0, 175, 185, 0.3);
-            border-radius: 50%;
-            animation: pulse 3s ease-in-out infinite;
+        .reverse .content {
+            transform: translateX(0);
         }
 
-        .program-item:nth-child(1) .program-icon {
-            animation-delay: 0.5s;
+        .reverse .art {
+            transform: translateX(0);
         }
 
-        .program-item:nth-child(2) .program-icon {
-            animation-delay: 1s;
-        }
-
-        .program-item:nth-child(3) .program-icon {
-            animation-delay: 1.5s;
-        }
-
-        .program-title {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        /* Typography */
+        h1 {
+            font-size: 3.5rem;
             font-weight: 700;
             color: #0081a7;
             margin-bottom: 1rem;
             line-height: 1.2;
         }
 
-        .program-description {
-            font-size: 1.2rem;
-            color: #666;
-            line-height: 1.7;
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #f48c04;
             margin-bottom: 1.5rem;
         }
 
-        .program-highlight {
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(244, 140, 4, 0.1), rgba(0, 175, 185, 0.1));
-            color: #f48c04;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
+        h3 {
+            font-size: 1.5rem;
             font-weight: 600;
-            border: 1px solid rgba(244, 140, 4, 0.2);
+            color: #0081a7;
+            margin-bottom: 0.5rem;
         }
 
-        /* Steps Section */
-        .steps {
-            background: linear-gradient(135deg, #0081a7, #00afb9);
-            border-radius: 50px;
-            color: white;
-            margin: 4rem 0;
+        .subheadline {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-weight: 300;
         }
 
-        .steps h2 {
-            text-align: center;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 3rem;
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #555;
         }
 
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .step {
-            text-align: center;
+        /* Art/Animation Elements */
+        .hero-art {
+            width: auto;
+            height: 600px;
             position: relative;
         }
 
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: #f48c04;
+        .process-visual {
+            width: 300px;
+            height: 200px;
+            position: relative;
+        }
+
+        .process-step {
+            position: absolute;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin: 0 auto 1.5rem;
-            animation: bounce 2s ease-in-out infinite;
+            color: white;
+            font-weight: bold;
+            opacity: 1;
+            transform: scale(1);
         }
 
-        .step:nth-child(2) .step-number {
-            animation-delay: 0.5s;
+        .step-1 {
+            background: #f48c04;
+            top: 0;
+            left: 0;
         }
 
-        .step:nth-child(3) .step-number {
-            animation-delay: 1s;
+        .step-2 {
+            background: #00afb9;
+            top: 0;
+            right: 0;
         }
 
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-10px);
-            }
-
-            60% {
-                transform: translateY(-5px);
-            }
+        .step-3 {
+            background: #0081a7;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        .step h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            width: 100%;
         }
 
-        .step p {
-            opacity: 0.9;
-            line-height: 1.6;
+        .service-item {
+            padding: 1.5rem;
+            border-left: 4px solid #f48c04;
+            background: rgba(255, 252, 244, 0.8);
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Final CTA Section */
-        .final-cta {
-            background: linear-gradient(135deg, rgba(244, 140, 4, 0.1), rgba(0, 175, 185, 0.1));
-            border-radius: 50px;
-            text-align: center;
-            margin: 4rem 0;
+        .benefit-list {
+            list-style: none;
         }
 
-        .final-cta h2 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-            color: #0081a7;
-            margin-bottom: 2rem;
+        .benefit-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 175, 185, 0.2);
+            opacity: 1;
+            transform: translateX(0);
+            position: relative;
         }
 
-        .final-cta p {
-            font-size: 1.3rem;
-            color: #666;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .highlight {
+        .benefit-item::before {
+            content: '✓';
+            position: absolute;
+            left: -30px;
             color: #f48c04;
-            font-weight: 700;
+            font-weight: bold;
+            opacity: 1;
+            transform: scale(1);
         }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .intro-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .cta-buttons {
-                justify-content: center;
-            }
-
-            .section {
-                padding: 3rem 0;
-            }
-
-            .programs,
-            .steps,
-            .final-cta,
-            .intro {
-                margin: 2rem 0;
-                padding: 2rem 1rem;
-            }
-
-            .program-item {
-                flex-direction: column !important;
-                text-align: center;
-                gap: 2rem;
-            }
-
-            .program-item::before {
-                display: none;
-            }
-
-            .program-content {
-                max-width: 100%;
-            }
-
-            .program-visual {
-                flex: none;
-            }
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
         }
 
-        /* Mobile Sticky CTA */
-        .mobile-cta {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
             background: #f48c04;
             color: white;
-            padding: 1rem;
+            text-decoration: none;
             border-radius: 50px;
-            text-align: center;
+            font-size: 1.2rem;
             font-weight: 600;
-            box-shadow: 0 4px 20px rgba(244, 140, 4, 0.4);
-            z-index: 1000;
-            transform: translateY(100px);
-            transition: transform 0.3s ease;
-            display: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(244, 140, 4, 0.3);
+            animation: pulse 2s infinite;
         }
 
-        @media (max-width: 768px) {
-            .mobile-cta {
-                display: block;
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 10px 30px rgba(244, 140, 4, 0.3);
             }
 
-            .mobile-cta.show {
-                transform: translateY(0);
+            50% {
+                box-shadow: 0 15px 40px rgba(244, 140, 4, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 10px 30px rgba(244, 140, 4, 0.3);
+            }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(244, 140, 4, 0.4);
+        }
+
+        /* Framework Timeline */
+        .framework-timeline {
+            width: 100%;
+            height: 200px;
+            position: relative;
+        }
+
+        .framework-item {
+            position: absolute;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fw-1 {
+            top: 20px;
+            left: 0;
+            background: rgba(244, 140, 4, 0.1);
+        }
+
+        .fw-2 {
+            top: 60px;
+            left: 25%;
+            background: rgba(0, 175, 185, 0.1);
+        }
+
+        .fw-3 {
+            top: 100px;
+            left: 50%;
+            background: rgba(0, 129, 167, 0.1);
+        }
+
+        .fw-4 {
+            top: 20px;
+            right: 0;
+            background: rgba(244, 140, 4, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero-art,
+            .process-visual {
+                width: 250px;
+                height: 250px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 
 <body>
+
     <!-- Header -->
     <div id="header-container"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-background">
-            <div class="floating-shape shape-1"></div>
-            <div class="floating-shape shape-2"></div>
-            <div class="floating-shape shape-3"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <h1>Transformational Communication Programs</h1>
-                <p>Customized communication training for your company</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">Contact Us</a>
-                    <a href="#call" class="btn btn-secondary">Book a Call</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Introduction Section -->
-    <section class="section intro">
-        <div class="container">
-            <div class="section-content">
-                <div class="intro-content">
-                    <div>
-                        <h2>Tailored for Your Success</h2>
-                        <p>Our programs are fully customized to meet your company's unique communication challenges and
-                            goals.</p>
-                        <p>Each program spans <strong>2-5 weeks</strong> with a total investment of <strong>10-25
-                                hours</strong>, designed to fit seamlessly into your team's schedule.</p>
-                        <p>We believe that effective communication is the foundation of every successful business
-                            relationship and outcome.</p>
-                    </div>
-                    <div class="illustration"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Programs Section -->
-    <section class="section programs">
-        <div class="container">
-            <div class="section-content">
-                <h2>Our Programs</h2>
-                <div class="programs-flow">
-                    <div class="program-item">
-                        <div class="program-content">
-                            <h3 class="program-title">Speak Up</h3>
-                            <p class="program-description">Build confidence in voicing ideas and opinions in meetings
-                                and presentations with clarity and impact. Transform hesitation into powerful
-                                communication.</p>
-                            <span class="program-highlight">Confidence Building</span>
-                        </div>
-                        <div class="program-visual">
-                            <div class="program-icon">🎙️</div>
-                        </div>
-                    </div>
-
-                    <div class="program-item">
-                        <div class="program-content">
-                            <h3 class="program-title">Energizing Emails</h3>
-                            <p class="program-description">Transform your email communication to be more engaging,
-                                clear, and action-oriented. Make every message count with purpose and personality.</p>
-                            <span class="program-highlight">Digital Excellence</span>
-                        </div>
-                        <div class="program-visual">
-                            <div class="program-icon">📧</div>
-                        </div>
-                    </div>
-
-                    <div class="program-item">
-                        <div class="program-content">
-                            <h3 class="program-title">Presenting With Impact</h3>
-                            <p class="program-description">Master the art of compelling presentations that captivate
-                                audiences and drive results. Turn presentations into powerful conversations.</p>
-                            <span class="program-highlight">Executive Presence</span>
-                        </div>
-                        <div class="program-visual">
-                            <div class="program-icon">🎯</div>
-                        </div>
-                    </div>
-
-                    <div class="program-item">
-                        <div class="program-content">
-                            <h3 class="program-title">First-time Managers</h3>
-                            <p class="program-description">Essential communication skills for new managers to lead teams
-                                effectively and confidently. Navigate the transition from peer to leader seamlessly.</p>
-                            <span class="program-highlight">Leadership Foundation</span>
-                        </div>
-                        <div class="program-visual">
-                            <div class="program-icon">👥</div>
-                        </div>
-                    </div>
-
-                    <div class="program-item">
-                        <div class="program-content">
-                            <h3 class="program-title">Leadership Coaching</h3>
-                            <p class="program-description">Advanced communication strategies for senior leaders to
-                                inspire and motivate their organizations. Elevate your influence and impact.</p>
-                            <span class="program-highlight">Executive Level</span>
-                        </div>
-                        <div class="program-visual">
-                            <div class="program-icon">🌟</div>
-                        </div>
-                    </div>
-
-                    <div class="program-item">
-                        <div class="program-content">
-                            <h3 class="program-title">Storytelling for Business</h3>
-                            <p class="program-description">Harness the power of narrative to make your business
-                                communications more memorable and persuasive. Connect through compelling stories.</p>
-                            <span class="program-highlight">Narrative Mastery</span>
-                        </div>
-                        <div class="program-visual">
-                            <div class="program-icon">📖</div>
-                        </div>
-                    </div>
-
-                    <div class="program-item">
-                        <div class="program-content">
-                            <h3 class="program-title">Transition Coaching</h3>
-                            <p class="program-description">Navigate career transitions with effective communication
-                                strategies for new roles and environments. Embrace change with confidence.</p>
-                            <span class="program-highlight">Career Pivot</span>
-                        </div>
-                        <div class="program-visual">
-                            <div class="program-icon">🔄</div>
-                        </div>
-                    </div>
-
-                    <div class="program-item">
-                        <div class="program-content">
-                            <h3 class="program-title">Clear Communication</h3>
-                            <p class="program-description">Develop crystal-clear communication skills that eliminate
-                                confusion and enhance understanding. Make complexity simple and accessible.</p>
-                            <span class="program-highlight">Clarity Focus</span>
-                        </div>
-                        <div class="program-visual">
-                            <div class="program-icon">💎</div>
-                        </div>
-                    </div>
-
-                    <div class="program-item">
-                        <div class="program-content">
-                            <h3 class="program-title">Starter Kit</h3>
-                            <p class="program-description">Perfect introduction to professional communication
-                                fundamentals for teams and individuals. Build the foundation for communication
-                                excellence.</p>
-                            <span class="program-highlight">Foundation Course</span>
-                        </div>
-                        <div class="program-visual">
-                            <div class="program-icon">🚀</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Steps Section -->
-    <section class="section steps">
-        <div class="container">
-            <div class="section-content">
-                <h2>3 Easy Steps</h2>
-                <div class="steps-container">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>Contact Us</h3>
-                        <p>Reach out to us through our contact form or give us a call to discuss your training needs.
-                        </p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>Consultation Call</h3>
-                        <p>We'll schedule a detailed consultation to understand your goals and customize the perfect
-                            program.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>Attend Program</h3>
-                        <p>Participate in your tailored communication training program and watch your team transform.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA Section -->
-    <section class="section final-cta">
-        <div class="container">
-            <div class="section-content">
-                <h2>Take Your First Step</h2>
-                <p><span class="highlight">The sooner you improve your business communication</span>, the faster you'll
-                    see results in team collaboration, client relationships, and overall business success.</p>
-                <a href="#call" class="btn btn-primary">Book a Call</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mobile Sticky CTA -->
-    <div class="mobile-cta" id="mobileCTA">
-        <a href="#call" style="color: white; text-decoration: none;">Book Your Call Now</a>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
     </div>
+
+    <!-- Hero Section -->
+    <section class="section hero">
+        <div class="container">
+            <div class="content">
+                <h1>Designing Impactful Learning Experiences</h1>
+                <p class="subheadline">We help organizations deliver effective, engaging, and outcomes-driven learning
+                    through custom instructional design.</p>
+            </div>
+            <div class="art">
+                <div class="hero-art">
+                    <img src="assets/instructional-design/hero_img.png" alt="Hero Illustration" style="width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section class="section what-we-do">
+        <div class="container reverse">
+            <div class="art">
+                <div class="framework-timeline">
+                    <div class="framework-item fw-1">ADDIE</div>
+                    <div class="framework-item fw-2">SAM</div>
+                    <div class="framework-item fw-3">Bloom's</div>
+                    <div class="framework-item fw-4">Kirkpatrick</div>
+                </div>
+            </div>
+            <div class="content">
+                <h2>What We Do</h2>
+                <p>We turn your expertise into structured, scalable learning.</p>
+                <p>Our instructional design service blends creative thinking with academic rigor. Whether you're
+                    launching a new academy, fixing fragmented training, or scaling global onboarding, we work as an
+                    extension of your team — delivering solutions rooted in instructional design best practices.</p>
+                <p>Frameworks we use include ADDIE, SAM, Bloom's Taxonomy, and the Kirkpatrick's Model.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section class="section services">
+        <div class="container">
+            <div class="content">
+                <h2>Our Services</h2>
+                <div class="service-grid">
+                    <div class="service-item">
+                        <h3>Curriculum Design</h3>
+                        <p>We map learning journeys from foundational to advanced, ensuring every module aligns with
+                            your objectives.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>eLearning Course Development</h3>
+                        <p>From microlearning modules to full-scale digital academies — we design interactive,
+                            SCORM-compliant content for any LMS.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Instructor-Led Training (ILT) Materials</h3>
+                        <p>We create slide decks, facilitator guides, and participant workbooks for classroom and
+                            virtual delivery.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Blended Learning Solutions</h3>
+                        <p>We combine online, offline, and on-the-job methods into a seamless learning experience.</p>
+                    </div>
+                </div>
+                <div class="service-item" style="margin-top: 2rem;">
+                    <h3>Assessment & Certification Design</h3>
+                    <p>With quizzes, scenario-based assessments, simulations, and evaluation, we ensure your learners
+                        demonstrate real understanding and application.</p>
+                </div>
+            </div>
+            <div class="art">
+                <div class="hero-art">
+                    <img src="assets/instructional-design/our_service.png" alt="Services Illustration" style="width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Work Section -->
+    <section class="section how-we-work">
+        <div class="container reverse">
+            <div class="art">
+                <div class="process-visual">
+                    <div class="process-step step-1">1</div>
+                    <div class="process-step step-2">2</div>
+                    <div class="process-step step-3">3</div>
+                </div>
+            </div>
+            <div class="content">
+                <h2>How We Work</h2>
+                <p>We partner closely with your subject matter experts, HR, or L&D team through a collaborative,
+                    streamlined process:</p>
+                <p><strong>Understand:</strong> Understand the learning needs, audience profile, performance goals.</p>
+                <p><strong>Design & Develop:</strong> Design a blueprint of the structure and create engaging,
+                    accessible, and effective materials</p>
+                <p><strong>Deliver & Refine:</strong> Provide final output ready for your LMS or trainers. Perform
+                    post-launch reviews and updates based on learner feedback</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section why-choose">
+        <div class="container">
+            <div class="content">
+                <h2>Why Choose Us?</h2>
+                <ul class="benefit-list">
+                    <li class="benefit-item">
+                        <h3>Learning Science Expertise</h3>
+                        <p>We apply adult learning principles, Bloom's taxonomy, and cognitive load theory</p>
+                    </li>
+                    <li class="benefit-item">
+                        <h3>Clear, Concise Content</h3>
+                        <p>We turn complexity into clarity without dumbing it down</p>
+                    </li>
+                    <li class="benefit-item">
+                        <h3>Performance-Oriented</h3>
+                        <p>We design with business goals and learner outcomes in mind</p>
+                    </li>
+                    <li class="benefit-item">
+                        <h3>Platform-Agnostic</h3>
+                        <p>We adapt to your LMS or delivery method, not the other way around</p>
+                    </li>
+                    <li class="benefit-item">
+                        <h3>Collaborative Approach</h3>
+                        <p>Transparent communication, frequent check-ins, and SME-friendly processes</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="art">
+                <div class="hero-art">
+                    <img src="assets/instructional-design/why_choose_us.png" alt="Why Choose Us Illustration" style="width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="content" style="text-align: center; width: 100%;">
+                <h2>Engaging Learning. Better Retention. Ready Workforce.</h2>
+                <p class="subheadline">Whether you're building from scratch or optimizing existing training, we design
+                    learning that sticks.</p>
+                <p>Faster onboarding, confident learners, and measurable performance improvements start here.</p>
+                <a href="#" class="cta-button">Book a Call</a>
+            </div>
+        </div>
+    </section>
 
     <!-- Testimonials Section -->
     <div id="testimonials-container"></div>
@@ -808,65 +526,131 @@
     <script src="js/script.js"></script>
 
     <script>
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        gsap.registerPlugin(ScrollTrigger);
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
+        // Hero section animations
+        gsap.timeline()
+            .from(".hero .content", { duration: 1, x: -100, opacity: 0, ease: "power2.out" })
+            .from(".hero .art", { duration: 1, x: 100, opacity: 0, ease: "power2.out" }, "-=0.5")
+            .from(".hero .icon-element", {
+                duration: 0.8,
+                scale: 0,
+                rotation: 180,
+                opacity: 0,
+                stagger: 0.2,
+                ease: "back.out(1.7)"
+            }, "-=0.3");
 
-        // Observe all section content
-        document.querySelectorAll('.section-content').forEach(el => {
-            observer.observe(el);
+        // Parallax effect for hero icons
+        gsap.to(".hero .icon-element", {
+            y: -30,
+            duration: 2,
+            ease: "power1.inOut",
+            yoyo: true,
+            repeat: -1,
+            stagger: 0.2
         });
 
-        // Mobile sticky CTA show/hide
-        let lastScrollTop = 0;
-        const mobileCTA = document.getElementById('mobileCTA');
-
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-            if (window.innerWidth <= 768) {
-                if (scrollTop > 500) {
-                    mobileCTA.classList.add('show');
-                } else {
-                    mobileCTA.classList.remove('show');
-                }
-            }
-
-            lastScrollTop = scrollTop;
+        // What We Do section
+        ScrollTrigger.create({
+            trigger: ".what-we-do",
+            start: "top 80%",
+            animation: gsap.timeline()
+                .from(".what-we-do .art", { duration: 1, x: -100, opacity: 0 })
+                .from(".what-we-do .content", { duration: 1, x: 100, opacity: 0 }, "-=0.5")
+                .from(".framework-item", {
+                    duration: 0.6,
+                    y: 30,
+                    opacity: 0,
+                    stagger: 0.2,
+                    ease: "back.out(1.7)"
+                }, "-=0.3")
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        // Services section
+        ScrollTrigger.create({
+            trigger: ".services",
+            start: "top 80%",
+            animation: gsap.timeline()
+                .from(".services .content", { duration: 1, x: -100, opacity: 0 })
+                .from(".services .art", { duration: 1, x: 100, opacity: 0 }, "-=0.5")
+                .from(".service-item", {
+                    duration: 0.6,
+                    y: 30,
+                    opacity: 0,
+                    stagger: 0.15,
+                    ease: "back.out(1.7)"
+                }, "-=0.3")
         });
 
-        // Add hover effects to program items
-        document.querySelectorAll('.program-item').forEach(item => {
+        // How We Work section
+        ScrollTrigger.create({
+            trigger: ".how-we-work",
+            start: "top 80%",
+            animation: gsap.timeline()
+                .from(".how-we-work .art", { duration: 1, x: -100, opacity: 0 })
+                .from(".how-we-work .content", { duration: 1, x: 100, opacity: 0 }, "-=0.5")
+                .from(".process-step", {
+                    duration: 0.8,
+                    scale: 0,
+                    opacity: 0,
+                    stagger: 0.3,
+                    ease: "back.out(1.7)"
+                }, "-=0.3")
+        });
+
+        // Why Choose Us section
+        ScrollTrigger.create({
+            trigger: ".why-choose",
+            start: "top 80%",
+            animation: gsap.timeline()
+                .from(".why-choose .content", { duration: 1, x: -100, opacity: 0 })
+                .from(".why-choose .art", { duration: 1, x: 100, opacity: 0 }, "-=0.5")
+                .from(".benefit-item", {
+                    duration: 0.6,
+                    x: -30,
+                    opacity: 0,
+                    stagger: 0.2,
+                    ease: "back.out(1.7)"
+                }, "-=0.3")
+                .from(".benefit-item::before", {
+                    duration: 0.4,
+                    scale: 0,
+                    opacity: 0,
+                    stagger: 0.2,
+                    ease: "back.out(1.7)"
+                }, "-=0.8")
+        });
+
+        // CTA section
+        ScrollTrigger.create({
+            trigger: ".cta-section",
+            start: "top 80%",
+            animation: gsap.from(".cta-section .content", {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                ease: "power2.out"
+            })
+        });
+
+        // Hover effects for service items
+        document.querySelectorAll('.service-item').forEach(item => {
             item.addEventListener('mouseenter', () => {
-                item.style.transform = 'scale(1.02)';
+                gsap.to(item, { duration: 0.3, y: -5, boxShadow: "0 15px 40px rgba(244, 140, 4, 0.2)" });
             });
-
             item.addEventListener('mouseleave', () => {
-                item.style.transform = 'scale(1)';
+                gsap.to(item, { duration: 0.3, y: 0, boxShadow: "none" });
+            });
+        });
+
+        // Icon hover animations
+        document.querySelectorAll('.icon-element').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                gsap.to(icon, { duration: 0.3, scale: 1.1, rotation: 15 });
+            });
+            icon.addEventListener('mouseleave', () => {
+                gsap.to(icon, { duration: 0.3, scale: 1, rotation: 0 });
             });
         });
     </script>
