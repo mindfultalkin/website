@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Header & Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        :root {
+            --primary-color: #f48c04;
+            --text-color: #333333;
+            --background-light: #ffffff;
+            --background-dark: #1a1a1a;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: var(--background-dark);
+            color: #ffffff;
+            padding: 60px 5% 30px;
+            /* margin-top: 100px;s */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-description {
+            max-width: 400px;
+        }
+
+        .footer-description img {
+            height: 40px;
+            margin-bottom: 20px;
+        }
+
+        .footer-description p {
+            font-size: 15px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .footer-subscribe {
+            max-width: 350px;
+        }
+
+        .footer-subscribe h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .footer-subscribe p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .subscribe-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .subscribe-form input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .subscribe-form input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .subscribe-form button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #d97706;
+            transform: translateY(-1px);
+        }
+
+        .subscribe-form button i {
+            font-size: 12px;
+        }
+
+        .footer-contact h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-contact p {
+            margin: 10px 0;
+            font-size: 15px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 40px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Content placeholder */
+        .content {
+            padding: 100px 5% 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .content h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .top-bar {
+                padding: 0 3%;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            nav ul li a {
+                font-size: 15px;
+            }
+
+            .contact-btn {
+                padding: 8px 20px;
+                font-size: 14px;
+            }
+
+            .footer-content {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 5%;
+            }
+
+            /* Hide desktop navigation */
+            nav ul,
+            .contact-btn {
+                display: none;
+            }
+
+            /* Show mobile menu toggle */
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            /* Show mobile navigation */
+            .mobile-nav {
+                display: block;
+            }
+
+            /* Footer responsive */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-description,
+            .footer-subscribe {
+                max-width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .content {
+                padding: 80px 5% 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 4%;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .mobile-nav {
+                top: 65px;
+                padding: 15px 4%;
+            }
+
+            .mobile-nav ul li a {
+                font-size: 16px;
+            }
+
+            footer {
+                padding: 40px 4% 20px;
+            }
+
+            .footer-content {
+                gap: 30px;
+            }
+
+            .footer-contact p {
+                font-size: 14px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .content {
+                padding: 75px 4% 20px;
+            }
+
+            .content h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .subscribe-form {
+                gap: 12px;
+            }
+
+            .subscribe-form input,
+            .subscribe-form button {
+                padding: 10px 14px;
+                font-size: 13px;
+            }
+
+            .social-icons {
+                gap: 12px;
+            }
+
+            .social-icons a {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-description">
+                <img src="../assets/logo/mindfultalk_logo_white.png" alt="Mindfultalk">
+                <p>A leading technical writing and instructional design company. Whether you need to outsource your
+                    requirements or hire resources on contract, you have come to the right place.</p>
+            </div>
+            <div class="footer-subscribe">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to our newsletter for latest updates</p>
+                <form class="subscribe-form" onsubmit="handleSubscribe(event)">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> <a href="tel:+919900102670">+91 9900102670</a></p>
+                <p><i class="fas fa-envelope"></i> <a
+                        href="mailto:latha.srinivasan@mindfultalk.in">latha.srinivasan@mindfultalk.in</a></p>
+                <p><i class="fas fa-envelope"></i> <a
+                        href="mailto:seema.albal@mindfultalk.in">seema.albal@mindfultalk.in</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Whitefield, Bangalore - 560066, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mindfultalk. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/company/mindfultalk-in" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.getElementById('mobileNav');
+
+            toggle.classList.toggle('active');
+            nav.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.getElementById('mobileNav');
+
+            toggle.classList.remove('active');
+            nav.classList.remove('active');
+        }
+
+        function handleSubscribe(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            alert(`Thank you for subscribing with email: ${email}`);
+            event.target.reset();
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.getElementById('mobileNav');
+
+            if (!toggle.contains(event.target) && !nav.contains(event.target)) {
+                toggle.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                const toggle = document.querySelector('.mobile-menu-toggle');
+                const nav = document.getElementById('mobileNav');
+
+                toggle.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>
