@@ -23,8 +23,9 @@ async function loadComponent(filepath, containerId) {
     }
 }
 
-// Load header and footer when the DOM is ready
+// Load header, footer, and testimonials when the DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     loadComponent('/components/header.html', 'header-container');
     loadComponent('/components/footer.html', 'footer-container');
+    loadComponent('/components/testimonials.html', 'testimonials-container');
 });
