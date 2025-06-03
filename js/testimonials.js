@@ -10,6 +10,7 @@ class TestimonialCarousel {
         this.autoplayInterval = null;
         this.touchStartX = 0;
         this.touchEndX = 0;
+        this.intervalTime = 5000; // 5 seconds per slide
 
         this.init();
     }
@@ -98,10 +99,12 @@ class TestimonialCarousel {
     }
 
     startAutoplay() {
-        this.pauseAutoplay();
+        if (this.autoplayInterval) {
+            clearInterval(this.autoplayInterval);
+        }
         this.autoplayInterval = setInterval(() => {
             this.nextSlide();
-        }, 6000);
+        }, this.intervalTime);
     }
 
     pauseAutoplay() {
@@ -113,6 +116,7 @@ class TestimonialCarousel {
 }
 
 // Initialize carousel when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new TestimonialCarousel();
+document.addEventListener('DOMContentLoaded', function() {
+    // Create new instance of the carousel
+    const carousel = new TestimonialCarousel();
 });
