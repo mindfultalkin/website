@@ -1221,9 +1221,14 @@
 
             if (!section) return;
 
-            // Update active nav item
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            event.target.classList.add('active');
+            // Update active nav item without relying on event
+            document.querySelectorAll('.nav-item').forEach(item => {
+                if (item.textContent.toLowerCase().includes(sectionId)) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
 
             // Update header
             document.getElementById('section-title').textContent = section.title;

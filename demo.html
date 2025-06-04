@@ -707,7 +707,44 @@
         document.getElementById('demoForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Validate form
+            // Add email validation
+            const emailInput = this.querySelector('input[type="email"]');
+            const personalEmailDomains = [
+                'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com',
+                'icloud.com', 'mail.com', 'protonmail.com', 'zoho.com', 'yandex.com',
+                'live.com', 'inbox.com', 'gmx.com'
+            ];
+
+            const email = emailInput.value.trim().toLowerCase();
+            const domain = email.split('@')[1];
+
+            if (personalEmailDomains.includes(domain)) {
+                emailInput.style.borderColor = '#ef4444';
+                emailInput.style.animation = 'shake 0.5s ease-in-out';
+                
+                // Create or update error message
+                let errorMsg = emailInput.parentElement.querySelector('.error-message');
+                if (!errorMsg) {
+                    errorMsg = document.createElement('div');
+                    errorMsg.className = 'error-message';
+                    errorMsg.style.color = '#ef4444';
+                    errorMsg.style.fontSize = '0.875rem';
+                    errorMsg.style.marginTop = '0.5rem';
+                    emailInput.parentElement.appendChild(errorMsg);
+                }
+                errorMsg.textContent = 'Please use your organizational email address.';
+                
+                emailInput.focus();
+                return;
+            }
+
+            // Remove error message if valid
+            const errorMsg = emailInput.parentElement.querySelector('.error-message');
+            if (errorMsg) {
+                errorMsg.remove();
+            }
+
+            // Continue with the rest of form validation
             const requiredFields = this.querySelectorAll('[required]');
             let isValid = true;
 
