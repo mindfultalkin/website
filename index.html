@@ -339,89 +339,113 @@
             animation: expandWidth 1s ease-out 0.5s both;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        .services-flow {
+            display: flex;
+            flex-direction: column;
             gap: 3rem;
             margin-bottom: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .service-card {
-            /* backgrosund: rgba(255, 255, 255, 0.8); */
-            backdrop-filter: blur(10px);
+        .service-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 80px;
+            /* background: rgba(255, 255, 255, 0.8); */
             border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
             transition: var(--transition);
-            /* box-shadow: var(--shadow-light); */
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
         }
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(244, 140, 4, 0.05), rgba(8, 148, 180, 0.05));
-            opacity: 0;
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px) scale(1.02);
+        .service-item:hover {
+            transform: translateY(-10px);
             box-shadow: var(--shadow-medium);
         }
 
-        .service-card:hover::before {
-            opacity: 1;
+        .service-item:nth-child(even) {
+            flex-direction: row-reverse;
         }
 
-        .card-content {
+        .service-visual {
+            flex: 1;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            height: 100%;
+            justify-content: center;
+            padding: 2rem;
         }
 
-        .service-card h3 {
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
+        .service-visual img {
+            width: 100%;
+            height: auto;
+            /* max-width: 450px; */
+            transition: all 0.3s ease;
+            border-radius: 20px;
+            box-shadow:
+                rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+            padding: 15px;
+            background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Add hover effect */
+        .service-visual img:hover {
+            transform: translateY(-10px);
+            box-shadow:
+                rgba(50, 50, 93, 0.35) 0px 60px 120px -20px,
+                rgba(0, 0, 0, 0.4) 0px 40px 70px -30px;
+            background: linear-gradient(145deg, #ffffff, #f8f8f8);
+        }
+
+        /* Add subtle glow on hover */
+        .service-visual {
             position: relative;
         }
 
-        .service-card h3::after {
-            content: "";
-            display: block;
-            width: 50px;
-            height: 3px;
-            /* background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); */
-            background: var(--primary-color);
-            margin: 15px auto 0;
-            border-radius: 2px;
+        .service-visual::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            background: transparent;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            z-index: -1;
         }
 
-        .service-card h4 {
-            font-size: clamp(1.2rem, 2.5vw, 1.4rem);
-            font-weight: 600;
+        .service-visual:hover::after {
+            box-shadow: 0 0 30px rgba(244, 140, 4, 0.1);
+        }
+
+        .service-content {
+            flex: 2;
+            padding: 2rem;
+        }
+
+        .service-title {
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            font-weight: 700;
             color: var(--secondary-color);
             margin-bottom: 1rem;
-            text-align: left;
         }
 
-        .service-card p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
+        .service-content h4 {
+            font-size: clamp(1.2rem, 2vw, 1.4rem);
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-description {
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
             line-height: 1.8;
             color: #555;
             margin-bottom: 2rem;
-            text-align: left;
-            flex-grow: 1;
         }
 
         .service-btn {
@@ -894,6 +918,20 @@
                 margin-top: 3rem;
                 padding: 3rem 1.5rem;
             }
+
+            .service-item {
+                flex-direction: column !important;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .service-visual {
+                margin-bottom: 1.5rem;
+            }
+
+            .service-content {
+                padding: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -987,48 +1025,64 @@
             <div class="section-header">
                 <h2>Our Services, Your Solutions</h2>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="card-content">
-                        <h3>Technical Writing</h3>
-                        <h4>We create content that helps people do their jobs better</h4>
-                        <p>Our technical writers blend sharpwriting with
-                            smart design and real-world know-how to create
-                            documentation that actually helps. Whether it's a how-to guide, API doc, or onboarding
-                            manual, we focus on
-                            what users need—so they can get things done quickly, confidently, and without the guesswork.
+            <div class="services-flow">
+                <div class="service-item" data-aos="fade-right">
+                    <div class="service-visual">
+                        <img src="assets/technical_writing_icon.svg" alt="Technical Writing">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Technical Writing</h3>
+                        <h4>What's the point of documentation if no one can use it?</h4>
+                        <p class="service-description">
+                            Our technical writers combine crisp writing, intuitive design, and hands-on insight to
+                            deliver content that works in the real world. Whether it's a how-to guide, API doc, or
+                            onboarding manual, we don't just document—we think like your users to make every step simple
+                            and clear.
+                            What are they trying to do? Where do they get stuck? How can we make it faster, clearer,
+                            easier?
+                            That's our focus—so your users can get things done confidently, without second-guessing or
+                            endless searching.
                         </p>
                         <a href="technical_writing.html" class="service-btn">Learn More</a>
                     </div>
                 </div>
-                <div class="service-card">
-                    <div class="card-content">
-                        <h3>Business Communication</h3>
-                        <h4>We help you say the right thing, the right way</h4>
-                        <p>Whether it's for your team or your customers,
-                            we make
-                            sure your message is clear, confident, and easy to connect with. From strategy to delivery,
-                            we help you
-                            communicate with purpose—so your content builds trust, lands well, and gets the response
-                            you're aiming
-                            for.</p>
-                        <a href="business_communication.html" class="service-btn">Learn More</a>
+
+                <div class="service-item" data-aos="fade-right">
+                    <div class="service-visual">
+                        <img src="assets/instructional_design_icon.jpg" alt="Instructional Design">
                     </div>
-                </div>
-                <div class="service-card">
-                    <div class="card-content">
-                        <h3>Instructional Design</h3>
-                        <h4>We design learning experiences that stick</h4>
-                        <p>Our instructional designers create practical,
-                            engaging
-                            training programs that make it easy for people to learn, remember, and apply what
-                            matters—whether they're
-                            in the workplace or the classroom. With built-in assessments, real-world scenarios, and
-                            optional
-                            certification, every program is designed to deliver clarity, confidence, and results.</p>
+                    <div class="service-content">
+                        <h3 class="service-title">Instructional Design</h3>
+                        <h4>What happens after the training ends—can you remember?</h4>
+                        <p class="service-description">
+                            We design learning experiences that stick. Our instructional designers create engaging,
+                            practical programs that help people actually learn—and not just for the test.
+                            Can they apply it on the job? Will it make a difference tomorrow, not just today? That's our
+                            goal. With real-world scenarios, built-in assessments, and optional certification, every
+                            course is built to boost clarity, confidence, and real-world results.
+                        </p>
                         <a href="instructional_design.html" class="service-btn">Learn More</a>
                     </div>
                 </div>
+
+                <div class="service-item" data-aos="fade-right">
+                    <div class="service-visual">
+                        <img src="assets/business_communication_icon.jpg" alt="Business Communication">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Business Communication</h3>
+                        <h4>We help you say the right thing, the right way</h4>
+                        <p class="service-description">
+                            We help you say the right thing, the right way. Whether you're talking to your team or your
+                            customers, is your message clear? Confident? Easy to act on? That's where we come in.
+                            From strategy to delivery, we help you communicate with purpose—so your content builds
+                            trust,
+                            resonates instantly, and gets the response you're really after.
+                        </p>
+                        <a href="business_communication.html" class="service-btn">Learn More</a>
+                    </div>
+                </div>
+
             </div>
 
             <!-- CTA Section -->

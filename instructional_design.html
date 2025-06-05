@@ -187,19 +187,55 @@
 
         .what-we-do {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1fr 350px;
+            gap: 4rem;
             align-items: center;
+            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
-        .what-we-do-content p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: var(--text-light);
+        .what-we-do-content::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #06b6d4, #f59e0b);
+            border-radius: 2px;
+            animation: slideDown 1s ease-out 1s both;
         }
 
-        .what-we-do-image {
-            text-align: center;
+        .framework-tag {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin: 0.25rem;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            transition: all 0.3s ease;
+            animation: tagFloat 2s ease-in-out infinite alternate;
+        }
+
+        .framework-tag:hover {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.4) 0%, rgba(245, 158, 11, 0.4) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(6, 182, 212, 0.3);
+        }
+
+        .image-container {
+            position: relative;
+            width: 350px;
+            height: 280px;
+            /* background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%); */
+            border-radius: 20px;
+            padding: 2rem;
+            /* backdrosp-filter: blur(10px); */
+            /* border: 1px solid rgba(255, 255, 255, 0.1); */
+            transition: all 0.4s ease;
+            animation: float 6s ease-in-out infinite;
         }
 
         .services-grid {
@@ -212,7 +248,7 @@
         .service-item {
             padding: 30px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.7);
+            /* background: rgba(255, 255, 255, 0.7); */
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -387,6 +423,45 @@
             }
         }
 
+        /* Dark theme section styles */
+        .teal-section {
+            /* background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #0c4a6e 50%, #0891b2 75%, #06b6d4 100%); */
+            position: relative;
+            color: #ffffff;
+        }
+
+        .teal-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background: var(--primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* animation: titleGlow 3s ease-in-out infinite alternate; */
+        }
+
+        @keyframes titleGlow {
+            0% {
+                filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.3));
+            }
+
+            100% {
+                filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.4));
+            }
+        }
+
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
@@ -424,6 +499,10 @@
             width: 100%;
             height: 100%;
         }
+
+        .text-light {
+            color: var(--text-light);
+        }
     </style>
 </head>
 
@@ -454,33 +533,51 @@
 
     <!-- What We Do Section -->
     <section class="section teal-section">
-        <h2 class="section-title">What We Do</h2>
-        <div class="what-we-do">
-            <div class="what-we-do-content">
-                <p>We turn your expertise into structured, scalable learning.</p>
-                <p>Our instructional design service blends creative thinking with academic rigor. Whether you're
-                    launching a new academy, fixing fragmented training, or scaling global onboarding, we work as an
-                    extension of your team — delivering solutions rooted in instructional design best practices.</p>
-                <p>Frameworks we use include ADDIE, SAM, Bloom's Taxonomy, and the Kirkpatrick's Model.</p>
-            </div>
-            <div class="what-we-do-image">
-                <svg width="300" height="250" viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="teamGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#0894b4;stop-opacity:0.8" />
-                            <stop offset="100%" style="stop-color:#f48c04;stop-opacity:0.8" />
-                        </linearGradient>
-                    </defs>
-                    <!-- Team collaboration illustration -->
-                    <circle cx="150" cy="125" r="100" fill="url(#teamGrad)" opacity="0.1" />
-                    <rect x="100" y="80" width="100" height="60" rx="8" fill="url(#teamGrad)" opacity="0.3" />
-                    <circle cx="130" cy="110" r="20" fill="#0894b4" opacity="0.7" />
-                    <circle cx="170" cy="110" r="20" fill="#f48c04" opacity="0.7" />
-                    <rect x="80" y="160" width="40" height="30" rx="5" fill="#0894b4" opacity="0.5" />
-                    <rect x="130" y="160" width="40" height="30" rx="5" fill="#f48c04" opacity="0.5" />
-                    <rect x="180" y="160" width="40" height="30" rx="5" fill="#0894b4" opacity="0.5" />
-                    <path d="M50 200 Q150 180 250 200" stroke="#f48c04" stroke-width="2" fill="none" opacity="0.8" />
-                </svg>
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+
+        <div class="container">
+            <h2 class="section-title">What We Do</h2>
+            <p class="section-description">We turn your expertise into structured, scalable learning experiences that drive real results.</p>
+
+            <div class="what-we-do">
+                <div class="what-we-do-content">
+                    <p class="text-light">Our instructional design service blends creative thinking with academic rigor. Whether you're launching a new academy, fixing fragmented training, or scaling global onboarding, we work as an extension of your team — delivering solutions rooted in instructional design best practices.</p>
+
+                    <p class="text-light">
+                        Our proven frameworks include:
+                        <br><br>
+                        <span class="framework-tag">ADDIE</span>
+                        <span class="framework-tag">SAM</span>
+                        <span class="framework-tag">Bloom's Taxonomy</span>
+                        <span class="framework-tag">Kirkpatrick's Model</span>
+                    </p>
+                </div>
+
+                <div class="what-we-do-image">
+                    <div class="image-container">
+                        <!-- Include the SVG with animations from the provided code -->
+                        <svg class="modern-svg" viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Copy the entire SVG content from the provided code -->
+                            <defs>
+                                <linearGradient id="teamGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#0894b4;stop-opacity:0.8" />
+                                    <stop offset="100%" style="stop-color:#f48c04;stop-opacity:0.8" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Team collaboration illustration -->
+                            <circle cx="150" cy="125" r="100" fill="url(#teamGrad)" opacity="0.1" />
+                            <rect x="100" y="80" width="100" height="60" rx="8" fill="url(#teamGrad)" opacity="0.3" />
+                            <circle cx="130" cy="110" r="20" fill="#0894b4" opacity="0.7" />
+                            <circle cx="170" cy="110" r="20" fill="#f48c04" opacity="0.7" />
+                            <rect x="80" y="160" width="40" height="30" rx="5" fill="#0894b4" opacity="0.5" />
+                            <rect x="130" y="160" width="40" height="30" rx="5" fill="#f48c04" opacity="0.5" />
+                            <rect x="180" y="160" width="40" height="30" rx="5" fill="#0894b4" opacity="0.5" />
+                            <path d="M50 200 Q150 180 250 200" stroke="#f48c04" stroke-width="2" fill="none" opacity="0.8" />
+                        </svg>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -732,6 +829,27 @@
 
         // Initialize first section as visible
         document.querySelector('.hero').classList.add('visible');
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Animate framework tags on scroll
+            const tags = document.querySelectorAll('.framework-tag');
+            const tagObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    }
+                });
+            });
+
+            tags.forEach(tag => {
+                tag.style.opacity = '0';
+                tag.style.transform = 'translateY(20px)';
+                tagObserver.observe(tag);
+            });
+        });
     </script>
 </body>
 

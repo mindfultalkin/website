@@ -4,7 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documentation Services - Clear Docs, Fewer Tickets</title>
+  <title>Technical Writing Services - Clear Documentation That Works</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <style>
     * {
       margin: 0;
@@ -13,14 +17,26 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: "Inter", sans-serif;
+      color: #333;
       line-height: 1.6;
-      color: #1f2937;
-      background: #fffcf4;
       overflow-x: hidden;
+      background-color: var(--background-cream);
     }
 
-    /* Animated background */
+    :root {
+      --primary-color: #f48c04;
+      --secondary-color: #0894b4;
+      --text-color: #333333;
+      --background-light: #ffffff;
+      --background-cream: #fffcf4;
+      --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.15);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+
+
     .animated-bg {
       position: fixed;
       top: 0;
@@ -28,52 +44,38 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      opacity: 0.05;
+      overflow: hidden;
     }
 
-    .floating-shapes {
+    .floating-shape {
       position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    .shape {
-      position: absolute;
+      background: linear-gradient(45deg, rgba(244, 140, 4, 0.1), rgba(8, 148, 180, 0.1));
       border-radius: 50%;
-      background: linear-gradient(45deg, #f48c04, #6366f1);
       animation: float 20s infinite linear;
     }
 
-    .shape:nth-child(1) {
-      width: 80px;
-      height: 80px;
+    .floating-shape:nth-child(1) {
+      width: 100px;
+      height: 100px;
       top: 20%;
       left: 10%;
       animation-delay: 0s;
     }
 
-    .shape:nth-child(2) {
-      width: 60px;
-      height: 60px;
+    .floating-shape:nth-child(2) {
+      width: 150px;
+      height: 150px;
       top: 60%;
       right: 15%;
-      animation-delay: -5s;
+      animation-delay: -7s;
     }
 
-    .shape:nth-child(3) {
-      width: 100px;
-      height: 100px;
-      top: 80%;
-      left: 70%;
-      animation-delay: -10s;
-    }
-
-    .shape:nth-child(4) {
-      width: 40px;
-      height: 40px;
-      top: 10%;
-      right: 30%;
-      animation-delay: -15s;
+    .floating-shape:nth-child(3) {
+      width: 80px;
+      height: 80px;
+      bottom: 30%;
+      left: 20%;
+      animation-delay: -14s;
     }
 
     @keyframes float {
@@ -81,13 +83,77 @@
         transform: translateY(0px) rotate(0deg);
       }
 
-      50% {
-        transform: translateY(-20px) rotate(180deg);
+      33% {
+        transform: translateY(-20px) rotate(120deg);
+      }
+
+      66% {
+        transform: translateY(10px) rotate(240deg);
       }
 
       100% {
         transform: translateY(0px) rotate(360deg);
       }
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 8%;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #25231f;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero-content h1 .highlight {
+      color: var(--primary-color);
+    }
+
+    .tagline {
+      font-size: 1.5rem;
+      color: #f48c04;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    .hero-image {
+      z-index: 1;
+      position: relative;
+      /* max-width: 500px; */
+      width: 50%;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .gradient-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /* background: linear-gradient(135deg, rgba(244, 140, 4, 0.8) 0%, rgba(99, 102, 241, 0.8) 100%); */
+      z-index: 0;
     }
 
     /* Section styling */
@@ -97,7 +163,7 @@
       align-items: center;
       padding: 4rem 2rem;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: auto;
       opacity: 0;
       transform: translateY(50px);
       transition: all 0.8s ease-out;
@@ -126,18 +192,6 @@
     }
 
     /* Typography */
-    .content h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: #25231f;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-
-    h1 .highlight {
-      color: #554734;
-    }
-
     h2 {
       font-size: 2.5rem;
       font-weight: 700;
@@ -431,6 +485,14 @@
 
     /* Responsive design */
     @media (max-width: 768px) {
+      .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 5%;
+        min-height: auto;
+        gap: 2rem;
+      }
+
       .section {
         flex-direction: column;
         padding: 2rem 1rem;
@@ -483,24 +545,14 @@
 </head>
 
 <body>
-
   <!-- Header -->
   <div id="header-container"></div>
 
-  <!-- Animated Background -->
-  <div class="animated-bg">
-    <div class="floating-shapes">
-      <div class="shape"></div>
-      <div class="shape"></div>
-      <div class="shape"></div>
-      <div class="shape"></div>
-    </div>
-  </div>
-
   <!-- Hero Section -->
-  <section class="section" id="hero">
-    <div class="content">
-      <h1>Documentation is Not a Luxury<span class="highlight">— It's a Feature</span></h1>
+  <section class="hero-section">
+    <div class="gradient-overlay"></div>
+    <div class="hero-content">
+      <h1>Documentation<br>is Not a Luxury<br><span class="highlight">— It’s a Feature</span></h1>
       <div class="subheadline">Great Products Deserve Great Documentation</div>
       <p>Your users can't unlock your product's full value if they're stuck, confused, or dependent on support. If your
         support team is buried in tickets, you can't scale. That's where we come in.</p>
@@ -509,7 +561,7 @@
       <a href="https://calendly.com/mindfultalkin/" class="cta-button">Talk To Us</a>
     </div>
     <div class="hero-image">
-      <img src="assets/technical-writing/hero_img.png" alt="Documentation Hero Image" height="600" width="auto">
+      <img src="assets/technical-writing/hero_img.png" alt="Technical Writing Services">
     </div>
   </section>
 
@@ -634,8 +686,15 @@
   <div id="footer-container"></div>
 
   <script src="js/components.js"></script>
-
   <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+      easing: 'ease-in-out'
+    });
+
     // Intersection Observer for scroll animations
     const observerOptions = {
       threshold: 0.1,
