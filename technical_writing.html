@@ -162,7 +162,7 @@
       display: flex;
       align-items: center;
       padding: 4rem 2rem;
-      max-width: 1200px;
+      max-width: 1500px;
       margin: auto;
       opacity: 0;
       transform: translateY(50px);
@@ -483,6 +483,105 @@
       color: #6b7280;
     }
 
+    /* Add these styles in your existing <style> tag */
+    .services-modern-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .service-icon-wrapper {
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .service-icon-wrapper {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .service-icon-wrapper i {
+      font-size: 24px;
+      color: white;
+    }
+
+    .service-card h4 {
+      font-size: 1.4rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .service-card h4::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 40px;
+      height: 3px;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .service-card:hover h4::after {
+      width: 60px;
+    }
+
+    .service-card p {
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .service-hover-content {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover .service-hover-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .learn-more {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      gap: 0.5rem;
+      transition: gap 0.3s ease;
+    }
+
+    .learn-more:hover {
+      gap: 0.8rem;
+    }
+
     /* Responsive design */
     @media (max-width: 768px) {
       .hero-section {
@@ -513,6 +612,15 @@
 
       .icon-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services-modern-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+      
+      .service-card {
+        padding: 1.5rem;
       }
     }
 
@@ -566,61 +674,47 @@
   </section>
 
   <!-- What We Deliver Section -->
-  <section class="section reverse" id="services">
+  <section class="section" id="services">
     <div class="content">
-      <h2>What We Deliver</h2>
-      <div class="service-grid">
-        <div class="service-item">
-          <div class="service-content">
-            <h4>User Manuals</h4>
-            <p>Clear, concise guides that turn confusion into confidence.</p>
-            <p class="subtitle">We write for real users — with just enough detail and zero fluff.</p>
+      <h2 data-aos="fade-up">What We Deliver</h2>
+      <div class="services-modern-grid">
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="100">          
+          <h4>User Manuals</h4>
+          <p>Clear, concise guides that turn confusion into confidence.</p>
+          <div class="service-hover-content">
+            <p>We write for real users — with just enough detail and zero fluff.</p>
+            <a href="#contact" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
           </div>
-          <div class="service-icon">.</div>
         </div>
-        <div class="service-item">
-          <div class="service-content">
-            <h4>Knowledge Bases</h4>
-            <p>Organized, searchable hubs that enable self-service at scale.</p>
-            <p class="subtitle">From onboarding to troubleshooting — everything in one place.</p>
+
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+          <h4>Knowledge Bases</h4>
+          <p>Organized, searchable hubs that enable self-service at scale.</p>
+          <div class="service-hover-content">
+            <p>From onboarding to troubleshooting — everything in one place.</p>
+            <a href="#contact" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
           </div>
-          <div class="service-icon">.</div>
         </div>
-        <div class="service-item">
-          <div class="service-content">
-            <h4>API Documentation</h4>
-            <p>Developer-friendly docs that accelerate integration and usage.</p>
-            <p class="subtitle">We speak dev, structure cleanly, and keep it version-aware.</p>
+
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+          <h4>API Documentation</h4>
+          <p>Developer-friendly docs that accelerate integration and usage.</p>
+          <div class="service-hover-content">
+            <p>We speak dev, structure cleanly, and keep it version-aware.</p>
+            <a href="#contact" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
           </div>
-          <div class="service-icon">.</div>
         </div>
-        <div class="service-item">
-          <div class="service-content">
-            <h4>Product Training</h4>
-            <p>Interactive learning content that drives feature discovery and usage.</p>
-            <p class="subtitle">From tutorials to walkthroughs — we make learning frictionless.</p>
+
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
+          <h4>Product Training</h4>
+          <p>Interactive learning content that drives feature discovery and usage.</p>
+          <div class="service-hover-content">
+            <p>From tutorials to walkthroughs — we make learning frictionless.</p>
+            <a href="#contact" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
           </div>
-          <div class="service-icon">.</div>
-        </div>
-        <div class="service-item">
-          <div class="service-content">
-            <h4>Digital Product Tours</h4>
-            <p>On-screen guided flows that reduce time-to-value.</p>
-            <p class="subtitle">No instructions needed — just intuitive, in-product guidance.</p>
-          </div>
-          <div class="service-icon">.</div>
-        </div>
-        <div class="service-item">
-          <div class="service-content">
-            <h4>AI-Powered Help Centers</h4>
-            <p>Content designed to power instant, intelligent responses.</p>
-            <p class="subtitle">Train your bots with knowledge that actually makes sense.</p>
-          </div>
-          <div class="service-icon">.</div>
         </div>
       </div>
     </div>
-
   </section>
 
   <!-- Why It Matters Section -->
