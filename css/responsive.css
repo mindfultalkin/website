@@ -1,0 +1,207 @@
+/* Base styles and mobile-first approach */
+:root {
+    --primary-color: #f48c04;
+    --secondary-color: #0894b4;
+    --text-color: #333333;
+    --background-light: #ffffff;
+    --background-cream: #fffcf4;
+    --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Typography */
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+p {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Navigation */
+.mobile-nav {
+    display: none;
+}
+
+.mobile-menu-toggle {
+    display: none;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Testimonials */
+.testimonial-card {
+    padding: 1.5rem;
+}
+
+/* Forms */
+input, select, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+/* Footer */
+.footer {
+    padding: 2rem 1rem;
+}
+
+/* Media Queries */
+
+/* Small devices (landscape phones) */
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    .hero-section {
+        padding: 4rem 2rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Extra large devices */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .mobile-nav {
+        display: block;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--background-light);
+        padding: 1rem;
+        transform: translateY(-100%);
+        transition: var(--transition);
+    }
+    
+    .mobile-nav.active {
+        transform: translateY(0);
+    }
+    
+    .mobile-nav ul {
+        list-style: none;
+    }
+    
+    .mobile-nav li {
+        margin: 1rem 0;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none;
+    }
+    
+    body {
+        font-size: 12pt;
+    }
+    
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+}
