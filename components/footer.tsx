@@ -1,0 +1,149 @@
+"use client"
+
+import type React from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Linkedin, Twitter, Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react"
+import Image from "next/image"
+
+export function Footer() {
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Handle newsletter subscription
+    console.log("Newsletter subscription")
+  }
+
+  return (
+    <footer id="contact" className="bg-foreground text-background py-16 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto">
+        <div className="grid lg:grid-cols-4 gap-12">
+          {/* Company Info */}
+          <div className="lg:col-span-1">
+            <div className="mb-4">
+              <Image
+                src="/mindfultalk_logo_white.png" // Make sure to use the same logo as in navigation
+                alt="Mindfultalk Logo"
+                width={150}
+                height={40}
+                className="brightness-0 invert" // This will make the logo white if it's dark
+              />
+            </div>
+            <p className="text-background/80 mb-6 leading-relaxed">
+              We help businesses turn complex knowledge into clear, actionable communication. From technical writing to
+              instructional design, we make expertise accessible.
+            </p>
+
+            {/* Social Media */}
+            <div>
+              <h4 className="font-semibold mb-4">Follow Us</h4>
+              <div className="flex space-x-4">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-background hover:text-primary hover:bg-background/10"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-background hover:text-primary hover:bg-background/10"
+                >
+                  <Twitter className="h-5 w-5" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-background hover:text-primary hover:bg-background/10"
+                >
+                  <Instagram className="h-5 w-5" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-background hover:text-primary hover:bg-background/10"
+                >
+                  <Facebook className="h-5 w-5" />
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Newsletter */}
+          <div className="lg:col-span-1">
+            <h4 className="font-semibold mb-4">Stay Updated</h4>
+            <p className="text-background/80 mb-4">
+              Get the latest insights on effective communication, learning design, and content strategy.
+            </p>
+            <form onSubmit={handleSubscribe} className="space-y-3">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                className="bg-background/10 border-background/20 text-background placeholder:text-background/60"
+              />
+              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white">
+                Subscribe
+              </Button>
+            </form>
+          </div>
+
+          {/* Contact Info */}
+          <div className="lg:col-span-2">
+            <h4 className="font-semibold mb-6">Get in Touch</h4>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="text-background/80">latha.srinivasan@mindfultalk.in</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="text-background/80">seema.albal@mindfultalk.in</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-3">
+                  <Phone className="h-5 w-5 text-primary flex-shrink-0" />
+                  <p className="text-background/80">+91 9900102670</p>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-start space-x-3">
+                  <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <p className="text-background/80">
+                    Whitefield, Bengaluru,
+                    <br />
+                    Karnataka 560066
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="border-t border-background/20 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="text-background/80 text-sm">© 2025 Mindfultalk.in All rights reserved.</div>
+
+            <div className="flex space-x-6 text-sm">
+              <a href="#" className="text-background/80 hover:text-primary transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-background/80 hover:text-primary transition-colors">
+                Terms of Service
+              </a>
+              <a href="#" className="text-background/80 hover:text-primary transition-colors">
+                Cookie Policy
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
