@@ -98,16 +98,19 @@ export function BusinessCommunicationSection() {
               >
                 {/* Image Section */}
                 <div className={`lg:col-span-5 ${!isEven ? "lg:col-start-8" : ""} relative group`}>
-                  <div className="relative overflow-hidden rounded-2xl shadow-xl group-hover:shadow-2xl transition-all duration-700 transform group-hover:scale-[1.02]">
+                  <div className="relative overflow-hidden rounded-2xl transition-all duration-700 transform group-hover:scale-[1.02]">
                     {/* Main Image */}
-                    <div className="relative h-80 lg:h-96 overflow-hidden bg-muted">
+                    <div className="relative h-80 lg:h-96 overflow-hidden">
                       <img
                         src={aspect.image}
                         alt={aspect.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
-                          e.currentTarget.nextElementSibling.style.display = 'flex';
+                          const next = e.currentTarget.nextElementSibling;
+                          if (next && next instanceof HTMLElement) {
+                            next.style.display = 'flex';
+                          }
                         }}
                       />
                       {/* Fallback gradient background */}
