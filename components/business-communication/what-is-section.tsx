@@ -58,13 +58,13 @@ export function BusinessCommunicationSection() {
       title: "Team Articulation",
       description: "Build bridges between departments and personalities",
       color: "primary",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      image: "/team_articulation.png",
     },
     {
       title: "Product Communication",
       description: "Tell your story in ways that resonate and convert",
       color: "secondary",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      image: "/product_communication.png",
     },
   ]
 
