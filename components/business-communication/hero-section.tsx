@@ -106,25 +106,19 @@ export function BusinessHero() {
 
               {/* Central Image Placeholder */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-96 h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center animate-pulse-slow">
+                <div className="w-120 h-120 flex items-center justify-center animate-pulse-slow">
                   <img
                     src="/hero_img_business_communication.png"
-                    alt="Business communication illustration"
-                    width={400}     // Added explicit width
-                    height={400}    // Added explicit height
-                    className="w-80 h-80 object-contain opacity-80"  // Increased from w-48 h-48
+                    alt="Business Communication Illustration"
+                    width={550} // Increased width from 300 to 400
+                    height={550} // Increased height from 300 to 400
+                    className="w-120 h-120 object-cover" // Increased from w-64 h-64 to w-80 h-80
                   />
                 </div>
               </div>
 
               {/* Connecting Lines */}
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
-                <defs>
-                  <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#f48c04" stopOpacity="0.3" />
-                    <stop offset="100%" stopColor="#0894b4" stopOpacity="0.3" />
-                  </linearGradient>
-                </defs>
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">                
                 <path
                   d="M 80 80 Q 200 150 320 120"
                   stroke="url(#gradient1)"
