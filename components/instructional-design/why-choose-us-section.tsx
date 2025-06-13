@@ -62,6 +62,12 @@ export function WhyChooseUsSection() {
       description: "Transparent communication, frequent check-ins, and SME-friendly processes.",
       color: "primary",
     },
+    {
+      icon: Brain,
+      title: "Empty",
+      description: "Empty",
+      color: "secondary",
+    },
   ]
 
   return (

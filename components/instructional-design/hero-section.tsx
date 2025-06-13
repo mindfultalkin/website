@@ -26,15 +26,14 @@ export function InstructionalDesignHero() {
           <div className={`space-y-8 ${isVisible ? "animate-fade-in-left" : "opacity-0"}`}>
             <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="block text-foreground">Designing</span>
-                <span className="block text-primary">Impactful</span>
-                <span className="block text-secondary">Learning Experiences</span>
+                <span className="block text-foreground">Turn Training</span>
+                <span className="block text-primary">Expenses Into</span>
+                <span className="block text-secondary">Performance Assets</span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                We help organizations deliver effective, engaging, and outcomes-driven learning through custom
-                instructional design.
-              </p>
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">Your employees can't drive business results if they're sitting through boring courses, forgetting what they learned, or struggling to apply new skills on the job. If your training programs aren't delivering measurable outcomes, you're burning budget without building capability.</p>
+
+              <p className="text-lg text-foreground leading-relaxed max-w-2xl">We design learning experiences that stick — the kind that transform behavior, boost performance, and deliver ROI you can track.</p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">

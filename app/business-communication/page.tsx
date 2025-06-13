@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/navigation"
 import { BusinessHero } from "@/components/business-communication/hero-section"
-import { TrainingSection } from "@/components/business-communication/training-section"
-import { MicroLearningSection } from "@/components/business-communication/micro-learning-section"
+// import { TrainingSection } from "@/components/business-communication/training-section"
+// import { MicroLearningSection } from "@/components/business-communication/micro-learning-section"
 import { BusinessCommunicationSection } from "@/components/business-communication/what-is-section"
 import { LayoutSection } from "@/components/business-communication/layout-section"
 import { BenefitsSection } from "@/components/business-communication/benefits-section"
@@ -16,8 +16,8 @@ export default function BusinessCommunicationPage() {
     <main className="min-h-screen">
       <Navigation />
       <BusinessHero />
-      <TrainingSection />
-      <MicroLearningSection />
+      {/* <TrainingSection /> */}
+      {/* <MicroLearningSection /> */}
       <BusinessCommunicationSection />
       <LayoutSection />
       <BenefitsSection />

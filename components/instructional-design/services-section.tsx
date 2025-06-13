@@ -66,6 +66,13 @@ export function InstructionalServicesSection() {
         "With quizzes, scenario-based assessments, simulations, and evaluation, we ensure your learners demonstrate real understanding and application.",
       color: "primary",
     },
+    {
+      icon: Users,
+      title: "Microlearning",
+      description:
+        "Short, focused lessons work with the brain's natural retention patterns — employees remember 90% more when information comes in digestible chunks rather than overwhelming training sessions.",
+      color: "secondary",
+    },
   ]
 
   return (

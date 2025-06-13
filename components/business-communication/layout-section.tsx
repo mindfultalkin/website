@@ -63,7 +63,7 @@ export function LayoutSection() {
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">The Layout</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">The Hidden Cost of Poor Communication</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
