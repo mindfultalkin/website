@@ -88,7 +88,7 @@ export function TechnicalWritingCTA() {
                   See our writing style and approach with a sample piece tailored to your industry and use case.
                 </p>
                 <Button 
-                  onClick={() => window.location.href = '../portfolio/portfolio.html'}
+                  onClick={() => window.location.href = '/portfolio/portfolio.html'}
                   className="bg-secondary hover:bg-secondary/90 text-white font-semibold px-6 py-3 rounded-full group w-full"
                 >
                   Request a Sample
