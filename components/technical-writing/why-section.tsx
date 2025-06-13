@@ -1,8 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { TrendingDown, Zap, TrendingUp, Shield, Users } from "lucide-react"
 
 export function TechnicalWritingWhy() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -16,7 +14,7 @@ export function TechnicalWritingWhy() {
             animateElements.forEach((el, index) => {
               setTimeout(() => {
                 el.classList.add("animate")
-              }, index * 200)
+              }, index * 100)
             })
           }
         })
@@ -33,31 +31,26 @@ export function TechnicalWritingWhy() {
 
   const benefits = [
     {
-      icon: TrendingDown,
       title: "Reduce Support Costs",
       description: "with self-serve documentation",
       color: "primary",
     },
     {
-      icon: Zap,
       title: "Accelerate Onboarding",
       description: "for users and internal teams",
       color: "secondary",
     },
     {
-      icon: TrendingUp,
       title: "Improve Feature Adoption",
       description: "with better product education",
       color: "primary",
     },
     {
-      icon: Shield,
       title: "Build Trust",
       description: "with accurate, up-to-date, and user-focused content",
       color: "secondary",
     },
     {
-      icon: Users,
       title: "Empower Teams",
       description: "across product, support, and engineering",
       color: "primary",
@@ -71,59 +64,131 @@ export function TechnicalWritingWhy() {
   ]
 
   return (
-    <section ref={sectionRef} className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto">
-        <div className="text-center mb-16 animate-on-scroll">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+    <section ref={sectionRef} className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-muted/5 to-background">
+      <div className="container mx-auto max-w-7xl">
+        {/* Header Section */}
+        <div className="text-center mb-20 animate-on-scroll">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Why It <span className="text-primary">Matters</span>
           </h2>
+          <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-8"></div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-light">
+            Strategic documentation transforms your business operations and user experience
+          </p>
         </div>
 
-        {/* Benefits Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {benefits.map((benefit, index) => {
-            const IconComponent = benefit.icon
-            const colorClass =
-              benefit.color === "primary" ? "text-primary bg-primary/10" : "text-secondary bg-secondary/10"
-            const borderClass = benefit.color === "primary" ? "border-primary/20" : "border-secondary/20"
+        {/* Benefits Section */}
+        <div className="mb-24">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Left Column */}
+            <div className="space-y-12">
+              {benefits.slice(0, 3).map((benefit, index) => {
+                const colorClass = benefit.color === "primary" ? "text-primary" : "text-secondary"
+                const bgClass = benefit.color === "primary" ? "bg-primary/5" : "bg-secondary/5"
+                const borderClass = benefit.color === "primary" ? "border-l-primary" : "border-l-secondary"
 
-            return (
-              <Card
-                key={index}
-                className={`animate-on-scroll hover:shadow-lg transition-all duration-300 ${borderClass}`}
-              >
-                <CardContent className="p-6 text-center">
-                  <div
-                    className={`${colorClass} p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center`}
-                  >
-                    <IconComponent className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-                  <p className="text-muted-foreground">{benefit.description}</p>
-                </CardContent>
-              </Card>
-            )
-          })}
-        </div>
-
-        {/* Key Results */}
-        <div className="animate-on-scroll">
-          <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8">Key Results</h3>
-            <div className="grid md:grid-cols-3 gap-8">
-              {keyResults.map((result, index) => {
-                const textColor = result.color === "primary" ? "text-primary" : "text-secondary"
                 return (
-                  <div key={index} className="text-center">
-                    <div className={`text-4xl sm:text-5xl font-bold ${textColor} mb-2`}>{result.value}</div>
-                    <div className="text-lg text-muted-foreground">{result.label}</div>
+                  <div key={index} className={`animate-on-scroll pl-8 border-l-4 ${borderClass} py-4`}>
+                    <div className="space-y-3">
+                      <h3 className={`text-2xl lg:text-3xl font-bold ${colorClass} leading-tight`}>
+                        {benefit.title}
+                      </h3>
+                      <p className="text-lg text-muted-foreground leading-relaxed font-light">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Right Column */}
+            <div className="space-y-12 lg:pt-16">
+              {benefits.slice(3).map((benefit, index) => {
+                const colorClass = benefit.color === "primary" ? "text-primary" : "text-secondary"
+                const borderClass = benefit.color === "primary" ? "border-l-primary" : "border-l-secondary"
+
+                return (
+                  <div key={index + 3} className={`animate-on-scroll pl-8 border-l-4 ${borderClass} py-4`}>
+                    <div className="space-y-3">
+                      <h3 className={`text-2xl lg:text-3xl font-bold ${colorClass} leading-tight`}>
+                        {benefit.title}
+                      </h3>
+                      <p className="text-lg text-muted-foreground leading-relaxed font-light">
+                        {benefit.description}
+                      </p>
+                    </div>
                   </div>
                 )
               })}
             </div>
           </div>
         </div>
+
+        {/* Key Results Section */}
+        <div className="animate-on-scroll">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl sm:text-4xl font-bold mb-4">Key Results</h3>
+            <p className="text-lg text-muted-foreground">Proven outcomes from strategic documentation</p>
+          </div>
+
+          <div className="relative">
+            {/* Background decoration */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 rounded-3xl transform -rotate-1"></div>
+            <div className="absolute inset-0 bg-gradient-to-l from-secondary/5 via-primary/5 to-secondary/5 rounded-3xl transform rotate-1"></div>
+
+            {/* Content */}
+            <div className="relative bg-white/50 backdrop-blur-sm rounded-3xl p-12 border border-muted/20">
+              <div className="grid md:grid-cols-3 gap-12">
+                {keyResults.map((result, index) => {
+                  const textColor = result.color === "primary" ? "text-primary" : "text-secondary"
+                  const accentColor = result.color === "primary" ? "bg-primary" : "bg-secondary"
+
+                  return (
+                    <div key={index} className="text-center group">
+                      <div className="relative">
+                        <div className={`text-5xl sm:text-6xl lg:text-7xl font-black ${textColor} mb-4 transition-transform duration-300 group-hover:scale-110`}>
+                          {result.value}
+                        </div>
+                        <div className={`w-16 h-1 ${accentColor} mx-auto mb-4 rounded-full transition-all duration-300 group-hover:w-24`}></div>
+                        <div className="text-xl font-semibold text-foreground uppercase tracking-wide">
+                          {result.label}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom accent */}
+        <div className="mt-24 animate-on-scroll">
+          <div className="text-center">
+            <div className="inline-flex items-center space-x-2">
+              <div className="w-8 h-px bg-primary"></div>
+              <div className="w-2 h-2 bg-primary rounded-full"></div>
+              <div className="w-8 h-px bg-secondary"></div>
+              <div className="w-2 h-2 bg-secondary rounded-full"></div>
+              <div className="w-8 h-px bg-primary"></div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <style jsx>{`
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-on-scroll.animate {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      `}</style>
     </section>
   )
 }

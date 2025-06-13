@@ -94,7 +94,7 @@ export function TechnicalWritingServices() {
               >
                 {/* Image Section */}
                 <div className={`${!isEven ? "lg:col-start-2" : ""} relative group`}>
-                  <div className="relative overflow-hidden rounded-2xl bg-white/50 backdrop-blur-sm border border-muted/20 shadow-sm group-hover:shadow-lg transition-all duration-500">
+                  <div className="relative overflow-hidden rounded-2xl backdrop-blur-sm transition-all duration-500">
                     <img
                       src={service.image}
                       alt={`${service.title} illustration`}
