@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { FileText, GraduationCap, MessageSquare, ArrowRight } from "lucide-react"
+import Link from 'next/link'
 
 export function ServicesSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -75,10 +76,14 @@ export function ServicesSection() {
                 </p>
               </div>
 
-              <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-full group">
-                Learn More
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link href="/technical-writing">
+                <Button 
+                  className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-full group"
+                >
+                  Learn More
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
 
             <div className="animate-on-scroll">
@@ -133,10 +138,12 @@ export function ServicesSection() {
                 </p>
               </div>
 
-              <Button className="bg-secondary hover:bg-secondary/90 text-white font-semibold px-6 py-3 rounded-full group">
-                Learn More
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link href="/instructional-design">
+                <Button className="bg-secondary hover:bg-secondary/90 text-white font-semibold px-6 py-3 rounded-full group">
+                  Learn More
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
 
             <div className="lg:order-1 animate-on-scroll">
@@ -187,10 +194,12 @@ export function ServicesSection() {
                 </p>
               </div>
 
-              <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-full group">
-                Learn More
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link href="/business-communication">
+                <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-full group">
+                  Learn More
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
 
             <div className="animate-on-scroll">

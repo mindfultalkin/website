@@ -68,7 +68,10 @@ export function TechnicalWritingCTA() {
                 <p className="text-muted-foreground mb-6">
                   Let's discuss your documentation needs and explore how we can help streamline your user experience.
                 </p>
-                <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-full group w-full">
+                <Button 
+                  onClick={() => window.open('https://calendly.com/mindfultalkin', '_blank')}
+                  className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-full group w-full"
+                >
                   Book a Discovery Call
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -84,7 +87,10 @@ export function TechnicalWritingCTA() {
                 <p className="text-muted-foreground mb-6">
                   See our writing style and approach with a sample piece tailored to your industry and use case.
                 </p>
-                <Button className="bg-secondary hover:bg-secondary/90 text-white font-semibold px-6 py-3 rounded-full group w-full">
+                <Button 
+                  onClick={() => window.location.href = '../portfolio/portfolio.html'}
+                  className="bg-secondary hover:bg-secondary/90 text-white font-semibold px-6 py-3 rounded-full group w-full"
+                >
                   Request a Sample
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>

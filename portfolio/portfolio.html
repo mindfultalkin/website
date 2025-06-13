@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - mindfulltalk.in</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fffcf4;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Fixed Left Sidebar */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(135deg, #0894b4, #065a6b);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            /* align-items: left; */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo a {
+            display: flex;
+            flex-direction: column;
+            color: inherit;
+        }
+
+        .logo a:hover {
+            opacity: 0.9;
+        }
+
+        .logo img {
+            width: 160px;
+            margin-bottom: 25px;
+        }
+
+        .logo span {
+            font-size: 30px;
+            font-weight: 800;
+            padding: 0 10px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-menu {
+            padding: 20px 0;
+        }
+
+        .nav-item {
+            padding: 15px 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            font-size: 15px;
+            font-weight: 550;
+            position: relative;
+            overflow: visible;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: #f48c04;
+            transform: translateX(5px);
+        }
+
+        .nav-item.active {
+            background-color: rgba(244, 140, 4, 0.2);
+            border-left-color: #f48c04;
+            color: #f48c04;
+        }
+
+        .nav-item .nav-text-hover {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #0894b4, #065a6b);
+            z-index: 5;
+            white-space: nowrap;
+        }
+
+        .nav-item:hover .nav-text {
+            opacity: 0;
+        }
+
+        .nav-item:hover .nav-text-hover {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            min-height: 100vh;
+            background-color: #fffcf4;
+        }
+
+        .content-header {
+            background: linear-gradient(135deg, #f48c04, #ff9d24);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(244, 140, 4, 0.2);
+        }
+
+        .content-header h1 {
+            font-size: 36px;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .content-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            /* Change to a fixed 3-column grid */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+            /* Center the grid */
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        /* Add responsive breakpoints for smaller screens */
+        @media (max-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f48c04, #0894b4);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            /* Remove this line that was preventing images from showing */
+            /* background-image: url('') !important; */
+        }
+
+        .portfolio-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* background: linear-gradient(45deg, rgba(244, 140, 4, 0.8), rgba(8, 148, 180, 0.8)); */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-image::after {
+            opacity: 1;
+        }
+
+        .portfolio-content {
+            padding: 25px;
+        }
+
+        .portfolio-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0894b4;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* PDF Content Display */
+        .pdf-content {
+            background: white;
+            margin: 40px;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            display: none;
+        }
+
+        .pdf-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pdf-header {
+            border-bottom: 3px solid #f48c04;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .pdf-title {
+            font-size: 28px;
+            color: #0894b4;
+            margin-bottom: 10px;
+        }
+
+        .pdf-subtitle {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #0894b4, #065a6b);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #065a6b, #0894b4);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.mobile-open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 1001;
+                background: #0894b4;
+                color: white;
+                border: none;
+                padding: 12px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 18px;
+            }
+
+            .content-header {
+                padding: 60px 20px 40px;
+            }
+
+            .content-header h1 {
+                font-size: 28px;
+            }
+
+            .grid-container {
+                padding: 20px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .pdf-content {
+                margin: 20px;
+                padding: 20px;
+            }
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .pdf-document {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .pdf-page {
+            /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .pdf-page canvas {
+            display: block;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .error {
+            color: #f44336;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .video-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .webpage-container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .webpage-header {
+            background: #f48c04;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .webpage-header h2 {
+            color: #0894b4;
+            margin-bottom: 15px;
+        }
+
+        .webpage-header p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        .webpage-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #0894b4, #065a6b);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .webpage-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(8, 148, 180, 0.3);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+
+        <!-- Fixed Left Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="logo">
+                <a href="../index.html" style="text-decoration: none;">
+                    <img src="assets/logo/mindfultalk_logo_white.png" alt="Mindfull Talk Logo">
+                    <span>Portfolio</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-item active" onclick="showSection('knowledge-base')">Knowledge Base</div>
+                <div class="nav-item" onclick="showSection('software-development')">SDLC</div>
+                <div class="nav-item" onclick="showSection('user-manual')">User Manual</div>
+                <div class="nav-item" onclick="showSection('content-strategy')">Content Strategy</div>
+                <div class="nav-item" onclick="showSection('product-tour')">
+                    <span class="nav-text">Product Tour</span>
+                    <span class="nav-text-hover">User Onboarding</span>
+                </div>
+                <div class="nav-item" onclick="showSection('api-docs')">API Docs</div>
+                <div class="nav-item" onclick="showSection('sop')">SOP</div>
+                <div class="nav-item" onclick="showSection('training-content')">Training Content</div>
+                <div class="nav-item" onclick="showSection('product-video')">Product Video</div>
+                <div class="nav-item" onclick="showSection('product-marketing')">Product Marketing</div>
+                <div class="nav-item" onclick="showSection('case-studies')">Case Studies</div>
+                <div class="nav-item" onclick="showSection('blogs')">Blogs/White Paper</div>
+                <div class="nav-item" onclick="showSection('consulting')">Consulting</div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Content Header -->
+            <div class="content-header">
+                <h1 id="section-title">Knowledge Base</h1>
+                <p id="section-subtitle">Professional portfolio showcasing expertise in technical documentation and
+                    content strategy</p>
+            </div>
+
+            <!-- Grid Container -->
+            <div class="grid-container" id="grid-container">
+                <div class="portfolio-grid" id="portfolio-grid">
+                    <!-- Portfolio items will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- PDF Content Display -->
+            <div class="pdf-content" id="pdf-content">
+                <button class="back-button" onclick="showGrid()">← Back to Grid</button>
+                <div class="pdf-header">
+                    <h1 class="pdf-title" id="pdf-title"></h1>
+                    <p class="pdf-subtitle" id="pdf-subtitle"></p>
+                </div>
+                <div id="pdf-body"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Portfolio data structure
+        const portfolioData = {
+            'knowledge-base': {
+                title: 'Knowledge Base',
+                subtitle: 'Comprehensive knowledge management solutions',
+                items: [
+                    {
+                        title: 'Knowledge Base using Zendesk',
+                        description: 'A comprehensive sample of Zendesk implementation for customer support',
+                        image: 'assets/content/knowledge-base/thumbnails/knowledge_base_using_zendesk.png',
+                        content: {
+                            title: 'Knowledge Base using Zendesk',
+                            subtitle: 'Customer Support Documentation System',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/knowledge-base/knowledge_base_using_zendesk.pdf'
+                        }
+                    },
+                    {
+                        title: 'Knowledge Base using Document360',
+                        description: 'A comprehensive sample of Document360 for internal knowledge management',
+                        image: 'assets/content/knowledge-base/thumbnails/knowledge_base_using_document360.avif',
+                        content: {
+                            title: 'Knowledge Base using Document360',
+                            subtitle: 'Internal Knowledge Management Platform',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/knowledge-base/document360_knowledge_base.pdf'
+                        }
+                    },
+                    {
+                        title: 'Knowledge Base using Docusaurus',
+                        description: 'A technical documentation sample using Docusaurus framework',
+                        image: 'assets/content/knowledge-base/thumbnails/knowledge_base_using_docusaurus.avif',
+                        content: {
+                            title: 'Knowledge Base using Docusaurus',
+                            subtitle: 'Modern Documentation Framework',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/knowledge-base/docusaurus_knowledge_base.pdf'
+                        }
+                    },
+                    {
+                        title: 'Video Walkthrough of Zendesk Knowledge Base',
+                        description: 'Comprehensive video tour of features and functionality',
+                        image: 'assets/content/knowledge-base/thumbnails/zendesk_walkthrough_thumbnail.png',
+                        content: {
+                            title: 'Video Walkthrough of Zendesk Knowledge Base',
+                            subtitle: 'Interactive Feature Demonstration',
+                            body: `
+                                <div class="video-container">
+                                    <video controls width="100%">
+                                        <source src="assets/content/knowledge-base/zendesk-walkthrough.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            `
+                        }
+                    },
+
+                ]
+            },
+            'software-development': {
+                title: 'Software Development Life Cycle',
+                subtitle: 'Comprehensive SDLC documentation and methodologies',
+                items: [
+                    {
+                        title: 'Business Requirements',
+                        description: 'The requirements to develop a shipping plugin for eCommerce platforms to streamline merchant order fulfillment',
+                        image: 'assets/content/sdlc/thumbnails/business_requirements.jpeg',
+                        content: {
+                            title: 'Business Requirements',
+                            subtitle: 'The requirements to develop a shipping plugin for eCommerce platforms to streamline merchant order fulfillment',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/sdlc/business_requirements.pdf'
+                        }
+                    },
+                    {
+                        title: 'System Architecture',
+                        description: 'The System Architecture module automates sliding door movement, controls speed and position, and ensures safety by detecting obstructions',
+                        image: 'assets/content/sdlc/thumbnails/system_architecture.jpeg',
+                        content: {
+                            title: 'System Architecture',
+                            subtitle: 'The System Architecture module automates sliding door movement, controls speed and position, and ensures safety by detecting obstructions',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/sdlc/system_architecture.pdf'
+                        }
+                    },
+                    {
+                        title: 'Product Development Approach',
+                        description: 'Thought leadership approach on product development',
+                        image: 'assets/content/sdlc/thumbnails/product_development_approach.avif',
+                        content: {
+                            title: 'Product Development Approach',
+                            subtitle: 'Thought leadership approach on product development',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/sdlc/product_development_approach.pdf'
+                        }
+                    },
+
+                ]
+            },
+            'user-manual': {
+                title: 'User Manual',
+                subtitle: 'Comprehensive user manuals for software products',
+                items: [
+                    {
+                        title: 'GloboCast Live',
+                        description: 'This cloud-based live orchestration platform enables instant channel setup, multi-source content ingestion, and real-time control of live broadcasts from anywhere',
+                        image: 'assets/content/user-manual/thumbnails/globo_cast_live_thumbnail.avif',
+                        content: {
+                            title: 'GloboCast Live',
+                            subtitle: 'This cloud-based live orchestration platform enables instant channel setup, multi-source content ingestion, and real-time control of live broadcasts from anywhere',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/user-manual/globo_cast_live_user_manual.pdf'
+                        }
+                    },
+                ]
+            },
+            'content-strategy': {
+                title: 'Content Strategy',
+                subtitle: 'Strategic content planning and execution',
+                items: [
+                    {
+                        title: 'FAQs, Troubleshooting Tips and Glossary',
+                        description: 'Product docs include guides, specs, FAQs, and onboarding content to support both users and internal teams',
+                        image: 'assets/content/content-strategy/thumbnails/faqs_troubleshooting_tips_glossary_thumbnail.jpeg',
+                        content: {
+                            title: 'FAQs, Troubleshooting Tips and Glossary',
+                            subtitle: 'Product docs include guides, specs, FAQs, and onboarding content to support both users and internal teams',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/content-strategy/faqs_troubleshooting_tips_glossary.pdf'
+                        }
+                    },
+                    {
+                        title: 'Product Requirements Specifications',
+                        description: 'Documents like product specs, SOPs, and roadmaps to clearly define requirements, user flows, and criteria for successful project execution',
+                        image: 'assets/content/content-strategy/thumbnails/product_requirements_specifications_thumbnail.webp',
+                        content: {
+                            title: 'Product Requirements Specifications',
+                            subtitle: 'Documents like product specs, SOPs, and roadmaps to clearly define requirements, user flows, and criteria for successful project execution',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/content-strategy/product_requirements_specifications.pdf'
+                        }
+                    },
+                    {
+                        title: 'User manuals',
+                        description: 'User manuals help customers confidently use a product by explaining its features, interface, and functions in a clear, comprehensive manner',
+                        image: 'assets/content/content-strategy/thumbnails/user_manual_thumbnail.avif',
+                        content: {
+                            title: 'User manuals',
+                            subtitle: 'User manuals help customers confidently use a product by explaining its features, interface, and functions in a clear, comprehensive manner',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/content-strategy/user_manual.pdf'
+                        }
+                    },
+                ]
+            },
+            'product-tour': {
+                title: 'Product Tour/User Onboarding',
+                subtitle: 'Interactive product tours and user onboarding experiences',
+                items: [
+                    {
+                        title: 'Flow of English',
+                        description: 'Learner Platform',
+                        image: 'assets/content/product-tour/thumbnails/flow_of_english_thumbnail.jpg',
+                        content: {
+                            title: 'Flow of English',
+                            subtitle: 'Learner Platform',
+                            type: 'webpage',
+                            body: `
+                                <div class="webpage-container">
+                                    <div class="webpage-header">
+                                        <h2>Flow of English Learning Platform</h2>
+                                        <p>Click the button below to experience the interactive product tour:</p>
+                                    </div>
+                                    <div class="webpage-content">
+                                        <a href="https://chippersageblr.s3.ap-south-1.amazonaws.com/ChippersageS3_data/Learner+-+Demo-+build/start.html" target="_blank" class="webpage-button">
+                                            Launch Interactive Tour
+                                        </a>
+                                    </div>
+                                </div>
+                            `
+                        }
+                    },
+
+                ]
+            },
+            'api-docs': {
+                title: 'API Docs',
+                subtitle: 'Comprehensive API documentation for developers',
+                items: [
+                    {
+                        title: 'Communication Coach Bot',
+                        description: 'A no-code SaaS platform that enables businesses to share learning content via customized workflows using videos, images, or text across channels like WhatsApp, SMS, and email',
+                        image: 'assets/content/api-docs/thumbnails/communication_coach_bot_thumbnail.avif',
+                        content: {
+                            title: 'Communication Coach Bot',
+                            subtitle: 'A no-code SaaS platform that enables businesses to share learning content via customized workflows using videos, images, or text across channels like WhatsApp, SMS, and email',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/api-docs/communication_coach_bot.pdf'
+                        }
+                    },
+                ]
+            },
+            'sop': {
+                title: 'SOP',
+                subtitle: 'Standard Operating Procedures for consistent operations',
+                items: [
+                    {
+                        title: 'SOP for the Talent Acquisition',
+                        description: 'Outlines the end-to-end hiring process, from request to onboarding, including year-round sourcing and checklist-based consistency',
+                        image: 'assets/content/sop/thumbnails/sop_talent_acquisition_thumbnail.avif',
+                        content: {
+                            title: 'SOP for the Talent Acquisition',
+                            subtitle: 'Outlines the end-to-end hiring process, from request to onboarding, including year-round sourcing and checklist-based consistency',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/sop/sop_talent_acquisition.pdf'
+                        }
+                    },
+                ]
+            },
+            'training-content': {
+                title: 'Training Content',
+                subtitle: 'Training materials and resources for skill development',
+                items: [
+                    {
+                        title: 'Health Insurance Cost-of-Care Scenarios',
+                        description: 'Interactive training scenarios for health insurance cost-of-care calculations',
+                        image: 'assets/content/training-content/thumbnails/health_insurance_cost_of_care_scenarios_thumbnail.webp',
+                        content: {
+                            title: 'Health Insurance Cost-of-Care Scenarios',
+                            subtitle: 'Interactive training scenarios for health insurance cost-of-care calculations',
+                            type: 'webpage',
+                            body: `
+                                <div class="webpage-container">
+                                    <div class="webpage-header">
+                                        <h2>Health Insurance Cost-of-Care Scenarios</h2>
+                                        <p>Click the button below to access the interactive training scenarios:</p>
+                                    </div>
+                                    <div class="webpage-content">
+                                        <a href="https://tcwvideos.s3.ap-south-1.amazonaws.com/Articulate360/Scenario-COB/index.html" target="_blank" class="webpage-button">
+                                            Access Training Scenarios
+                                        </a>
+                                    </div>
+                                </div>
+                            `
+                        }
+                    },
+                    {
+                        title: 'Denial Code CO 197',
+                        description: 'Training simulation for handling denial code CO 197',
+                        image: 'assets/content/training-content/thumbnails/denial_code_co_197_thumbnail.avif',
+                        content: {
+                            title: 'Denial Code CO 197',
+                            subtitle: 'Training simulation for handling denial code CO 197',
+                            type: 'webpage',
+                            body: `
+                                <div class="webpage-container">
+                                    <div class="webpage-header">
+                                        <h2>Denial Code CO 197 Training Simulation</h2>
+                                        <p>Click the button below to access the training simulation:</p>
+                                    </div>
+                                    <div class="webpage-content">
+                                        <a href="https://tcwvideos.s3.ap-south-1.amazonaws.com/Articulate360/Simulation+167/index.html" target="_blank" class="webpage-button">
+                                            Access Training Simulation
+                                        </a>
+                                    </div>
+                                </div>
+                            `
+                        }
+                    },
+                    {
+                        title: 'Why Are Questions Important?',
+                        description: 'Interactive module on the importance of effective questioning',
+                        image: 'assets/content/training-content/thumbnails/why_are_questions_important_thumbnail.avif',
+                        content: {
+                            title: 'Why Are Questions Important?',
+                            subtitle: 'Interactive module on the importance of effective questioning',
+                            type: 'video',
+                            body: `
+                                <div class="video-container">
+                                    <video controls width="100%">
+                                        <source src="assets/content/training-content/why_are_questions_important.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            `
+
+                        }
+                    },
+                    {
+                        title: 'Unisol Sales Objection Handling',
+                        description: 'Comprehensive guide for handling sales objections and closing deals effectively with Unisol products',
+                        image: 'assets/content/training-content/thumbnails/unisol_sales_objection_handling_thumbnail.avif',
+                        content: {
+                            title: 'Unisol Sales Objection Handling',
+                            subtitle: 'Comprehensive guide for handling sales objections and closing deals effectively with Unisol products',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/training-content/unisol_sales_objection_handling.pdf'
+                        }
+                    },
+                    {
+                        title: 'Bethliving Sales Success Guide',
+                        description: 'Comprehensive training guide for sales teams to effectively sell Bethliving products and services',
+                        image: 'assets/content/training-content/thumbnails/bethliving_sales_success_guide_thumbnail.jpg',
+                        content: {
+                            title: 'Bethliving Sales Success Guide',
+                            subtitle: 'Comprehensive training guide for sales teams to effectively sell Bethliving products and services',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/training-content/bethliving_sales_success_guide.pdf'
+                        }
+                    },
+                    {
+                        title: 'Bethliving Objection Handling Guide',
+                        description: 'Strategies and scripts for effectively addressing common objections when selling Bethliving products',
+                        image: 'assets/content/training-content/thumbnails/bethliving_objection_handling_guide_thumbnail.avif',
+                        content: {
+                            title: 'Bethliving Objection Handling Guide',
+                            subtitle: 'Strategies and scripts for effectively addressing common objections when selling Bethliving products',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/training-content/bethliving_objection_handling_guide.pdf'
+                        }
+                    },
+                    {
+                        title: 'Bethliving 9 USPs Guide',
+                        description: 'Detailed training on the 9 key unique selling propositions of Bethliving products and services',
+                        image: 'assets/content/training-content/thumbnails/bethliving_9_usps_guide_thumbnail.avif',
+                        content: {
+                            title: 'Bethliving 9 USPs Guide',
+                            subtitle: 'Detailed training on the 9 key unique selling propositions of Bethliving products and services',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/training-content/bethliving_9_usps_guide.pdf'
+                        }
+                    },
+                    {
+                        title: 'Bethliving Storytelling for Sales',
+                        description: 'Techniques and frameworks for using storytelling to effectively engage customers and boost sales conversion',
+                        image: 'assets/content/training-content/thumbnails/bethliving_storytelling_for_sales_thumbnail.avif',
+                        content: {
+                            title: 'Bethliving Storytelling for Sales',
+                            subtitle: 'Techniques and frameworks for using storytelling to effectively engage customers and boost sales conversion',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/training-content/bethliving_storytelling_for_sales.pdf'
+                        }
+                    },
+                    {
+                        title: 'Bethliving CRM Training Guide',
+                        description: 'Training manual for effectively using the Bethliving CRM system to manage customer relationships',
+                        image: 'assets/content/training-content/thumbnails/bethliving_crm_training_guide_thumbnail.avif',
+                        content: {
+                            title: 'Bethliving CRM Training Guide',
+                            subtitle: 'Training manual for effectively using the Bethliving CRM system to manage customer relationships',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/training-content/bethliving_crm_training_guide.pdf'
+                        }
+                    },
+                    {
+                        title: 'Streamlining Post Sales Journey',
+                        description: 'Best practices and processes for improving customer experience and efficiency in the post-sales phase',
+                        image: 'assets/content/training-content/thumbnails/streamlining_post_sales_journey_thumbnail.avif',
+                        content: {
+                            title: 'Streamlining Post Sales Journey',
+                            subtitle: 'Best practices and processes for improving customer experience and efficiency in the post-sales phase',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/training-content/streamlining_post_sales_journey.pdf'
+                        }
+                    },
+                ]
+            },
+            'product-video': {
+                title: 'Product Video',
+                subtitle: 'Engaging product videos showcasing features and benefits',
+                items: [
+                    {
+                        title: 'Approvals Access',
+                        description: 'How to Access Approvals',
+                        image: 'assets/content/product-video/thumbnails/approvals_access_thumbnail.webp',
+                        content: {
+                            title: 'Approvals Access',
+                            subtitle: 'How to Access Approvals',
+                            type: 'video',
+                            body: `
+                                <div class="video-container">
+                                    <video controls width="100%">
+                                        <source src="assets/content/product-video/approvals_access.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            `
+                        }
+                    },
+                    {
+                        title: 'Apply Leave',
+                        description: 'How to Apply Leave',
+                        image: 'assets/content/product-video/thumbnails/apply_leave_thumbnail.webp',
+                        content: {
+                            title: 'Apply Leave',
+                            subtitle: 'How to Apply Leave',
+                            type: 'video',
+                            body: `
+                                <div class="video-container">
+                                    <video controls width="100%">
+                                        <source src="assets/content/product-video/apply_leave.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            `
+                        }
+                    },
+                    {
+                        title: 'Compensatory Off',
+                        description: 'How to Apply for Compensatory Off',
+                        image: 'assets/content/product-video/thumbnails/compensatory_off_thumbnail.webp',
+                        content: {
+                            title: 'Compensatory Off',
+                            subtitle: 'How to Apply for Compensatory Off',
+                            type: 'video',
+                            body: `
+                                <div class="video-container">
+                                    <video controls width="100%">
+                                        <source src="assets/content/product-video/compensatory_off.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            `
+                        }
+                    },
+                    {
+                        title: 'Navigating Media Library',
+                        description: 'Video Tutorial on Navigating Media Library',
+                        image: 'assets/content/product-video/thumbnails/navigating_media_library_thumbnail.avif',
+                        content: {
+                            title: 'Navigating Media Library',
+                            subtitle: 'Video Tutorial on Navigating Media Library',
+                            type: 'video',
+                            body: `
+                                <div class="video-container">
+                                    <video controls width="100%">
+                                        <source src="assets/content/product-video/navigating_media_library.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            `
+                        }
+                    },
+                    {
+                        title: 'Adjusting Flexible Duration',
+                        description: 'Video Tutorial on Adjusting Flexible Duration',
+                        image: 'assets/content/product-video/thumbnails/adjusting_flexible_duration_thumbnail.webp',
+                        content: {
+                            title: 'Adjusting Flexible Duration',
+                            subtitle: 'Video Tutorial on Adjusting Flexible Duration',
+                            type: 'video',
+                            body: `
+                                <div class="video-container">
+                                    <video controls width="100%">
+                                        <source src="assets/content/product-video/adjusting_flexible_duration.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            `
+                        }
+                    },
+                    {
+                        title: 'How to Update SEO',
+                        description: 'Video Tutorial on How to Update SEO',
+                        image: 'assets/content/product-video/thumbnails/how_to_update_seo_thumbnail.avif',
+                        content: {
+                            title: 'How to Update SEO',
+                            subtitle: 'Video Tutorial on How to Update SEO',
+                            type: 'video',
+                            body: `
+                                <div class="video-container">
+                                    <video controls width="100%">
+                                        <source src="assets/content/product-video/how_to_update_seo.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            `
+                        }
+                    },
+                ]
+            },
+            'product-marketing': {
+                title: 'Product Marketing',
+                subtitle: 'Effective product marketing strategies and materials',
+                items: [
+                    {
+                        title: 'Temperature Automation',
+                        description: 'Case Study: Automation in Temperature Control',
+                        image: 'assets/content/product-marketing/thumbnails/temperature_automation_thumbnail.png',
+                        content: {
+                            title: 'Temperature Automation',
+                            subtitle: 'Case Study: Automation in Temperature Control',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/product-marketing/temperature_automation.pdf'
+                        }
+                    },
+                    {
+                        title: 'Elpis Platform',
+                        description: 'The Elpis Platform - Product Overview',
+                        image: 'assets/content/product-marketing/thumbnails/elpis_platform_thumbnail.png',
+                        content: {
+                            title: 'Elpis Platform',
+                            subtitle: 'The Elpis Platform - Product Overview',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/product-marketing/elpis_platform.pdf'
+                        }
+                    },
+
+                ]
+
+            },
+            'case-studies': {
+                title: 'Case Studies',
+                subtitle: 'In-depth case studies showcasing successful implementations',
+                items: [
+                    {
+                        title: 'Digital Twin Case Study',
+                        description: 'Creating a Digital Twin to Explain Complex Use Cases and Enhance Understanding',
+                        image: 'assets/content/case-studies/thumbnails/digital_twin_case_study_thumbnail.jpg',
+                        content: {
+                            title: 'Digital Twin Case Study',
+                            subtitle: 'Creating a Digital Twin to Explain Complex Use Cases and Enhance Understanding',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/case-studies/digital_twin_case_study.pdf'
+                        }
+                    },
+                    {
+                        title: 'Self-Service Knowledge Base',
+                        description: 'Implementing a Self-Service Knowledge Base to Drive Product Adoption',
+                        image: 'assets/content/case-studies/thumbnails/self_service_knowledge_base_thumbnail.jpg',
+                        content: {
+                            title: 'Self-Service Knowledge Base',
+                            subtitle: 'Implementing a Self-Service Knowledge Base to Drive Product Adoption',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/case-studies/self_service_knowledge_base.pdf'
+                        }
+                    },
+                    {
+                        title: 'System Architecture Document',
+                        description: 'Documenting System Architecture for Complex Embedded Systems',
+                        image: 'assets/content/case-studies/thumbnails/system_architecture_document_thumbnail.jpg',
+                        content: {
+                            title: 'System Architecture Document',
+                            subtitle: 'Documenting System Architecture for Complex Embedded Systems',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/case-studies/system_architecture_document.pdf'
+                        }
+                    },
+                ]
+            },
+            'blogs': {
+                title: 'Blogs',
+                subtitle: 'Informative blogs on various topics',
+                items: [
+                    {
+                        title: 'Flipped Class and Microlearning',
+                        description: 'Flipped class allows students to study material individually, freeing classroom time for practical tasks. Microlearning delivers short, focused lessons to suit modern learners needs',
+                        image: 'assets/content/blogs/thumbnails/flipped_class_microlearning_thumbnail.webp',
+                        content: {
+                            title: 'Flipped Class and Microlearning',
+                            subtitle: 'Flipped class allows students to study material individually, freeing classroom time for practical tasks. Microlearning delivers short, focused lessons to suit modern learners needs',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/blogs/flipped_class_microlearning.pdf',
+                        }
+                    },
+                    {
+                        title: 'Khan Academy Project BEAM',
+                        description: 'Project BEAM aims to upskill blue-collar workers in basic Math and English through micro-lessons on WhatsApp, using interactive videos and quizzes for practical learning',
+                        image: 'assets/content/blogs/thumbnails/khan_academy_project_beam_thumbnail.webp',
+                        content: {
+                            title: 'Khan Academy Project BEAM',
+                            subtitle: 'Project BEAM aims to upskill blue-collar workers in basic Math and English through micro-lessons on WhatsApp, using interactive videos and quizzes for practical learning',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/blogs/khan_academy_project_beam.pdf'
+                        }
+                    },
+                    {
+                        title: 'Elpis Empowering MSMEs for Smart Manufacturing',
+                        description: 'Elpis Smart Manufacturing Platform helps MSMEs transition to Industry 4.0 with plug-and-play solutions, real-time monitoring, and predictive analytics, improving efficiency and reducing costs',
+                        image: 'assets/content/blogs/thumbnails/elpis_empowering_msmes_for_smart_manufacturing_thumbnail.png',
+                        content: {
+                            title: 'Elpis Empowering MSMEs for Smart Manufacturing',
+                            subtitle: 'Elpis Smart Manufacturing Platform helps MSMEs transition to Industry 4.0 with plug-and-play solutions, real-time monitoring, and predictive analytics, improving efficiency and reducing costs',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/blogs/elpis_empowering_msmes_for_smart_manufacturing.pdf'
+                        }
+                    },
+                    {
+                        title: 'Digital Transformation for Customer-Centric Experiences',
+                        description: 'Digital transformation enables businesses to personalize customer experiences, meeting rising expectations for tailored products and services, driving loyalty, and boosting sales',
+                        image: 'assets/content/blogs/thumbnails/digital_transformation_for_customer_centric_experiences_thumbnail.avif',
+                        content: {
+                            title: 'Digital Transformation for Customer-Centric Experiences',
+                            subtitle: 'Digital transformation enables businesses to personalize customer experiences, meeting rising expectations for tailored products and services, driving loyalty, and boosting sales',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/blogs/digital_transformation_for_customer_centric_experiences.pdf'
+                        }
+                    },
+                    {
+                        title: 'Maypole Dance with ManagedDevOps',
+                        description: 'Exploring the benefits of ManagedDevOps',
+                        image: 'assets/content/blogs/thumbnails/maypole_dance_with_managed_devops_thumbnail.webp',
+                        content: {
+                            title: 'Maypole Dance with ManagedDevOps',
+                            subtitle: 'Exploring the benefits of ManagedDevOps',
+                            type: 'webpage',
+                            body: `
+                                <div class="webpage-container">
+                                    <div class="webpage-header">
+                                        <h2>Maypole Dance with ManagedDevOps</h2>
+                                        <p>Click the button below to read the blog:</p>
+                                    </div>
+                                    <div class="webpage-content">
+                                        <a href="https://blog.innoventestech.com/maypole-dance-with-manageddevops-731aab33da3a">
+                                            Read Blog
+                                        </a>
+                                    </div>
+                                </div>
+                            `,
+                        }
+                    },
+                    {
+                        title: 'Deliberate and Decide with Data',
+                        description: 'Making informed decisions through data analytics',
+                        image: 'assets/content/blogs/thumbnails/deliberate_and_decide_with_data_thumbnail.webp',
+                        content: {
+                            title: 'Deliberate and Decide with Data',
+                            subtitle: 'Making informed decisions through data analytics',
+                            type: 'webpage',
+                            body: `
+                                <div class="webpage-container">
+                                    <div class="webpage-header">
+                                        <h2>Deliberate and Decide with Data</h2>
+                                        <p>Click the button below to read the blog:</p>
+                                    </div>
+                                    <div class="webpage-content">
+                                        <a href="https://blog.innoventestech.com/deliberate-and-decide-with-data-f27911d14c90">
+                                            Read Blog
+                                        </a>
+                                    </div>
+                                </div>
+                            `,
+                        }
+                    },
+                ]
+            },
+            'consulting': {
+                title: 'Consulting',
+                subtitle: 'Consulting services for business growth and strategy',
+                items: [
+                    {
+                        title: 'Training Needs Analysis - Bethliving',
+                        description: 'Comprehensive analysis of training requirements and recommendations for Bethliving.',
+                        image: 'assets/content/consulting/thumbnails/training_needs_analysis_bethliving_thumbnail.jpeg',
+                        content: {
+                            title: 'Training Needs Analysis - Bethliving',
+                            subtitle: 'Comprehensive analysis of training requirements and recommendations for Bethliving.',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/consulting/training_needs_analysis_bethliving.pdf'
+                        }
+                    },
+                    {
+                        title: 'Training Needs Report - Unisol',
+                        description: 'In-depth analysis and strategic recommendations for Unisol implementation.',
+                        image: 'assets/content/consulting/thumbnails/training_needs_report_unisol_thumbnail.jpg',
+                        content: {
+                            title: 'Training Needs Report - Unisol',
+                            subtitle: 'In-depth analysis and strategic recommendations for Unisol implementation.',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/consulting/training_needs_report_unisol.pdf'
+                        }
+                    },
+                    {
+                        title: 'Training Needs Analysis - Hudini',
+                        description: 'Strategic training recommendations and implementation plan for Hudini platform users.',
+                        image: 'assets/content/consulting/thumbnails/training_needs_analysis_hudini_thumbnail.jpg',
+                        content: {
+                            title: 'Training Needs Analysis - Hudini',
+                            subtitle: 'Strategic training recommendations and implementation plan for Hudini platform users.',
+                            type: 'pdf',
+                            pdfUrl: 'assets/content/consulting/training_needs_analysis_hudini.pdf'
+                        }
+                    },
+                ]
+            },
+
+        };
+
+        let currentSection = 'knowledge-base';
+        let mobileMenuOpen = false;
+
+        // Initialize the page
+        function init() {
+            showSection('knowledge-base');
+        }
+
+        // Show specific section
+        function showSection(sectionId) {
+            currentSection = sectionId;
+            const section = portfolioData[sectionId];
+
+            if (!section) return;
+
+            // Update active nav item without relying on event
+            document.querySelectorAll('.nav-item').forEach(item => {
+                if (item.textContent.toLowerCase().includes(sectionId)) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Update header
+            document.getElementById('section-title').textContent = section.title;
+            document.getElementById('section-subtitle').textContent = section.subtitle;
+
+            // Show grid and populate items
+            document.getElementById('grid-container').classList.remove('hidden');
+            document.getElementById('pdf-content').classList.remove('active');
+
+            populateGrid(section.items);
+
+            // Close mobile menu
+            if (window.innerWidth <= 768) {
+                toggleMobileMenu();
+            }
+        }
+
+        // Populate portfolio grid
+        function populateGrid(items) {
+            const grid = document.getElementById('portfolio-grid');
+            grid.innerHTML = '';
+
+            items.forEach((item, index) => {
+                const portfolioItem = document.createElement('div');
+                portfolioItem.className = 'portfolio-item';
+                portfolioItem.onclick = () => showPDFContent(item.content);
+
+                portfolioItem.innerHTML = `
+                    <div class="portfolio-image" style="background-image: url('${item.image}')"></div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">${item.title}</h3>
+                        <p class="portfolio-description">${item.description}</p>
+                    </div>
+                `;
+
+                grid.appendChild(portfolioItem);
+            });
+        }
+
+        // Add this function before the showPDFContent function
+        async function renderPDF(url, container) {
+            try {
+                const pdf = await pdfjsLib.getDocument(url).promise;
+                container.innerHTML = ''; // Clear previous content
+
+                const pdfContainer = document.createElement('div');
+                pdfContainer.className = 'pdf-document';
+                container.appendChild(pdfContainer);
+
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const viewport = page.getViewport({ scale: 1.5 });
+
+                    const pageContainer = document.createElement('div');
+                    pageContainer.className = 'pdf-page';
+
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    pageContainer.appendChild(canvas);
+                    pdfContainer.appendChild(pageContainer);
+
+                    await page.render({
+                        canvasContext: context,
+                        viewport: viewport
+                    }).promise;
+                }
+            } catch (error) {
+                console.error('Error rendering PDF:', error);
+                container.innerHTML = '<p class="error">Error loading PDF. Please try again later.</p>';
+            }
+        }
+
+        // Show PDF content as webpage
+        async function showPDFContent(content) {
+            document.getElementById('pdf-title').textContent = content.title;
+            document.getElementById('pdf-subtitle').textContent = content.subtitle;
+            const pdfBody = document.getElementById('pdf-body');
+
+            if (content.type === 'pdf') {
+                pdfBody.innerHTML = '<div class="loading">Loading PDF...</div>';
+                await renderPDF(content.pdfUrl, pdfBody);
+            } else if (content.type === 'webpage') {
+                pdfBody.innerHTML = content.body;
+            } else {
+                pdfBody.innerHTML = content.body;
+            }
+
+            document.getElementById('grid-container').classList.add('hidden');
+            document.getElementById('pdf-content').classList.add('active');
+        }
+
+        // Show grid (back from PDF)
+        function showGrid() {
+            document.getElementById('grid-container').classList.remove('hidden');
+            document.getElementById('pdf-content').classList.remove('active');
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            mobileMenuOpen = !mobileMenuOpen;
+
+            if (mobileMenuOpen) {
+                sidebar.classList.add('mobile-open');
+            } else {
+                sidebar.classList.remove('mobile-open');
+            }
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.querySelector('.mobile-menu-toggle');
+
+            if (window.innerWidth <= 768 && mobileMenuOpen &&
+                !sidebar.contains(event.target) &&
+                !toggleButton.contains(event.target)) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Initialize page on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>
