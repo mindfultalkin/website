@@ -29,7 +29,7 @@ export function HeroSection() {
                 <span className="block text-foreground">Capture What Your</span>
                 <span className="block text-primary">People Know.</span>
                 <span className="block text-foreground">Deliver What Your</span>
-                <span className="block text-secondary">Business Needs.</span>
+                <span className="block text-primary">Business Needs.</span>
               </h1>
 
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">

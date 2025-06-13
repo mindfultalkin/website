@@ -43,9 +43,16 @@ export function PartnerSection() {
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto text-center">
           <div className="animate-on-scroll">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8">
-              <div className="text-primary">One Partner</div>
-              <span className="text-secondary">Smart Docs. Effective Learning. Confident Communication.</span> 
+            <div className="mb-6">
+              <span className="inline-block px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm uppercase tracking-wide mb-4">
+                One Partner
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+              <span className="block text-foreground mb-2">Smart Docs.</span>
+              <span className="block text-foreground mb-2">Effective Learning.</span>
+              <span className="block text-foreground">Confident Communication.</span>
             </h2>
 
             <p className="text-lg sm:text-xl text-muted-foreground mb-12 leading-relaxed">
@@ -93,6 +100,19 @@ export function PartnerSection() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.6s ease-out;
+        }
+        
+        .animate-on-scroll.animate {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      `}</style>
     </section>
   )
 }

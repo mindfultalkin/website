@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import Image from 'next/image'
 
 export function TeamSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -120,12 +119,10 @@ export function TeamSection() {
 
                 {/* Main image container */}
                 <div className="relative transition-all duration-500">
-                  <Image
+                  <img
                     src="/team_collaboration.png"
                     alt="Professional Team Collaboration"
                     className="w-full h-72 object-cover rounded-xl transition-transform duration-500"
-                    width={300}
-                    height={200}
                   />
                 </div>
               </div>
@@ -166,24 +163,7 @@ export function TeamSection() {
               })}
             </div>
           </div>
-        </div>
-
-        {/* CTA Section - Unchanged */}
-        <div className="mt-16 text-center animate-on-scroll">
-          <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8 max-w-4xl mx-auto">
-            <img
-              src="/ready_to_transform.png"
-              alt="Ready to Transform"
-              width={800}
-              height={300}
-              className="w-full h-64 object-contain rounded-lg mb-6"
-            />
-            <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Communication?</h3>
-            <p className="text-lg text-muted-foreground">
-              Let's work together to turn your expertise into clear, actionable content that drives real results.
-            </p>
-          </div>
-        </div>
+        </div>        
       </div>
 
       <style jsx>{`
@@ -196,17 +176,6 @@ export function TeamSection() {
         .animate-on-scroll.animate {
           opacity: 1;
           transform: translateY(0);
-        }
-
-        img {
-          width: 300px;  /* Set specific width */
-          height: 200px; /* Set specific height */
-        }
-
-        /* Or using max-width for responsiveness */
-        img {
-          max-width: 100%;
-          height: auto;
         }
       `}</style>
     </section>
