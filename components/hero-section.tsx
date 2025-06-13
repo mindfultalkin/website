@@ -98,13 +98,13 @@ export function HeroSection() {
 
               {/* Central Image Placeholder */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-96 h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center animate-pulse-slow">
+                <div className="w-120 h-120 flex items-center justify-center animate-pulse-slow">
                   <img
                     src="/hero_img.png"
                     alt="Knowledge transformation illustration"
-                    width={400} // Increased width from 300 to 400
-                    height={400} // Increased height from 300 to 400
-                    className="w-80 h-80 object-contain opacity-80" // Increased from w-64 h-64 to w-80 h-80
+                    width={550} // Increased width from 300 to 400
+                    height={550} // Increased height from 300 to 400
+                    className="w-120 h-120 object-cover" // Increased from w-64 h-64 to w-80 h-80
                   />
                 </div>
               </div>
