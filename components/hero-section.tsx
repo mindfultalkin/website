@@ -116,22 +116,7 @@ export function HeroSection() {
                     <stop offset="0%" stopColor="#f48c04" stopOpacity="0.3" />
                     <stop offset="100%" stopColor="#0894b4" stopOpacity="0.3" />
                   </linearGradient>
-                </defs>
-                <path
-                  d="M 80 80 Q 200 150 320 120"
-                  stroke="url(#gradient1)"
-                  strokeWidth="2"
-                  fill="none"
-                  className="animate-pulse-slow"
-                />
-                <path
-                  d="M 320 120 Q 250 250 150 300"
-                  stroke="url(#gradient1)"
-                  strokeWidth="2"
-                  fill="none"
-                  className="animate-pulse-slow"
-                  style={{ animationDelay: "1s" }}
-                />
+                </defs>                
               </svg>
             </div>
           </div>
