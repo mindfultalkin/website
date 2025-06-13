@@ -59,15 +59,13 @@ export function ServicesSection() {
 
               <div className="space-y-4 mb-8">
                 <p className="text-foreground leading-relaxed">
-                  Our technical writers combine crisp writing, intuitive design, and hands-on insight to deliver content
+                  We technical writers combine crisp writing, intuitive design, and hands-on insight to deliver content
                   that works in the real world. Whether it's a how-to guide, API doc, or on-boarding manual, we don't
                   just document—we think like your users to make every step simple and clear.
                 </p>
 
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• What are they trying to do?</li>
-                  <li>• Where do they get stuck?</li>
-                  <li>• How can we make it faster, clearer, easier?</li>
+                  <li>What are they trying to do? Where do they get stuck? How can we make it faster, clearer, easier?</li>
                 </ul>
 
                 <p className="text-foreground">
@@ -90,16 +88,16 @@ export function ServicesSection() {
               <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20 hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-8">
                   <img
-                    src="/hero_img_business_communication.png"
+                    src="/clear_documentation.png"
                     alt="Technical writing illustration"
                     className="w-full h-48 object-contain rounded-lg mb-4" // Modified height and object-fit
                     width={400}  // Added explicit width
                     height={192} // Added explicit height (48 * 4 = 192 pixels)
                   />
                   <div className="text-center">
-                    <h4 className="text-xl font-semibold mb-2">Clear Documentation</h4>
+                    <h4 className="text-xl font-semibold mb-2">Document</h4>
                     <p className="text-muted-foreground">
-                      Making complex technical information accessible and actionable
+                      Clear, concise documentation that helps users get things done
                     </p>
                   </div>
                 </CardContent>
@@ -128,8 +126,7 @@ export function ServicesSection() {
                 </p>
 
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• Can they apply it on the job?</li>
-                  <li>• Will it make a difference tomorrow, not just today?</li>
+                  <li>Can they apply it on the job? Will it make a difference tomorrow, not just today?</li>
                 </ul>
 
                 <p className="text-foreground">
@@ -150,7 +147,7 @@ export function ServicesSection() {
               <Card className="bg-gradient-to-br from-secondary/5 to-secondary/10 border-secondary/20 hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-8">
                   <img
-                    src="/hero_img_instructional_design.png"
+                    src="/effective_learning.png"
                     alt="Instructional design illustration"
                     className="w-full h-48 object-contain rounded-lg mb-4" // Modified height and object-fit
                     width={400}  // Added explicit width
@@ -183,9 +180,7 @@ export function ServicesSection() {
                 </p>
 
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• is your message clear?</li>
-                  <li>• Confident?</li>
-                  <li>• Easy to act on?</li>
+                  <li>is your message clear? Confident? Easy to act on?</li>
                 </ul>
 
                 <p className="text-foreground">

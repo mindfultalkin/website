@@ -44,8 +44,8 @@ export function PartnerSection() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="animate-on-scroll">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8">
-              One Partner. <span className="text-primary">Smart Docs.</span>{" "}
-              <span className="text-secondary">Effective Learning.</span> Confident Communication.
+              <div className="text-primary">One Partner</div>
+              <span className="text-secondary">Smart Docs. Effective Learning. Confident Communication.</span> 
             </h2>
 
             <p className="text-lg sm:text-xl text-muted-foreground mb-12 leading-relaxed">
