@@ -47,9 +47,6 @@ export function ServicesSection() {
           <div id="technical-writing" className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
               <div className="flex items-center mb-6">
-                <div className="bg-primary/10 p-3 rounded-full mr-4">
-                  <FileText className="h-8 w-8 text-primary" />
-                </div>
                 <h3 className="text-2xl sm:text-3xl font-bold">Technical Writing</h3>
               </div>
 
@@ -109,9 +106,6 @@ export function ServicesSection() {
           <div id="instructional-design" className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="lg:order-2 animate-on-scroll">
               <div className="flex items-center mb-6">
-                <div className="bg-secondary/10 p-3 rounded-full mr-4">
-                  <GraduationCap className="h-8 w-8 text-secondary" />
-                </div>
                 <h3 className="text-2xl sm:text-3xl font-bold">Instructional Design</h3>
               </div>
 
@@ -166,9 +160,6 @@ export function ServicesSection() {
           <div id="business-communication" className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
               <div className="flex items-center mb-6">
-                <div className="bg-primary/10 p-3 rounded-full mr-4">
-                  <MessageSquare className="h-8 w-8 text-primary" />
-                </div>
                 <h3 className="text-2xl sm:text-3xl font-bold">Business Communication</h3>
               </div>
 

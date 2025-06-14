@@ -69,7 +69,7 @@ export function TechnicalWritingCTA() {
                   Let's discuss your documentation needs and explore how we can help streamline your user experience.
                 </p>
                 <Button 
-                  onClick={() => window.open('https://calendly.com/mindfultalkin', '_blank')}
+                  onClick={() => window.open('https://calendly.com/mindfultalkin')}
                   className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-full group w-full"
                 >
                   Book a Discovery Call

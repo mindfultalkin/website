@@ -161,8 +161,8 @@ export function LayoutSection() {
             <div className="container mx-auto">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-20 animate-on-scroll">
-                        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 gradient-text">
-                            The Hidden Cost of Poor Communication
+                        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                            The Hidden Cost of <span className="text-primary">Poor Communication</span>?
                         </h2>
                         <div className="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full pulse-animation"></div>
                     </div>
