@@ -36,19 +36,19 @@ export function ServicesSection() {
       title: "Corporate Training",
       description: "Transform your team's communication skills with tailored workshops and ongoing coaching programs.",
       color: "primary",
-      image: "/corporate_training.png",
+      image: "/corporate_training_service.png",
     },
     {
       title: "Technical Writing",
       description: "Convert complex technical concepts into clear, actionable documentation and user guides.",
       color: "secondary",
-      image: "/technical_writing.png",
+      image: "/technical_writing_service.png",
     },
     {
       title: "Storytelling for Business",
       description: "Craft compelling narratives that connect with your audience and drive business results.",
       color: "primary",
-      image: "/storytelling.png",
+      image: "/storytelling_service.png",
     },
   ]
 
