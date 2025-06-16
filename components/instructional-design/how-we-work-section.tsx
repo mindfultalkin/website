@@ -151,9 +151,8 @@ export function HowWeWorkSection() {
                 <img
                   src="/process.png?height=200&width=600"
                   alt="Collaborative Process"
-                  className="w-full max-w-2xl h-48 object-cover rounded-2xl mx-auto shadow-2xl border border-white/20"
+                  className="w-full max-w-2xl h-48 object-cover rounded-2xl mx-auto"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
               </div>
 
               <div className="space-y-4 max-w-4xl mx-auto">
