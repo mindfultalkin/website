@@ -36,9 +36,8 @@ export function InstructionalCTA() {
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto text-center">
           <div className="animate-on-scroll">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8">
-              <span className="text-primary">Engaging Learning.</span>{" "}
-              <span className="text-secondary">Better Retention.</span> Ready Workforce.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8">              
+              <span className="text-secondary"></span>Engaging Learning. Better Retention. Ready Workforce.
             </h2>
 
             <p className="text-lg sm:text-xl text-muted-foreground mb-12 leading-relaxed">
