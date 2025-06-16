@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Card, CardContent } from "@/components/ui/card"
 import { Map, Monitor, Users, Layers, Award } from "lucide-react"
 
 export function InstructionalServicesSection() {
@@ -16,7 +15,7 @@ export function InstructionalServicesSection() {
             animateElements.forEach((el, index) => {
               setTimeout(() => {
                 el.classList.add("animate")
-              }, index * 200)
+              }, index * 150)
             })
           }
         })
@@ -76,43 +75,117 @@ export function InstructionalServicesSection() {
   ]
 
   return (
-    <section ref={sectionRef} className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary/5 to-secondary/5">
-      <div className="container mx-auto">
-        <div className="text-center mb-16 animate-on-scroll">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-            Our <span className="text-primary">Services</span>
+    <section ref={sectionRef} className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary/5 to-secondary/5 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full blur-3xl"></div>
+        <div className="absolute bottom-32 right-16 w-96 h-96 bg-secondary rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-primary rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto relative z-10">
+        <div className="text-center mb-20 animate-on-scroll">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 relative">
+            Our <span className="text-primary relative">
+              Services
+              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary rounded-full opacity-30"></div>
+            </span>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Staggered timeline layout */}
+        <div className="space-y-24">
           {services.map((service, index) => {
             const IconComponent = service.icon
-            const colorClass =
-              service.color === "primary" ? "text-primary bg-primary/10" : "text-secondary bg-secondary/10"
-            const borderClass = service.color === "primary" ? "border-primary/20" : "border-secondary/20"
+            const isEven = index % 2 === 0
+            const colorClass = service.color === "primary" ? "text-primary" : "text-secondary"
+            const bgColorClass = service.color === "primary" ? "bg-primary/10" : "bg-secondary/10"
+            const gradientClass = service.color === "primary"
+              ? "from-primary/20 to-primary/5"
+              : "from-secondary/20 to-secondary/5"
 
             return (
-              <Card
+              <div
                 key={index}
-                className={`animate-on-scroll hover:shadow-lg transition-all duration-300 ${borderClass} bg-background`}
+                className={`animate-on-scroll flex items-center gap-12 lg:gap-20 ${isEven ? 'flex-row' : 'flex-row-reverse'
+                  } max-lg:flex-col max-lg:text-center group`}
               >
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-4 mb-4">
-                    <div className={`${colorClass} p-3 rounded-full flex-shrink-0`}>
-                      <IconComponent className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-                    </div>
+                {/* Icon section */}
+                <div className="flex-shrink-0 relative">
+                  <div className={`${bgColorClass} p-8 rounded-full relative z-10 group-hover:scale-110 transition-transform duration-500`}>
+                    <IconComponent className={`h-12 w-12 ${colorClass}`} />
                   </div>
-                  
-                </CardContent>
-              </Card>
+                  {/* Pulsing ring animation */}
+                  <div className={`absolute inset-0 ${bgColorClass} rounded-full animate-ping opacity-20 group-hover:opacity-40`}></div>
+                  <div className={`absolute inset-2 ${bgColorClass} rounded-full animate-pulse opacity-10`}></div>
+                </div>
+
+                {/* Content section */}
+                <div className="flex-1 relative">
+                  <div className={`bg-gradient-to-br ${gradientClass} p-8 rounded-2xl backdrop-blur-sm relative overflow-hidden group-hover:shadow-2xl transition-all duration-500`}>
+                    {/* Decorative corner elements */}
+                    <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl ${gradientClass} rounded-bl-2xl opacity-50`}></div>
+                    <div className={`absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr ${gradientClass} rounded-tr-2xl opacity-30`}></div>
+
+                    <h3 className={`text-2xl lg:text-3xl font-bold mb-4 ${colorClass} relative z-10`}>
+                      {service.title}
+                    </h3>
+                    <p className="text-muted-foreground text-lg leading-relaxed relative z-10">
+                      {service.description}
+                    </p>
+
+                    {/* Subtle hover line */}
+                    <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color === "primary" ? "from-primary to-primary/50" : "from-secondary to-secondary/50"
+                      } transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}></div>
+                  </div>
+                </div>
+
+                {/* Connection line for timeline effect */}
+                {index < services.length - 1 && (
+                  <div className={`absolute ${isEven ? 'left-16' : 'right-16'} top-full w-0.5 h-12 bg-gradient-to-b ${service.color === "primary" ? "from-primary/30 to-transparent" : "from-secondary/30 to-transparent"
+                    } max-lg:hidden`}></div>
+                )}
+              </div>
             )
           })}
         </div>
+
+        {/* Bottom decorative element */}
+        <div className="mt-20 flex justify-center animate-on-scroll">
+          <div className="flex space-x-2">
+            {[...Array(3)].map((_, i) => (
+              <div
+                key={i}
+                className={`w-3 h-3 rounded-full ${i === 1 ? 'bg-primary' : 'bg-secondary'
+                  } opacity-60 animate-pulse`}
+                style={{ animationDelay: `${i * 200}ms` }}
+              ></div>
+            ))}
+          </div>
+        </div>
       </div>
+
+      <style jsx>{`
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-on-scroll.animate {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        
+        .group:hover .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   )
 }
