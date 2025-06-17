@@ -128,6 +128,7 @@ export function TechnicalWritingServices() {
 
                     {/* CTA Button */}
                     <Button
+                      onClick={() => window.open('https://in.bigin.online/org60035146435/forms/portfolio')}
                       className={`${buttonClass} text-white font-semibold px-8 py-4 rounded-full group shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}
                     >
                       Learn More

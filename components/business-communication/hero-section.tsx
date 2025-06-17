@@ -45,31 +45,23 @@ export function BusinessHero() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-                onClick={() => window.open('https://calendly.com/mindfultalkin')}
+                onClick={() => window.open('https://in.bigin.online/org60035146435/forms/portfolio')}
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 group"
               >
                 Book a Call
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                onClick={() => scrollToSection("what-is")}
-                size="lg"
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary/10 font-semibold px-8 py-4 rounded-full transition-all duration-200"
-              >
-                Learn More
-              </Button>
+              </Button>              
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-6 pt-8">
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary">+45%</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary">↑45%</div>
                 <div className="text-sm text-muted-foreground">Team Productivity</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-secondary">-30%</div>
+                <div className="text-2xl sm:text-3xl font-bold text-secondary">↓30%</div>
                 <div className="text-sm text-muted-foreground">Project Delays</div>
               </div>
             </div>

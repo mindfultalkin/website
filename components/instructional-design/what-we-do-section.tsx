@@ -42,11 +42,7 @@ export function WhatWeDoSection() {
       <div className="container mx-auto relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
-          <div className="text-center mb-20 animate-on-scroll">
-            <div className="inline-flex items-center justify-center space-x-2 bg-primary/10 rounded-full px-6 py-2 mb-6">
-              <Sparkles className="h-5 w-5 text-primary" />
-              <span className="text-primary font-medium">Our Expertise</span>
-            </div>
+          <div className="text-center mb-20 animate-on-scroll">            
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text">
               What We <span className="text-primary relative">
                 Do

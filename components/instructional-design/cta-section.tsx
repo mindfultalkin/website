@@ -36,7 +36,7 @@ export function InstructionalCTA() {
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto text-center">
           <div className="animate-on-scroll">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8">              
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8">
               <span className="text-secondary"></span>Engaging Learning. Better Retention. Ready Workforce.
             </h2>
 
@@ -56,6 +56,7 @@ export function InstructionalCTA() {
 
               <div className="max-w-lg mx-auto">
                 <Button
+                  onClick={() => window.open('https://in.bigin.online/org60035146435/forms/portfolio')}
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 group w-full sm:w-auto"
                 >

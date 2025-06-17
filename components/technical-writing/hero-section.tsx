@@ -44,7 +44,7 @@ export function TechnicalWritingHero() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-                onClick={() => window.open('https://calendly.com/mindfultalkin')}
+                onClick={() => window.open('https://in.bigin.online/org60035146435/forms/portfolio')}
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 group"
               >
@@ -54,14 +54,18 @@ export function TechnicalWritingHero() {
             </div>
 
             {/* Key Benefits */}
-            <div className="grid grid-cols-2 gap-6 pt-8">
+            <div className="grid grid-cols-3 gap-6 pt-8">
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary">-75%</div>
-                <div className="text-sm text-muted-foreground">Support Tickets</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary">↑95%</div>
+                <div className="text-sm text-muted-foreground">User Satisfaction</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl sm:text-3xl font-bold text-secondary">3×</div>
-                <div className="text-sm text-muted-foreground">Faster Onboarding</div>
+                <div className="text-sm text-muted-foreground">Faster On-boarding</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-primary">↓75%</div>
+                <div className="text-sm text-muted-foreground">Support Tickets</div>
               </div>
             </div>
           </div>
