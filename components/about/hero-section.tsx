@@ -26,10 +26,8 @@ export function AboutHero() {
           <div className={`space-y-8 ${isVisible ? "animate-fade-in-left" : "opacity-0"}`}>
             <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="block text-foreground">The sooner you improve your</span>
-                <span className="block text-primary">business communication</span>
-                <span className="block text-foreground">The sooner you unlock the</span>
-                <span className="block text-secondary">revenue and growth</span>
+                <span className="block text-foreground">We Turn Information Into Impact</span>
+                <span className="block text-primary">Across Every Medium</span>
               </h1>
             </div>
 
@@ -39,7 +37,7 @@ export function AboutHero() {
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 group"
               >
-                Book a Call
+                Talk to us
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>

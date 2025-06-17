@@ -96,23 +96,7 @@ export function TechnicalWritingCTA() {
                 </Button>
               </div>
             </div>
-          </div>
-
-          <div className="animate-on-scroll">
-            <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8">
-              <img
-                src="/ready_to_transform.png"
-                alt="Ready to Transform"
-                width={800}      // Explicit width
-                height={300}     // Explicit height
-                className="w-full h-64 object-contain rounded-lg mb-6" // Changed height and object-fit
-              />
-              <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Documentation?</h3>
-              <p className="text-lg text-muted-foreground">
-                Join companies that have reduced support tickets by 75% and improved user satisfaction by 95%.
-              </p>
-            </div>
-          </div>
+          </div>          
         </div>
       </div>
     </section>

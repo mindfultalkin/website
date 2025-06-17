@@ -57,8 +57,8 @@ export function BenefitsSection() {
       position: "bottom-left"
     },
     {
-      title: "Richer Documentation",
-      description: "Knowledge is preserved and accessible to all",
+      title: "Faster Decision making",
+      description: "Teams make informed decisions quickly and confidently",
       color: "primary",
       position: "bottom-right"
     },

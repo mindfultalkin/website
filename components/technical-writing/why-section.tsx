@@ -58,9 +58,9 @@ export function TechnicalWritingWhy() {
   ]
 
   const keyResults = [
-    { value: "–75%", label: "Support Tickets", color: "primary" },
+    { value: "↑95%", label: "User Satisfaction", color: "primary" },    
     { value: "3×", label: "Faster On-boarding", color: "secondary" },
-    { value: "95%", label: "User Satisfaction", color: "primary" },
+    { value: "↓75%", label: "Support Tickets", color: "primary" },
   ]
 
   return (

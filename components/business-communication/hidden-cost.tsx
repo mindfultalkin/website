@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 
-export function BusinessCommunicationSection() {
+export function HiddenCost() {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export function BusinessCommunicationSection() {
             animateElements.forEach((el, index) => {
               setTimeout(() => {
                 el.classList.add("animate")
-              }, index * 150)
+              }, index * 200)
             })
           }
         })
@@ -31,37 +31,27 @@ export function BusinessCommunicationSection() {
 
   const leftStrengths = [
     {
-      title: "Body Language & Tone",
-      description: "Master the non-verbal cues that make up 93% of effective communication",
+      title: "Low Productivity",
+      description: "Teams waste hours clarifying misunderstood instructions",
       color: "primary",
     },
     {
-      title: "Business Terminology",
-      description: "Speak the language of success with confidence and clarity",
+      title: "Talent Wastage",
+      description: "Great ideas go unheard when people can't articulate them",
       color: "secondary",
-    },
-    {
-      title: "Written Clarity",
-      description: "Craft messages that inform, persuade, and inspire action",
-      color: "primary",
     },
   ]
 
   const rightStrengths = [
     {
-      title: "Problem Solving",
-      description: "Navigate complex discussions with strategic thinking",
+      title: "High Attrition",
+      description: "Miscommunication leads to frustration and turnover",
       color: "secondary",
     },
     {
-      title: "Team Articulation",
-      description: "Build bridges between departments and personalities",
+      title: "Team Dissatisfaction",
+      description: "Unclear expectations create stress and conflict",
       color: "primary",
-    },
-    {
-      title: "Product Communication",
-      description: "Tell your story in ways that resonate and convert",
-      color: "secondary",
     },
   ]
 
@@ -70,10 +60,10 @@ export function BusinessCommunicationSection() {
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-on-scroll">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-            What is <span className="text-primary">Business</span> Communication
+            The Hidden Cost of Poor <span className="text-primary">Communication</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto font-light leading-relaxed">
-            Effective business communication encompasses multiple dimensions that work together to create meaningful connections and drive results
+            Poor communication is silently costing your business more than you think
           </p>
         </div>
 
@@ -123,8 +113,8 @@ export function BusinessCommunicationSection() {
                 {/* Main image container */}
                 <div className="relative transition-all duration-500">
                   <img
-                    src="/business_communication_middle_image.png"
-                    alt="Business Communication"
+                    src="/poor-communication.png"
+                    alt="Poor Communication"
                     className="w-full h-72 object-cover rounded-xl transition-transform duration-500"
                   />
                 </div>
