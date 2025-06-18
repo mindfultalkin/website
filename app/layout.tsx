@@ -11,9 +11,9 @@ export const metadata: Metadata = {
     "We help businesses turn complex knowledge into clear, actionable communication. From technical writing to instructional design, we make expertise accessible.",
   generator: 'v0.dev',
   icons: {
-    icon: '/mindfultalk_logo.png',
-    shortcut: '/mindfultalk_logo.png',
-    apple: '/mindfultalk_logo.png',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   }
 }
 
