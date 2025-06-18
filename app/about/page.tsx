@@ -1,6 +1,6 @@
 import { Navigation } from "@/components/navigation"
 import { AboutHero } from "@/components/about/hero-section"
-import { SerendipitySection } from "@/components/about/serendipity-section"
+// import { SerendipitySection } from "@/components/about/serendipity-section"
 import { MissionSection } from "@/components/about/mission-section"
 import { FoundersSection } from "@/components/about/founders-section"
 import { AboutCTA } from "@/components/about/cta-section"
@@ -12,7 +12,7 @@ export default function AboutPage() {
     <main className="min-h-screen">
       <Navigation />
       <AboutHero />
-      <SerendipitySection />
+      {/* <SerendipitySection /> */}
       <MissionSection />
       <FoundersSection />
       <AboutCTA />

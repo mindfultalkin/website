@@ -33,7 +33,7 @@ export function AboutHero() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-                onClick={() => scrollToSection("cta")}
+                onClick={() => window.open('https://in.bigin.online/org60035146435/forms/portfolio')}
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 group"
               >

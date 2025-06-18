@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 export function AboutCTA() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -49,15 +50,17 @@ export function AboutCTA() {
               been missing!
             </p>
 
-            <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8 mb-12">
-              <img
-                src="/business_success_illustration.png?height=200&width=600"
-                alt="Business success illustration"
-                className="w-full h-48 object-cover rounded-lg mb-6"
+            <div className=" from-primary/10 to-secondary/10 rounded-2xl p-8 mb-12">
+              <Image
+                src="/business_success_illustration.png"
+                alt="Business Success Illustration"
+                width={800}
+                height={350}
               />
 
               <div className="max-w-lg mx-auto">
                 <Button
+                  onClick={() => window.open('https://in.bigin.online/org60035146435/forms/portfolio')}
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 group w-full sm:w-auto"
                 >
