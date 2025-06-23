@@ -28,9 +28,8 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -67,6 +66,12 @@ export function Navigation() {
                 className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
               >
                 Instructional Design
+              </Link>
+              <Link
+                href="/resource"
+                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+              >
+                Resource
               </Link>
               <Link
                 href="/about"
@@ -124,6 +129,13 @@ export function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Instructional Design
+              </Link>
+              <Link
+                href="/resource"
+                className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary transition-colors duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Resource
               </Link>
               <Link
                 href="/about"
