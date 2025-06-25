@@ -71,7 +71,7 @@ export function Navigation() {
                 href="/resource"
                 className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
               >
-                Resource
+                Resources
               </Link>
               <Link
                 href="/about"
@@ -135,7 +135,7 @@ export function Navigation() {
                 className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Resource
+                Resources
               </Link>
               <Link
                 href="/about"
