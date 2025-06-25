@@ -1,3 +1,5 @@
+"use client"
+
 import { Navigation } from "@/components/navigation"
 import { BlogHero } from "@/components/resource/hero-section"
 import CaseStudy from "@/components/resource/case-study"

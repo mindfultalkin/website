@@ -49,12 +49,12 @@ export function BlogHero() {
             {/* Stats */}
             <div className="grid grid-cols-2 gap-6 pt-8">
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary">↑85%</div>
-                <div className="text-sm text-muted-foreground">Better Retention</div>
+                {/* <div className="text-2xl sm:text-3xl font-bold text-primary">↑85%</div> */}
+                {/* <div className="text-sm text-muted-foreground">Better Retention</div> */}
               </div>
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-secondary">↑60%</div>
-                <div className="text-sm text-muted-foreground">Faster Learning</div>
+                {/* <div className="text-2xl sm:text-3xl font-bold text-secondary">↑60%</div> */}
+                {/* <div className="text-sm text-muted-foreground">Faster Learning</div> */}
               </div>
             </div>
           </div>

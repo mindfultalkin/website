@@ -3,11 +3,12 @@
 import { useEffect, useRef, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 // import each case study detail component
-import TribalKnowledge from "@/components/resource/tribal-knowledge"
-import KnowledgeBase from "@/components/resource/knowledge-base"
-import EmbeddedSystems from "@/components/resource/embedded-systems"
+import TribalKnowledge from "@/components/resource/documentation"
+import KnowledgeBase from "@/components/resource/adoption"
+import EmbeddedSystems from "@/components/resource/complex-system"
 
 export default function CaseStudy() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -109,10 +110,16 @@ export default function CaseStudy() {
                       <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
                       <p className="text-muted-foreground mb-6">{item.subtitle}</p>
                       <Button
+                        asChild
                         className={`${buttonClass} text-white font-semibold px-6 py-2 rounded-full`}
-                        onClick={() => setSelected({ title: item.title, component: item.component })}
                       >
-                        Learn More
+                        <Link href={
+                          idx === 0 ? "/resource/tribal-knowledge" :
+                          idx === 1 ? "/resource/knowledge-base" :
+                          "/resource/embedded-systems"
+                        }>
+                          Learn More
+                        </Link>
                       </Button>
                     </CardContent>
                   </Card>
