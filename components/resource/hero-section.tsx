@@ -26,13 +26,12 @@ export function BlogHero() {
           <div className={`space-y-8 ${isVisible ? "animate-fade-in-left" : "opacity-0"}`}>
             <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="block text-foreground">From Complexity</span>
-                <span className="block text-primary">To Clarity</span>
+                <span className="block text-foreground">Proven Communication</span>
+                <span className="block text-primary">Documented Success</span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">Our blog breaks down what it takes to design impactful learning and documentation</p>
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">Dive into our success stories and discover what great documentation can do</p>
 
-              <p className="text-lg text-foreground leading-relaxed max-w-2xl">— with frameworks, insights, and proven practices from the field.</p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -41,7 +40,7 @@ export function BlogHero() {
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 group"
               >
-                Book a Call
+                Read more
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
