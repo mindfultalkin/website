@@ -233,22 +233,7 @@ export function TestimonialsSection() {
                 style={{ width: `${((currentIndex + 1) / testimonials.length) * 100}%` }}
               />
             </div>
-            <div className="text-center mt-2 text-sm text-muted-foreground">
-              {currentIndex + 1} of {testimonials.length}
-            </div>
-          </div>
-
-          {/* Auto-play Control */}
-          <div className="text-center mt-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className="text-muted-foreground hover:text-primary"
-            >
-              {isAutoPlaying ? "Pause" : "Resume"} Auto-play
-            </Button>
-          </div>
+          </div>          
         </div>
       </div>
     </section>
