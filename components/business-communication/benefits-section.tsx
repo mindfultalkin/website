@@ -36,31 +36,31 @@ export function BenefitsSection() {
       title: "Increased Revenue",
       description: "Clear communication drives sales and client retention",
       color: "primary",
-      position: "top-left"
+      // position: "top-left"
     },
     {
       title: "Reduced Attrition",
       description: "Better communication improves employee satisfaction",
       color: "secondary",
-      position: "top-right"
+      // position: "top-right"
     },
     {
       title: "Improved Customer Satisfaction",
       description: "Clear messaging builds trust and loyalty",
       color: "primary",
-      position: "center"
+      // position: "center"
     },
     {
       title: "Smoother Collaboration",
       description: "Teams work better when they understand each other",
       color: "secondary",
-      position: "bottom-left"
+      // position: "bottom-left"
     },
     {
       title: "Faster Decision making",
       description: "Teams make informed decisions quickly and confidently",
       color: "primary",
-      position: "bottom-right"
+      // position: "bottom-right"
     },
   ]
 
@@ -94,7 +94,7 @@ export function BenefitsSection() {
         {/* Benefits Grid */}
         <div className="relative max-w-7xl mx-auto">
           {/* Connecting Lines */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" viewBox="0 0 1000 800">
+          {/* <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" viewBox="0 0 1000 800">
             <defs>
               <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" className="stop-primary" />
@@ -108,10 +108,10 @@ export function BenefitsSection() {
               strokeWidth="2"
               className="animate-pulse"
             />
-          </svg>
+          </svg> */}
 
           {/* Benefits Items */}
-          <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
             {benefits.map((benefit, index) => {
               const isVisible = visibleItems.includes(index)
               const isPrimary = benefit.color === "primary"
@@ -122,9 +122,8 @@ export function BenefitsSection() {
                   className={`relative group cursor-pointer transform transition-all duration-700 ease-out ${isVisible
                       ? 'opacity-100 translate-y-0 scale-100'
                       : 'opacity-0 translate-y-12 scale-95'
-                    } ${index === 2 ? 'lg:col-span-1 lg:col-start-2' : ''
-                    }`}
-                  style={{
+                    } `}
+                  style={{ 
                     transitionDelay: `${index * 150}ms`
                   }}
                 >

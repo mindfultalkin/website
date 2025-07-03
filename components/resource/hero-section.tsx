@@ -76,12 +76,12 @@ export function BlogHero() {
             <div className={`space-y-8 ${isVisible ? "animate-fade-in-left" : "opacity-0"}`}>
               <div className="space-y-6">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                  <span className="block text-foreground">Proven Communication</span>
-                  <span className="block text-primary">Documented Success</span>
+                  <span className="block text-foreground">Proven Communication.</span>
+                  <span className="block text-primary">Documented Success.</span>
                 </h1>
 
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                  Dive into our success stories and discover what great documentation can do
+                  Dive into our success stories and discover what great documentation can do.
                 </p>
               </div>
 
@@ -215,7 +215,7 @@ export function BlogHero() {
               <div>
                 <Input
                   name="niche"
-                  placeholder="Your Niche*"
+                  placeholder="Your Interest*"
                   value={formData.niche}
                   onChange={handleChange}
                   className="w-full"

@@ -240,7 +240,7 @@ export function InstructionalDesignHero() {
               <div>
                 <Input
                   name="niche"
-                  placeholder="Your Niche*"
+                  placeholder="Your Interest*"
                   value={formData.niche}
                   onChange={handleChange}
                   className="w-full"

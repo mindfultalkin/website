@@ -97,9 +97,9 @@ export function HowWeWorkSection() {
                   className={`animate-on-scroll group relative ${isEven ? 'md:mt-0' : 'md:mt-16'}`}
                 >
                   {/* Step Number Background */}
-                  <div className={`absolute -top-4 -right-4 text-8xl font-black ${colorClass} opacity-5 select-none z-0`}>
+                  {/* <div className={`absolute -top-4 -right-4 text-8xl font-black ${colorClass} opacity-5 select-none z-0`}>
                     {step.number}
-                  </div>
+                  </div> */}
 
                   {/* Main Content */}
                   <div className="relative z-10 text-center">
@@ -110,9 +110,9 @@ export function HowWeWorkSection() {
                       </div>
 
                       {/* Floating Number */}
-                      <div className={`absolute -top-2 -right-2 ${bgClass} text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-lg`}>
+                      {/* <div className={`absolute -top-2 -right-2 ${bgClass} text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-lg`}>
                         {step.number}
-                      </div>
+                      </div> */}
                       
                     </div>
 

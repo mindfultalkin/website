@@ -64,10 +64,16 @@ export function Footer() {
             <div>
               <h4 className="font-semibold mb-4">Follow Us</h4>
               <div className="flex space-x-4">
-                <Button variant="ghost" size="icon" className="text-background hover:text-primary hover:bg-background/10">
-                  <Linkedin className="h-5 w-5" />
-                </Button>
-                <Button variant="ghost" size="icon" className="text-background hover:text-primary hover:bg-background/10">
+                <Link
+                  href="https://www.linkedin.com/company/mindfultalk-in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="ghost" size="icon" className="text-background hover:text-primary hover:bg-background/10">
+                    <Linkedin className="h-5 w-5" />
+                  </Button>
+                </Link>
+                {/* <Button variant="ghost" size="icon" className="text-background hover:text-primary hover:bg-background/10">
                   <Twitter className="h-5 w-5" />
                 </Button>
                 <Button variant="ghost" size="icon" className="text-background hover:text-primary hover:bg-background/10">
@@ -75,7 +81,7 @@ export function Footer() {
                 </Button>
                 <Button variant="ghost" size="icon" className="text-background hover:text-primary hover:bg-background/10">
                   <Facebook className="h-5 w-5" />
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>
