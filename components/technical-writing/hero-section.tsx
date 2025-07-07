@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, FileText, Code, BookOpen, Users, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import Image from "next/image"
+import { ContactModal } from "../contact-modal"
 
 export function TechnicalWritingHero() {
   const [isVisible, setIsVisible] = useState(false)
@@ -87,7 +88,7 @@ export function TechnicalWritingHero() {
                   If your support team is buried in tickets, you can't scale. That's where we come in.
                 </p>
 
-                <p className="text-lg text-foreground leading-relaxed max-w-2xl">
+                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
                   We turn complex systems into clear, accessible content — the kind that drives product adoption, reduces
                   support tickets, and makes your users feel smart.
                 </p>
@@ -197,80 +198,7 @@ export function TechnicalWritingHero() {
       </section>
 
       {/* Modal Form */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-            >
-              <X className="h-5 w-5" />
-            </button>
-            <h2 className="text-2xl font-semibold mb-4">Talk to Us</h2>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Input
-                  name="name"
-                  placeholder="Name*"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full"
-                />
-                {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
-              </div>
-
-              <div>
-                <Input
-                  name="email"
-                  type="email"
-                  placeholder="Email*"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full"
-                />
-                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-              </div>
-
-              <div>
-                <Input
-                  name="phone"
-                  placeholder="Phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full"
-                />
-              </div>
-
-              <div>
-                <Input
-                  name="niche"
-                  placeholder="Your Interest*"
-                  value={formData.niche}
-                  onChange={handleChange}
-                  className="w-full"
-                />
-                {errors.niche && <p className="text-red-500 text-sm">{errors.niche}</p>}
-              </div>
-
-              <Button
-                type="submit"
-                disabled={status === "loading"}
-                className="w-full bg-primary text-white"
-              >
-                {status === "loading" ? "Submitting…" : "Submit"}
-              </Button>
-
-              {status === "success" && (
-                <p className="text-green-600 text-center">Thank you! We’ll be in touch soon.</p>
-              )}
-              {status === "error" && (
-                <p className="text-red-600 text-center">Oops! Something went wrong.</p>
-              )}
-            </form>
-          </div>
-        </div>
-      )}
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   )
 }

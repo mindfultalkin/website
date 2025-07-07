@@ -13,10 +13,16 @@ export function TestimonialsSection() {
   const testimonials = [
     {
       quote:
+        "We have engaged 'Mindfultalk' to improve the communication skills of our technical team. They have done a fabulous job in 6 weeks. I could see the tangible difference as an outcome and it is really value for money. Wonderful team with lot of patience, professionalism and perseverance. I highly recommend the Mindfultalk team to my connections and contacts. Communication being the key element for any business they do a great job.",
+      author: "Mahendran Kathiresan",
+      title: "Co-Founder & Chief Evangelist, Innomonk Technologies Pvt Ltd",
+    },
+    {
+      quote:
         "...what you have done is - more than the communication, you have given them [cohort members] lots of confidence to speak. I am very happy with the progress we are seeing in all of them. This coaching in communication will have a bigger impact as it will help them grow in their career.",
       author: "Shiva Jayagopal",
       title: "CEO, Winvinaya Infosystems",
-    },
+      },
     {
       quote:
         "When this training started, I thought I wouldn't be able to achieve the goals. I was not confident to speak in front of a group. But I am able to do that now. I have started to chat with my colleagues in English and write emails without any help. I wrote 1-2 emails to the customer last week. This is the first time I am doing this. Also, I filled this questionnaire, all by myself - this is the biggest transformation from this program.",
@@ -217,9 +223,8 @@ export function TestimonialsSection() {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                  index === currentIndex ? "bg-primary scale-125" : "bg-primary/30 hover:bg-primary/50"
-                }`}
+                className={`w-3 h-3 rounded-full transition-all duration-200 ${index === currentIndex ? "bg-primary scale-125" : "bg-primary/30 hover:bg-primary/50"
+                  }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
@@ -233,7 +238,7 @@ export function TestimonialsSection() {
                 style={{ width: `${((currentIndex + 1) / testimonials.length) * 100}%` }}
               />
             </div>
-          </div>          
+          </div>
         </div>
       </div>
     </section>
