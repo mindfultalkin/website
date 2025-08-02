@@ -79,7 +79,7 @@ export function HowWeWorkSection() {
         {/* Process Flow */}
         <div className="relative mb-20">
           {/* Connection Lines */}
-          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-secondary to-primary opacity-30 transform -translate-y-1/2"></div>
+          <div className="hidden md:block absolute top-1/2 bg-gradient-to-r from-primary via-secondary to-primaryz transform -translate-y-1/2"></div>
 
           <div className="grid md:grid-cols-3 gap-12 relative">
             {steps.map((step, index) => {

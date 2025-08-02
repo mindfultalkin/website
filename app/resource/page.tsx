@@ -3,6 +3,7 @@
 import { Navigation } from "@/components/navigation"
 import { BlogHero } from "@/components/resource/hero-section"
 import CaseStudy from "@/components/resource/case-study"
+import { CTA } from "@/components/cta-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { Footer } from "@/components/footer"
 
@@ -12,6 +13,7 @@ export default function InstructionalDesignPage() {
       <Navigation />
       <BlogHero />
       <CaseStudy />
+      <CTA />
       <TestimonialsSection />
       <Footer />
     </main>

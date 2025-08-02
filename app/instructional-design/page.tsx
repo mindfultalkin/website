@@ -4,7 +4,7 @@ import { WhatWeDoSection } from "@/components/instructional-design/what-we-do-se
 import { InstructionalServicesSection } from "@/components/instructional-design/services-section"
 import { HowWeWorkSection } from "@/components/instructional-design/how-we-work-section"
 import { WhyChooseUsSection } from "@/components/instructional-design/why-choose-us-section"
-import { InstructionalCTA } from "@/components/instructional-design/cta-section"
+import { CTA } from "@/components/cta-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { Footer } from "@/components/footer"
 
@@ -17,7 +17,7 @@ export default function InstructionalDesignPage() {
       <InstructionalServicesSection />
       <HowWeWorkSection />
       <WhyChooseUsSection />
-      <InstructionalCTA />
+      <CTA />
       <TestimonialsSection />
       <Footer />
     </main>

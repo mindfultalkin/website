@@ -70,7 +70,7 @@ export function BusinessHero() {
             {/* Left Content */}
             <div className={`space-y-8 ${isVisible ? "animate-fade-in-left" : "opacity-0"}`}>
               <div className="space-y-6">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold leading-tight">
                   <span className="block text-foreground">Let How You Communicate</span>
                   <span className="block text-foreground">Steer You To Your</span>
                   <span className="block text-primary">Business Goals</span>

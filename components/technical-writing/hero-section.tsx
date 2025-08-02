@@ -77,7 +77,7 @@ export function TechnicalWritingHero() {
             {/* Left Content */}
             <div className={`space-y-8 ${isVisible ? "animate-fade-in-left" : "opacity-0"}`}>
               <div className="space-y-6">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold leading-tight">
                   <span className="block text-foreground">Documentation</span>
                   <span className="block text-foreground">is Not a Luxury</span>
                   <span className="block text-primary">— It's a Feature</span>

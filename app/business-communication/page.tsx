@@ -7,7 +7,8 @@ import { HiddenCost } from "@/components/business-communication/hidden-cost"
 import { BenefitsSection } from "@/components/business-communication/benefits-section"
 // import { WhoWeHelpSection } from "@/components/business-communication/who-we-help-section"
 // import { ServicesSection } from "@/components/business-communication/services-section"
-// import { BusinessCTA } from "@/components/business-communication/cta-section"
+import { OurPrograms } from "@/components/business-communication/our-programs"
+import { CTA } from "@/components/cta-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { Footer } from "@/components/footer"
 
@@ -23,7 +24,8 @@ export default function BusinessCommunicationPage() {
       <BenefitsSection />
       {/* <WhoWeHelpSection /> */}
       {/* <ServicesSection /> */}
-      {/* <BusinessCTA /> */}
+      <OurPrograms />
+      <CTA />
       <TestimonialsSection />
       <Footer />
     </main>

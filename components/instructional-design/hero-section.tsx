@@ -75,10 +75,10 @@ export function InstructionalDesignHero() {
             {/* Left Content */}
             <div className={`space-y-8 ${isVisible ? "animate-fade-in-left" : "opacity-0"}`}>
               <div className="space-y-6">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold leading-tight">
                   <span className="block text-foreground">Turn Training</span>
-                  <span className="block text-primary">Expenses Into</span>
-                  <span className="block text-secondary">Performance Assets</span>
+                  <span className="block text-foreground">Expenses Into</span>
+                  <span className="block text-primary">Performance Assets</span>
                 </h1>
 
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
