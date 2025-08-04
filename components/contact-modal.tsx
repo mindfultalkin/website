@@ -62,24 +62,23 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-md px-10 py-6 relative">
+      <div className="bg-white rounded-lg shadow-lg w-[85%] max-w-3xl mx-auto px-16 py-12 relative">
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
         >
           <X className="h-5 w-5" />
         </button>
-        <div className="flex flex-col items-center mb-4 mt-2">
+        <div className="flex flex-col items-center mb-6 mt-3">
           <Image
             src="/mindfultalk_logo.png"
             alt="Mindfultalk Logo"
-            width={200}
-            height={120}
-            // className="mb-2 brightness-0 invert"
+            width={240}
+            height={144}
             priority
           />
         </div>
-        <h2 className="text-2xl font-semibold mb-4 text-center">Let's Create Together</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-center">I'm interested in</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
