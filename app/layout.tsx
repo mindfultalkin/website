@@ -62,7 +62,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-2BNGCYDFBC"
+        src="https://www.googletagmanager.com/gtag/js?id=G-Z3VC83WC0W"
         strategy="afterInteractive"
       />
       <Script id="google-analytics" strategy="afterInteractive">
@@ -70,7 +70,7 @@ export default function RootLayout({
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-2BNGCYDFBC');
+          gtag('config', 'G-Z3VC83WC0W');
         `}
       </Script>
       {/* suppressHydrationWarning avoids mismatches from extensions injecting attributes */}
