@@ -1,0 +1,21 @@
+{
+  "name": "Mindfultalk - Turn Knowledge into Clear Communication",
+  "short_name": "Mindfultalk",
+  "description": "Expert technical writing, instructional design, and business communication services.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/mindfultalk_logo_circle.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/mindfultalk_logo_circle.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
