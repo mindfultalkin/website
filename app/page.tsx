@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     canonical: 'https://mindfultalk.in'
   },
   verification: {
-    google: 'YOUR_GOOGLE_VERIFICATION_ID', // Add your Google Search Console verification ID here
+    google: 'M_h02D_VLIFXIyJ4XPSYyLglM_BkK6h2ZO5L09YbX28', // Add your Google Search Console verification ID here
   }
 }
 
