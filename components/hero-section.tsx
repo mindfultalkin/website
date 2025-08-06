@@ -154,7 +154,7 @@ export function HeroSection() {
                       alt="Hero Image showcasing Mindfultalk's communication solutions"
                       width={1200}
                       height={600}
-                      priority
+                      // priority
                       className="rounded-lg transform transition-transform duration-500 hover:scale-105"
                     />
                   </div>
