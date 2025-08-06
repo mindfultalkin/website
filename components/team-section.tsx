@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import ResponsiveImage from "@/components/ui/responsive-image"
 
 export function TeamSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -119,10 +120,12 @@ export function TeamSection() {
 
                 {/* Main image container */}
                 <div className="relative transition-all duration-500">
-                  <img
+                  <ResponsiveImage
                     src="/team_collaboration.png"
                     alt="Professional Team Collaboration"
-                    className="w-full h-72 object-cover rounded-xl transition-transform duration-500"
+                    displayWidth={432}
+                    displayHeight={288}
+                    className="rounded-xl transition-transform duration-500"
                   />
                 </div>
               </div>
