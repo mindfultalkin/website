@@ -69,7 +69,7 @@ export function TechnicalWritingCTA() {
                   Let's discuss your documentation needs and explore how we can help streamline your user experience.
                 </p>
                 <Button 
-                  onClick={() => window.open('https://in.bigin.online/org60035146435/forms/portfolio')}
+                  onClick={() => window.open('https://portfolio-eosin-one-3k2cjgxh93.vercel.app/')}
                   className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-full group w-full"
                 >
                   Book a Discovery Call
@@ -88,7 +88,7 @@ export function TechnicalWritingCTA() {
                   See our writing style and approach with a sample piece tailored to your industry and use case.
                 </p>
                 <Button 
-                  onClick={() => window.location.href = 'https://in.bigin.online/org60035146435/forms/portfolio'}
+                  onClick={() => window.location.href = 'https://portfolio-eosin-one-3k2cjgxh93.vercel.app/'}
                   className="bg-secondary hover:bg-secondary/90 text-white font-semibold px-6 py-3 rounded-full group w-full"
                 >
                   Request a Sample
