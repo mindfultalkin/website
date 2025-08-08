@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "jsc": {
+    "target": "es2020",
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "decorators": true,
+      "dynamicImport": true
+    },
+    "transform": {
+      "react": {
+        "runtime": "automatic",
+        "development": false,
+        "refresh": false
+      }
+    },
+    "minify": {
+      "compress": {
+        "unused": true,
+        "dead_code": true,
+        "reduce_vars": true,
+        "conditionals": true,
+        "booleans": true,
+        "if_return": true,
+        "sequences": true
+      },
+      "mangle": true
+    }
+  },
+  "minify": true,
+  "module": {
+    "type": "es6",
+    "strict": true,
+    "strictMode": true,
+    "lazy": true,
+    "noInterop": false
+  }
+}

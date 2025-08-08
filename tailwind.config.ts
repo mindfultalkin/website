@@ -9,6 +9,16 @@ const config: Config = {
     "./src/**/*.{ts,tsx}",
     "*.{js,ts,jsx,tsx,mdx}",
   ],
+  future: {
+    hoverOnlyWhenSupported: true,
+    disableColorOpacityUtilitiesByDefault: true,
+    relativeContentPathsByDefault: true,
+  },
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+    reduceDuplicateSelectors: true,
+  },
   prefix: "",
   theme: {
     container: {

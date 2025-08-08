@@ -2,6 +2,13 @@
 const config = {
   plugins: {
     tailwindcss: {},
+    autoprefixer: {},
+    ...(process.env.NODE_ENV === 'production' && {
+      'postcss-preset-env': {},
+      cssnano: {
+        preset: 'default',
+      },
+    }),
   },
 };
 
