@@ -67,7 +67,7 @@ export function AboutHero() {
       <section className="min-h-screen flex items-center justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
+            {/* Left Contentt */}
             <div className={`space-y-8 ${isVisible ? "animate-fade-in-left" : "opacity-0"}`}>
               <div className="space-y-6">
                 <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold leading-tight">
