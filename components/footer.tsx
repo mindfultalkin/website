@@ -163,18 +163,26 @@ export function Footer() {
               >
                 Portfolio
               </Link>
-              {/* <Link
+              <Link
                 href="/privacy"
                 className="text-background/80 hover:text-primary transition-colors"
               >
                 Privacy Policy
               </Link>
+
+              <Link
+                href="/refund-and-cancellation-policy"
+                className="text-background/80 hover:text-primary transition-colors"
+              >
+                Refund and Cancellation Policy
+              </Link>
+
               <Link
                 href="/terms"
                 className="text-background/80 hover:text-primary transition-colors"
               >
-                Terms of Service
-              </Link> */}
+                Terms of Use
+              </Link>
             </div>
           </div>
         </div>

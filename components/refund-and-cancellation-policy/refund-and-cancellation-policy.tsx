@@ -1,10 +1,10 @@
 import React from 'react';
 
-const PrivacyPolicy: React.FC = () => {
+const RefundAndCancellationPolicy: React.FC = () => {
     return (
         <div className="space-y-12 py-20 px-6">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
-                Privacy Policy
+                Refund And Cancellation Policy
 
             </h1>
 
@@ -22,60 +22,39 @@ const PrivacyPolicy: React.FC = () => {
             </section> */}
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-900">1. Information We Collect</h2>
+                <h2 className="text-2xl font-semibold text-gray-900">1. Coaching & Training Services</h2>
                 <p className="text-gray-700">
-                    We collect personal details, payment information, session data, and recordings.
+                    All fees are payable in advance. No refunds after the first session. Sessions can be rescheduled with 24-hour notice.
                 </p>
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-900">2. How We Use Your Data</h2>
+                <h2 className="text-2xl font-semibold text-gray-900">2. Online Courses</h2>
                 <p className="text-gray-700">
-                    To deliver coaching, process payments, communicate updates, improve services, and for anonymized marketing.
+                    Fees for digital courses are non-refundable once access is granted.
                 </p>
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-900">3. Data Sharing</h2>
+                <h2 className="text-2xl font-semibold text-gray-900">3. Corporate or Technical Writing Services</h2>
                 <p className="text-gray-700">
-                    We do not sell data. We share only with payment processors and authorized personnel.
+                    Each engagement follows its own agreement. Refunds depend on milestones completed.
                 </p>
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-900">4. Recordings and Marketing Use</h2>
+                <h2 className="text-2xl font-semibold text-gray-900">4. Exceptions</h2>
                 <p className="text-gray-700">
-                    Recordings may be used internally or for marketing after masking client identity.
+                    Refunds only for duplicate payments or service cancellation by us before commencement.
                 </p>
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-900">5. Data Retention</h2>
+                <h2 className="text-2xl font-semibold text-gray-900">5. Contact for Refunds</h2>
                 <p className="text-gray-700">
-                    Data is retained as long as necessary to provide services and comply with legal obligations.
+                    For refund queries, contact [insert official email] within 7 days of payment.
                 </p>
-            </section>
-
-            <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-900">6. Data Protection</h2>
-                <p className="text-gray-700">
-                    We follow Indian IT Act, 2000 standards for data protection.
-                </p>
-            </section>
-
-            <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-900">7. Your Rights</h2>
-                <p className="text-gray-700">
-                    You may request access, correction, or deletion of your data via [insert contact email].
-                </p>
-            </section>
-
-            <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-900">8. Updates</h2>
-                <p className="text-gray-700">
-                    We may revise this policy periodically; updates will appear on our website.
-                </p>
-            </section>
+            </section>           
 
             {/* <section className="space-y-4">
                 <h2 className="text-2xl font-semibold text-gray-900">Your Rights</h2>
@@ -98,4 +77,4 @@ const PrivacyPolicy: React.FC = () => {
     );
 };
 
-export default PrivacyPolicy;
+export default RefundAndCancellationPolicy;
