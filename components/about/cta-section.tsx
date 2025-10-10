@@ -5,10 +5,12 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 
-export function AboutCTA() {
+export default function AboutCTA() {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

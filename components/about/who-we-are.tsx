@@ -16,9 +16,7 @@ export function WhoWeAre() {
             const animateElements = entry.target.querySelectorAll(".animate-on-scroll")
             animateElements.forEach((el, index) => {
               setTimeout(() => {
-                if (el instanceof Element) {
-                  el.classList.add("animate")
-                }
+                el.classList.add("animate")
               }, index * 200)
             })
           }
@@ -48,10 +46,16 @@ export function WhoWeAre() {
             </h2>
 
             <p className="text-lg sm:text-xl text-muted-foreground mb-12 leading-relaxed">
-              At Mindfultalk, we’re a team of communication specialists, coaches, and writers united by one purpose — to help professionals express themselves with clarity, confidence, and authenticity. We understand that communication isn’t just about words; it’s about how you connect, influence, and lead. Our work is built on the belief that great communicators aren’t born—they’re shaped through awareness, empathy, and consistent practice. Led by a team of seasoned communication experts with over 100 years of combined industry experience, we combine leadership insight with empathetic, practical coaching.<br></br>Our writing team works hand-in-hand with subject matter experts, senior leaders, and developers to transform complex technical information into clear, accessible, and business-aligned documentation. Whether it’s product guides, internal knowledge bases, or process documentation, we make sure your message is precise, professional, and ready to drive growth.
+              At Mindfultalk, we’re a team of communication specialists, coaches, and writers united by one purpose — to help professionals express themselves with clarity, confidence, and authenticity. We understand that communication isn’t just about words; it’s about how you connect, influence, and lead. Our work is built on the belief that great communicators aren’t born—they’re shaped through awareness, empathy, and consistent practice. Led by a team of seasoned communication experts with over 100 years of combined industry experience, we combine leadership insight with empathetic, practical coaching.
             </p>
 
-            <div className=" from-primary/10 to-secondary/10 rounded-2xl p-8 mb-12">
+            <p className="text-lg sm:text-xl text-muted-foreground mb-12 leading-relaxed">
+              Our writing team works hand-in-hand with subject matter experts, senior leaders, and developers to transform complex technical information into clear, accessible, and business-aligned documentation. Whether it’s product guides, internal knowledge bases, or process documentation, we make sure your message is precise, professional, and ready to drive growth.
+            </p>
+            
+
+
+            {/* <div className=" from-primary/10 to-secondary/10 rounded-2xl p-8 mb-12">
               <Image
                 src="/business_success_illustration.png"
                 alt="Business Success Illustration"
@@ -69,26 +73,27 @@ export function WhoWeAre() {
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
-            </div>
+            </div> */}
 
-            <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div>
+            <div className="text-center">
+              {/* <div>
                 <div className="text-2xl font-bold text-primary mb-2">Unlock Revenue</div>
                 <div className="text-muted-foreground">Clear communication drives business results</div>
-              </div>
+              </div> */}
               <div>
-                <div className="text-2xl font-bold text-secondary mb-2">Drive Growth</div>
-                <div className="text-muted-foreground">Effective collaboration accelerates success</div>
+                <div className="text-2xl font-bold text-secondary mb-2">Our Essence</div>
+                <div className="text-lg sm:text-xl text-muted-foreground mb-12 leading-relaxed">We’re communicators who listen deeply, coaches who care genuinely, and professionals who believe in measurable impact.
+At Mindfultalk, everything we do—whether through coaching or writing—is guided by one belief: when communication becomes mindful, everything else becomes possible.</div>
               </div>
-              <div>
+              {/* <div>
                 <div className="text-2xl font-bold text-primary mb-2">Transform Teams</div>
                 <div className="text-muted-foreground">Empower professionals to communicate with impact</div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </div>
     </section>
-
+    
   )
 }
