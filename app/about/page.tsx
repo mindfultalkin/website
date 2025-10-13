@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { AboutHero } from "@/components/about/hero-section"
-// import { WhoWeAre } from "@/components/about/who-we-are"
+import WhoWeAre from "@/components/about/who-we-are"
 // import { SerendipitySection } from "@/components/about/serendipity-section"
 import { MissionSection } from "@/components/about/mission-section"
 // import { FoundersSection } from "@/components/about/founders-section"
@@ -65,7 +65,7 @@ export default function AboutPage() {
       <AboutJsonLd />
       <Navigation />
       <AboutHero />
-      {/* <WhoWeAre /> */}
+      <WhoWeAre />
       {/* <SerendipitySection /> */}
       <MissionSection />
       {/* <FoundersSection /> */}
