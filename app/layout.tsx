@@ -1,10 +1,10 @@
-import type React from "react";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Script from "next/script";
-import { Partytown } from "@qwik.dev/partytown/react";
-import "./globals.css";
-
+import type React from "react"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import Script from 'next/script'
+import dynamic from 'next/dynamic'
+import { Partytown } from '@builder.io/partytown/react'
+import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -71,7 +71,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.mindfultalk.in" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         
-        {/* Preload critical assets 
+        {/* Preload critical assets */}
         <link
           rel="preload"
           href="/fonts/inter.woff2"
@@ -79,6 +79,7 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        {/* Preload critical CSS */}
         <link 
           rel="preload" 
           href="/css/931b179cff3131dc.css" 
@@ -88,16 +89,16 @@ export default function RootLayout({
           rel="preload" 
           href="/css/fc6e52fa606dade6.css" 
           as="style"
-        /> 
+        />
         <style>{`
-        
+          /* Critical CSS */
           body {
             background-attachment: fixed;
             background-image: radial-gradient(circle at 20% 80%, rgba(244, 140, 4, 0.05) 0%, transparent 50%),
               radial-gradient(circle at 80% 20%, rgba(8, 148, 180, 0.05) 0%, transparent 50%);
           }
-        `}</style> */}
-      </head> 
+        `}</style>
+      </head>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-Z3VC83WC0W"
         strategy="lazyOnload"
