@@ -1,11 +1,13 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Calendar, FileText } from "lucide-react"
+import { ContactModal } from "@/components/contact-modal"
 
 export function TechnicalWritingCTA() {
   const sectionRef = useRef<HTMLElement>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,10 +40,16 @@ export function TechnicalWritingCTA() {
     }
   }
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <section ref={sectionRef} className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto">
-        <div className="max-w-4xl mx-auto text-center">
+    <>
+      <ContactModal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <section ref={sectionRef} className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
           <div className="animate-on-scroll">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8">
               Clear Docs. <span className="text-primary">Fewer Tickets.</span>{" "}
@@ -69,7 +77,7 @@ export function TechnicalWritingCTA() {
                   Let's discuss your documentation needs and explore how we can help streamline your user experience.
                 </p>
                 <Button 
-                  onClick={() => window.open('https://portfolio-eosin-one-3k2cjgxh93.vercel.app/')}
+                  onClick={() => setIsModalOpen(true)}
                   className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-full group w-full"
                 >
                   Book a Discovery Call
@@ -88,7 +96,7 @@ export function TechnicalWritingCTA() {
                   See our writing style and approach with a sample piece tailored to your industry and use case.
                 </p>
                 <Button 
-                  onClick={() => window.open('https://portfolio-eosin-one-3k2cjgxh93.vercel.app/')}
+                  onClick={() => window.open('https://portfolio.mindfultalk.in/')}
                   className="bg-secondary hover:bg-secondary/90 text-white font-semibold px-6 py-3 rounded-full group w-full"
                 >
                   Request a Sample
@@ -100,5 +108,6 @@ export function TechnicalWritingCTA() {
         </div>
       </div>
     </section>
+    </>
   )
 }

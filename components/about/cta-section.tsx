@@ -60,7 +60,7 @@ export function AboutCTA() {
 
               <div className="max-w-lg mx-auto">
                 <Button
-                  onClick={() => window.open('https://portfolio-eosin-one-3k2cjgxh93.vercel.app/')}
+                  onClick={() => window.open('https://portfolio.mindfultalk.in/')}
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 group w-full sm:w-auto"
                 >

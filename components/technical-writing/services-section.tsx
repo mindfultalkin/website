@@ -128,7 +128,7 @@ export function TechnicalWritingServices() {
 
                     {/* CTA Button */}
                     <Button
-                      onClick={() => window.open('https://portfolio-eosin-one-3k2cjgxh93.vercel.app/')}
+                      onClick={() => window.open('https://portfolio.mindfultalk.in/')}
                       className={`${buttonClass} text-white font-semibold px-8 py-4 rounded-full group shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}
                     >
                       Learn More

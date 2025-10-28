@@ -158,7 +158,7 @@ export function Footer() {
             <div className="text-background/80 text-sm">© 2025 Mindfultalk.in All rights reserved.</div>
             <div className="flex space-x-6 text-sm">
               <Link
-                href="https://portfolio-eosin-one-3k2cjgxh93.vercel.app/"
+                href="https://portfolio.mindfultalk.in/"
                 className="text-background/80 hover:text-primary transition-colors"
               >
                 Portfolio
