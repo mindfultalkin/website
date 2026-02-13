@@ -33,68 +33,66 @@ export function StyleQuiz() {
   }
 
   /* ================= OPTION SELECT ================= */
-const handleSelect = (value: number) => {
-  setScores((prev) => {
-    const next = { ...prev }
+  const handleSelect = (value: number) => {
+    setScores((prev) => {
+      const next = { ...prev }
 
-    if (value === 1) next.driver += 1
-    if (value === 2) next.expressive += 1
-    if (value === 3) next.amiable += 1
-    if (value === 4) next.analytic += 1
+      if (value === 1) next.driver += 1
+      if (value === 2) next.expressive += 1
+      if (value === 3) next.amiable += 1
+      if (value === 4) next.analytic += 1
 
-    return next
-  })
+      return next
+    })
 
-  if (current < TOTAL_QUESTIONS - 1) {
-    setCurrent((p) => p + 1)
-  } else {
-    setShowResult(true)
+    if (current < TOTAL_QUESTIONS - 1) {
+      setCurrent((p) => p + 1)
+    } else {
+      setShowResult(true)
+    }
   }
-}
-
 
   /* ================= RESULT VIEW ================= */
   if (showResult) {
-    const total =
-      scores.driver +
-      scores.expressive +
-      scores.amiable +
-      scores.analytic
-
     return (
-      <div className="max-w-4xl mx-auto py-16 px-4 space-y-12">
+      <div className="max-w-5xl mx-auto py-12 md:py-16 px-4 space-y-10">
 
-        {/* Raw Counts */}
-          {/* <h2 className="text-xl font-bold">Your Selections</h2> */}
+        {/* Compact Summary Boxes */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 text-center">
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-            <div className="border rounded-lg p-4">
-              <div className="text-sm text-muted-foreground">Driver</div>
-              <div className="text-2xl font-bold">{scores.driver}</div>
+          {[
+            { label: "Driver", value: scores.driver },
+            { label: "Expressive", value: scores.expressive },
+            { label: "Amiable", value: scores.amiable },
+            { label: "Analytic", value: scores.analytic },
+          ].map((item) => (
+            <div
+              key={item.label}
+              className="
+                border rounded-lg
+                py-3 px-3
+                md:py-4 md:px-4
+                space-y-1
+                bg-muted/30
+              "
+            >
+              <div className="text-xs md:text-sm text-muted-foreground">
+                {item.label}
+              </div>
+              <div className="text-lg md:text-xl font-semibold">
+                {item.value}
+              </div>
             </div>
+          ))}
 
-            <div className="border rounded-lg p-4">
-              <div className="text-sm text-muted-foreground">Expressive</div>
-              <div className="text-2xl font-bold">{scores.expressive}</div>
-            </div>
-
-            <div className="border rounded-lg p-4">
-              <div className="text-sm text-muted-foreground">Amiable</div>
-              <div className="text-2xl font-bold">{scores.amiable}</div>
-            </div>
-
-            <div className="border rounded-lg p-4">
-              <div className="text-sm text-muted-foreground">Analytic</div>
-              <div className="text-2xl font-bold">{scores.analytic}</div>
-            </div>
-
-          {/* <div className="text-sm text-muted-foreground text-right">
-            Total = {total} / {TOTAL_QUESTIONS}
-          </div> */}
         </div>
 
+        {/* Visual Scale */}
         <TallyBox scores={scores} />
+
+        {/* Interpretation */}
         <ResultSummary scores={scores} />
+
       </div>
     )
   }
@@ -123,7 +121,7 @@ const handleSelect = (value: number) => {
         </div>
 
         {/* Question */}
-        <h2 className="text-2xl font-bold">
+        <h2 className="text-xl sm:text-2xl font-bold">
           Pick the word that fits you best
         </h2>
 
@@ -133,13 +131,18 @@ const handleSelect = (value: number) => {
             <button
               key={opt.value}
               onClick={() => handleSelect(opt.value)}
-              className="w-full border rounded-xl px-6 py-4 text-left
-                         hover:border-primary transition"
+              className="
+                w-full border rounded-xl
+                px-6 py-4 text-left
+                hover:border-primary
+                transition
+              "
             >
               {opt.label}
             </button>
           ))}
         </div>
+
       </div>
     </div>
   )

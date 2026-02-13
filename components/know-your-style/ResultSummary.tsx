@@ -47,7 +47,6 @@ function getPositionFromLayout(
 }
 
 export function ResultSummary({ scores }: { scores: Scores }) {
-  // Convert scores → positions
   const positioned = {
     driver: getPositionFromLayout("Driver", scores.driver),
     expressive: getPositionFromLayout("Expressive", scores.expressive),
@@ -55,7 +54,6 @@ export function ResultSummary({ scores }: { scores: Scores }) {
     analytic: getPositionFromLayout("Analytic", scores.analytic),
   }
 
-  // Rank by POSITION, not score
   const ranked = (Object.keys(positioned) as StyleKey[])
     .map(key => ({
       key,
@@ -67,29 +65,38 @@ export function ResultSummary({ scores }: { scores: Scores }) {
   const secondary = ranked[1]
 
   return (
-    <div className="mt-12 space-y-8">
-      <h2 className="text-2xl font-bold">Your Style Summary</h2>
+    <div className="mt-10 md:mt-12 space-y-6 md:space-y-8 px-4 md:px-0">
 
-      <div className="border rounded-xl p-6">
-        <h3 className="text-xl font-semibold">
+      <h2 className="text-medium sm:text-xl md:text-2xl lg:text-xl font-bold">
+        Your Style Summary
+      </h2>
+
+      {/* Primary Card */}
+      <div className="border rounded-xl p-4 sm:p-5 md:p-6 space-y-3">
+        <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold">
           Primary Style — {STYLE_META[primary.key].title}
         </h3>
-        <p className="text-muted-foreground">
+
+        <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
           {STYLE_META[primary.key].description}
         </p>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Position: {primary.position}
+
+        <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
+          Score: {primary.position}
         </p>
       </div>
 
-      <div className="border rounded-xl p-6">
-        <h3 className="text-lg font-semibold">
+      {/* Secondary Card */}
+      <div className="border rounded-xl p-4 sm:p-5 md:p-6 space-y-2">
+        <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold">
           Secondary Style — {STYLE_META[secondary.key].title}
         </h3>
-        <p className="text-sm text-muted-foreground">
-          Position: {secondary.position}
+
+        <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
+          Score: {secondary.position}
         </p>
       </div>
+
     </div>
   )
 }
