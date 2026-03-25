@@ -15,7 +15,7 @@ type Scores = {
 const TOTAL_QUESTIONS = 24
 
 export function StyleQuiz() {
-  /* ================= STATE ================= */
+
   const [current, setCurrent] = useState(0)
 
   const [scores, setScores] = useState<Scores>({
@@ -25,15 +25,17 @@ export function StyleQuiz() {
     analytic: 0,
   })
 
+  const [selected, setSelected] = useState<number | null>(null)
+
   const [showResult, setShowResult] = useState(false)
 
-  /* ================= SAFETY ================= */
   if (!Array.isArray(QUESTIONS) || QUESTIONS.length !== TOTAL_QUESTIONS) {
     return <div className="p-6">Invalid questions configuration</div>
   }
 
-  /* ================= OPTION SELECT ================= */
   const handleSelect = (value: number) => {
+    setSelected(value)
+
     setScores((prev) => {
       const next = { ...prev }
 
@@ -45,21 +47,21 @@ export function StyleQuiz() {
       return next
     })
 
-    if (current < TOTAL_QUESTIONS - 1) {
-      setCurrent((p) => p + 1)
-    } else {
-      setShowResult(true)
-    }
+    setTimeout(() => {
+      if (current < TOTAL_QUESTIONS - 1) {
+        setCurrent((p) => p + 1)
+        setSelected(null)
+      } else {
+        setShowResult(true)
+      }
+    }, 200)
   }
 
-  /* ================= RESULT VIEW ================= */
   if (showResult) {
     return (
       <div className="max-w-5xl mx-auto py-12 md:py-16 px-4 space-y-10">
 
-        {/* Compact Summary Boxes */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 text-center">
-
           {[
             { label: "Driver", value: scores.driver },
             { label: "Expressive", value: scores.expressive },
@@ -68,13 +70,7 @@ export function StyleQuiz() {
           ].map((item) => (
             <div
               key={item.label}
-              className="
-                border rounded-lg
-                py-3 px-3
-                md:py-4 md:px-4
-                space-y-1
-                bg-muted/30
-              "
+              className="border rounded-lg py-3 px-3 md:py-4 md:px-4 space-y-1 bg-muted/30"
             >
               <div className="text-xs md:text-sm text-muted-foreground">
                 {item.label}
@@ -84,20 +80,14 @@ export function StyleQuiz() {
               </div>
             </div>
           ))}
-
         </div>
 
-        {/* Visual Scale */}
         <TallyBox scores={scores} />
-
-        {/* Interpretation */}
         <ResultSummary scores={scores} />
-
       </div>
     )
   }
 
-  /* ================= QUESTION VIEW ================= */
   const question = QUESTIONS[current]
 
   if (!question || !Array.isArray(question.options)) {
@@ -126,17 +116,24 @@ export function StyleQuiz() {
         </h2>
 
         {/* Options */}
-        <div className="space-y-4">
+        <div key={current} className="space-y-4">
           {question.options.map((opt) => (
             <button
               key={opt.value}
-              onClick={() => handleSelect(opt.value)}
-              className="
-                w-full border rounded-xl
-                px-6 py-4 text-left
-                hover:border-primary
-                transition
-              "
+              onClick={(e) => {
+                (e.currentTarget as HTMLButtonElement).blur() // mobile fix
+                handleSelect(opt.value)
+              }}
+              style={{ WebkitTapHighlightColor: "transparent" }} // remove tap highlight
+              className={`
+                w-full border rounded-xl px-6 py-4 text-left transition
+                focus:outline-none focus:ring-0 active:outline-none
+                ${
+                  selected === opt.value
+                    ? "border-primary bg-primary/10"
+                    : "hover:border-primary"
+                }
+              `}
             >
               {opt.label}
             </button>

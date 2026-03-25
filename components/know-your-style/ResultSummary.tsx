@@ -30,28 +30,62 @@ const STYLE_META = {
   },
 }
 
-function getPositionFromLayout(
-  style: "Driver" | "Expressive" | "Amiable" | "Analytic",
+function getInterpolatedPosition(
+  row: typeof TALLY_LAYOUT[number],
   score: number
 ): number {
-  const row = TALLY_LAYOUT.find(r => r.label === style)
-  if (!row) return 0
+  const points = row.boxes
+    .flatMap(box =>
+      box.numbers.map(n => ({
+        value: n,
+        pos: box.positions[n],
+      }))
+    )
+    .sort((a, b) => a.value - b.value)
 
-  for (const box of row.boxes) {
-    if (box.numbers.includes(score)) {
-      return box.positions[score]
+  if (points.length === 0) return 0
+
+  if (score <= points[0].value) return points[0].pos
+
+  if (score >= points[points.length - 1].value)
+    return points[points.length - 1].pos
+
+  const exact = points.find(p => p.value === score)
+  if (exact) return exact.pos
+
+  for (let i = 0; i < points.length - 1; i++) {
+    const lower = points[i]
+    const upper = points[i + 1]
+
+    if (score > lower.value && score < upper.value) {
+      const ratio =
+        (score - lower.value) / (upper.value - lower.value)
+
+      return lower.pos + ratio * (upper.pos - lower.pos)
     }
   }
 
   return 0
-}
+}  
 
 export function ResultSummary({ scores }: { scores: Scores }) {
   const positioned = {
-    driver: getPositionFromLayout("Driver", scores.driver),
-    expressive: getPositionFromLayout("Expressive", scores.expressive),
-    amiable: getPositionFromLayout("Amiable", scores.amiable),
-    analytic: getPositionFromLayout("Analytic", scores.analytic),
+    driver: getInterpolatedPosition(
+      TALLY_LAYOUT.find(r => r.label === "Driver")!,
+      scores.driver
+    ),
+    expressive: getInterpolatedPosition(
+      TALLY_LAYOUT.find(r => r.label === "Expressive")!,
+      scores.expressive
+    ),
+    amiable: getInterpolatedPosition(
+      TALLY_LAYOUT.find(r => r.label === "Amiable")!,
+      scores.amiable
+    ),
+    analytic: getInterpolatedPosition(
+      TALLY_LAYOUT.find(r => r.label === "Analytic")!,
+      scores.analytic
+    ),
   }
 
   const ranked = (Object.keys(positioned) as StyleKey[])

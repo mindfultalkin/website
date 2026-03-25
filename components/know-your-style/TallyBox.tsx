@@ -49,6 +49,48 @@ export function TallyBox({ scores }: Props) {
     safeScores.expressive +
     safeScores.amiable +
     safeScores.analytic
+  
+    function getInterpolatedPosition(
+      row: typeof TALLY_LAYOUT[number],
+      score: number
+    ): number {
+      const points = row.boxes
+        .flatMap(box =>
+          box.numbers.map(n => ({
+            value: n,
+            pos: box.positions[n],
+          }))
+        )
+        .sort((a, b) => a.value - b.value)
+
+      if (points.length === 0) return 0
+
+      // below minimum
+      if (score <= points[0].value) return points[0].pos
+
+      // above maximum
+      if (score >= points[points.length - 1].value)
+        return points[points.length - 1].pos
+
+      // exact match
+      const exact = points.find(p => p.value === score)
+      if (exact) return exact.pos
+
+      // find neighbors
+      for (let i = 0; i < points.length - 1; i++) {
+        const lower = points[i]
+        const upper = points[i + 1]
+
+        if (score > lower.value && score < upper.value) {
+          const ratio =
+            (score - lower.value) / (upper.value - lower.value)
+
+          return lower.pos + ratio * (upper.pos - lower.pos)
+        }
+      }
+
+      return 0
+    }
 
   return (
     <div className="w-full space-y-10 px-4 md:px-0">
@@ -77,107 +119,99 @@ export function TallyBox({ scores }: Props) {
       {/* ROWS */}
       {TALLY_LAYOUT.map(row => {
         const rawScore = getScoreForRow(row.label)
-        const score = normalizeScore(row.label, rawScore)
+        const score = rawScore
 
-        const position =
-          row.boxes
-            .flatMap(box =>
-              box.numbers.map(n => ({
-                value: n,
-                pos: box.positions[n],
-              }))
-            )
-            .find(item => item.value === score)?.pos ?? 0
+      const position = getInterpolatedPosition(row, score)
 
-        return (
-          <div key={row.label} className="space-y-3">
+      return (
+        <div key={row.label} className="space-y-3">
 
-            {/* Label ONLY (score number removed here) */}
-            <div className="text-sm md:text-base italic font-medium">
-              {row.label}
-            </div>
+          {/* Label ONLY (score number removed here) */}
+          <div className="text-sm md:text-base italic font-medium">
+            {row.label}
+          </div>
 
-            {/* Row Content */}
-            <div className="flex items-center gap-3 md:gap-4">
+          {/* Row Content */}
+          <div className="flex items-center gap-3 md:gap-4">
 
-              {/* Code Box */}
-              {/* <div
-                className="
-                  w-8 h-8
-                  md:w-10 md:h-10
-                  lg:w-12 lg:h-12
-                  border border-muted
-                  rounded-md
-                  flex items-center justify-center
-                  text-xs md:text-sm
-                  font-semibold
-                  shrink-0
-                "
-              >
-                {row.code}
-              </div> */}
+            {/* Code Box */}
+            {/* <div
+              className="
+                w-8 h-8
+                md:w-10 md:h-10
+                lg:w-12 lg:h-12
+                border border-muted
+                rounded-md
+                flex items-center justify-center
+                text-xs md:text-sm
+                font-semibold
+                shrink-0
+              "
+            >
+              {row.code}
+            </div> */}
 
-              {/* SCALE (Full width mobile) */}
-              <div className="relative flex-1 h-6 md:h-9 lg:h-12 bg-primary/15 rounded-md overflow-hidden">
+            {/* SCALE (Full width mobile) */}
+            <div className="relative flex-1 h-6 md:h-9 lg:h-12 bg-primary/15 rounded-md overflow-hidden">
 
-                {/* Light Fill */}
-                <div
-                  className="absolute left-0 top-0 h-full bg-primary/15 rounded-md transition-all duration-500 ease-out"
-                  style={{ width: `${position}%` }}
-                />
+              {/* Light Fill */}
+              <div
+                className="absolute left-0 top-0 h-full bg-primary/15 rounded-md transition-all duration-500 ease-out"
+                style={{ width: `${position}%` }}
+              />
 
-                {/* Segments */}
-                <div className="relative flex h-full rounded-md overflow-hidden">
-                  {row.boxes.map((_, i) => (
-                    <div
-                      key={i}
-                      className="flex-1 border border-muted"
-                    />
-                  ))}
-                </div>
-
-                {/* Marker Line */}
-                <div
-                  className="absolute top-0 h-full w-[1.5px] bg-primary transition-all duration-500 ease-out"
-                  style={{
-                    left: `${position}%`,
-                    transform: "translateX(-0.75px)",
-                  }}
-                />
-
-                {/* INSIDE NUMBERS (kept as you wanted) */}
-                {row.boxes.flatMap(box =>
-                  box.numbers.map(num => {
-                    const left = box.positions[num]
-                    if (left === undefined) return null
-
-                    return (
-                      <span
-                        key={num}
-                        className="
-                          absolute top-1/2
-                          text-[9px]
-                          md:text-xs
-                          lg:text-sm
-                          font-mono
-                          text-muted-foreground
-                          pointer-events-none
-                          select-none
-                        "
-                        style={{
-                          left: `${left}%`,
-                          transform: "translate(-50%, -50%)",
-                        }}
-                      >
-                        {num}
-                      </span>
-                    )
-                  })
-                )}
+              {/* Segments */}
+              <div className="relative flex h-full rounded-md overflow-hidden">
+                {row.boxes.map((_, i) => (
+                  <div
+                    key={i}
+                    className="flex-1 border border-muted"
+                  />
+                ))}
               </div>
+
+              {/* Marker Line */}
+              <div
+                className="absolute top-0 h-full w-[1.5px] bg-primary transition-all duration-500 ease-out"
+                style={{
+                  left: `${position}%`,
+                  transform: "translateX(-0.75px)",
+                }}
+              />
+
+              {/* INSIDE NUMBERS (kept as you wanted) */}
+              {row.boxes.flatMap(box =>
+                box.numbers.map(num => {
+                  const left = box.positions[num]
+                  if (left === undefined) return null
+
+                  return (
+                    <span
+                      key={num}
+                      className="
+                        absolute top-1/2
+                        text-[9px]
+                        md:text-xs
+                        lg:text-sm
+                        font-mono
+                        text-muted-foreground
+                        pointer-events-none
+                        select-none
+                      "
+                      style={{
+                        left: `${left}%`,
+                        transform: "translate(-50%, -50%)",
+                      }}
+                    >
+                      {num}
+                    </span>
+                  )
+                })
+              )}
             </div>
           </div>
-        )
+        </div>
+      )
       })}
     </div>
   )
