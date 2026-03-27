@@ -1,5 +1,7 @@
 "use client"
 
+import { useRef } from "react"
+import html2canvas from "html2canvas"
 import { TALLY_LAYOUT } from "@/data/know-your-style/tally-layout"
 
 type Scores = {
@@ -66,9 +68,17 @@ function getInterpolatedPosition(
   }
 
   return 0
-}  
+}
 
-export function ResultSummary({ scores }: { scores: Scores }) {
+export function ResultSummary({
+  scores,
+  name,
+}: {
+  scores: Scores
+  name: string
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+
   const positioned = {
     driver: getInterpolatedPosition(
       TALLY_LAYOUT.find(r => r.label === "Driver")!,
@@ -98,38 +108,74 @@ export function ResultSummary({ scores }: { scores: Scores }) {
   const primary = ranked[0]
   const secondary = ranked[1]
 
+  const handleDownload = async () => {
+    if (!ref.current) return
+
+    const canvas = await html2canvas(ref.current, {
+      scale: 2,
+      useCORS: true,
+    })
+
+    const link = document.createElement("a")
+    link.download = `${name}-personality-style.png`
+    link.href = canvas.toDataURL()
+    link.click()
+  }
+
   return (
     <div className="mt-10 md:mt-12 space-y-6 md:space-y-8 px-4 md:px-0">
 
-      <h2 className="text-medium sm:text-xl md:text-2xl lg:text-xl font-bold">
-        Your Style Summary
-      </h2>
+      {/* WRAPPED FOR DOWNLOAD */}
+      <div ref={ref} className="space-y-6 md:space-y-8">
 
-      {/* Primary Card */}
-      <div className="border rounded-xl p-4 sm:p-5 md:p-6 space-y-3">
-        <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold">
-          Primary Style — {STYLE_META[primary.key].title}
-        </h3>
+        <h2 className="text-medium sm:text-xl md:text-2xl lg:text-xl font-bold">
+          {name}, your Style Summary
+        </h2>
 
-        <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
-          {STYLE_META[primary.key].description}
-        </p>
+        {/* Primary Card */}
+        <div className="border rounded-xl p-4 sm:p-5 md:p-6 space-y-3">
+          <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold">
+            Primary Style — {STYLE_META[primary.key].title}
+          </h3>
 
-        <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
-          Score: {primary.position}
-        </p>
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
+            {name}, you are naturally a{" "}
+            <span className="font-semibold">
+              {STYLE_META[primary.key].title}
+            </span>{" "}
+            personality. {STYLE_META[primary.key].description}
+          </p>
+
+          <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
+            Score: {primary.position}
+          </p>
+        </div>
+
+        {/* Secondary Card */}
+        <div className="border rounded-xl p-4 sm:p-5 md:p-6 space-y-2">
+          <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold">
+            Secondary Style — {STYLE_META[secondary.key].title}
+          </h3>
+
+          <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
+            Score: {secondary.position}
+          </p>
+        </div>
+
       </div>
 
-      {/* Secondary Card */}
-      <div className="border rounded-xl p-4 sm:p-5 md:p-6 space-y-2">
-        <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold">
-          Secondary Style — {STYLE_META[secondary.key].title}
-        </h3>
+      {/* DOWNLOAD BUTTON */}
+      {/* <button
+        onClick={handleDownload}
+        className="mt-4 px-6 py-3 rounded-xl bg-primary text-white font-semibold hover:scale-[1.02] transition"
+      >
+        Download Result
+      </button> */}
 
-        <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
-          Score: {secondary.position}
-        </p>
-      </div>
+      {/* SHARE TEXT */}
+      {/* <p className="text-sm text-muted-foreground text-center">
+        Share this with your friends 👀
+      </p> */}
 
     </div>
   )

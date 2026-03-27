@@ -6,6 +6,7 @@ import { Clock, CheckCircle, Brain, ArrowRight } from "lucide-react"
 
 export default function Home() {
   const [started, setStarted] = useState(false)
+  const [name, setName] = useState("")
 
   return (
     <main className="container mx-auto px-4 py-8 max-w-6xl">
@@ -54,12 +55,27 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Name Input */}
+            <input
+              autoFocus
+              type="text"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border text-center focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+
             {/* CTA */}
             <button
-              onClick={() => setStarted(true)}
-              className="mt-8 inline-flex items-center gap-2 px-10 py-4 rounded-2xl
+              onClick={() => {
+                if (name.trim()) setStarted(true)
+              }}
+              disabled={!name.trim()}
+              className="mt-8 inline-flex items-center justify-center gap-2 px-10 py-4 rounded-2xl
                          bg-primary text-white text-lg font-semibold
-                         shadow-lg hover:scale-[1.02] transition"
+                         shadow-lg transition
+                         hover:scale-[1.02]
+                         disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Start Inventory
               <ArrowRight size={18} />
@@ -72,7 +88,7 @@ export default function Home() {
           </div>
         </div>
       ) : (
-        <StyleQuiz />
+        <StyleQuiz name={name} />
       )}
     </main>
   )

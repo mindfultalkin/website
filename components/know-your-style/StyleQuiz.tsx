@@ -14,7 +14,7 @@ type Scores = {
 
 const TOTAL_QUESTIONS = 24
 
-export function StyleQuiz() {
+export function StyleQuiz({ name }: { name: string }) {
 
   const [current, setCurrent] = useState(0)
 
@@ -83,7 +83,7 @@ export function StyleQuiz() {
         </div>
 
         <TallyBox scores={scores} />
-        <ResultSummary scores={scores} />
+        <ResultSummary scores={scores} name={name} />
       </div>
     )
   }
